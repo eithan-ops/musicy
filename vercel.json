@@ -1,1 +1,42 @@
-{"cleanUrls":true,"rewrites":[{"source":"/:code(\\d{4})","destination":"/"},{"source":"/c/:id","destination":"/"}],"headers":[{"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"}]}]}
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/:code(\\d{4})",
+      "destination": "/"
+    },
+    {
+      "source": "/c/:id",
+      "destination": "/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/tracks/(.*)\\.flac",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/tracks/index.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    }
+  ]
+}
