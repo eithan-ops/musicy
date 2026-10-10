@@ -1,1 +1,61 @@
-{"tracks":[],"melodies":[]}
+{
+ "tracks": [
+  {
+   "id": "kids_pop",
+   "title": "פופ ילדים",
+   "title_en": "Kids Pop",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 118,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "קלידים",
+     "name_en": "Keys"
+    },
+    {
+     "role": "perc",
+     "file": "perc.flac",
+     "name": "כלי הקשה",
+     "name_en": "Percussion"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "מלודיה",
+     "name_en": "Hook"
+    }
+   ],
+   "active": false,
+   "source": "suno"
+  }
+ ],
+ "melodies": []
+}
