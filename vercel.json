@@ -1,1 +1,1 @@
-{"cleanUrls":true,"rewrites":[{"source":"/:code(\\d{4})","destination":"/index.html"},{"source":"/c/:id","destination":"/index.html"}],"headers":[{"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"}]}]}
+{"cleanUrls":true,"rewrites":[{"source":"/:code(\\d{4})","destination":"/"},{"source":"/c/:id","destination":"/"}],"headers":[{"source":"/(.*)","headers":[{"key":"X-Content-Type-Options","value":"nosniff"}]}]}
