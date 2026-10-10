@@ -894,14 +894,18 @@ function pickWrong(song, st, ctx, taken, prefs, onGrid){
   const U = song.U;
   const ok = k => { if (!k || Math.abs(k) >= U / 2) return false; const m = mod(k, U); if (st.valid.has(m)) return false;
     if (k % 2 === 0 && st.scores[m] > .93) return false;
+    if (song.style === 'hits' && st.scores[m] > .86) return false;  /* real productions repeat a lot: a wrong answer must sound clearly wrong */
     if (ctx.length && !ctx.some(c => !c.valid.has(m))) return false;
     return taken.every(c => !st.valid.has(mod(k - c, U))); };
   for (const k of prefs) if (ok(k)) return k;
   for (let k = 1; k < U / 2; k++){ if ((!onGrid || k % 2 === 0) && ok(k)) return k; if ((!onGrid || k % 2 === 0) && ok(-k)) return -k; }
   return 2;
 }
+/* real productions: off-grid shifts (a 16th or 3/16 off) are the ones every ear hears as "wrong" */
+const HITS_GROUPS = {easy:{count:3, groups:[[3,-3,5,-5],[1,-1,7,-7,3,-3]], grid:false}, normal:{count:3, groups:[[3,-3,1,-1],[2,-2,6,-6,5,-5]], grid:false},
+  hard:{count:4, groups:[[2,-2],[1,-1,3,-3],[4,-4,6,-6]], grid:false}};
 function makeOptions(song, st, level, ctx, rnd){
-  const cfg = OPTION_GROUPS[level], b4 = song.bpb * 4, chosen = [0];
+  const cfg = (song.style === 'hits' ? HITS_GROUPS : OPTION_GROUPS)[level], b4 = song.bpb * 4, chosen = [0];
   const resolve = x => x === 'bar' ? b4 : x === '-bar' ? -b4 : x === '2bar' ? 2 * b4 : x === '-2bar' ? -2 * b4 : x;
   for (const g of cfg.groups){ if (chosen.length >= cfg.count) break; chosen.push(pickWrong(song, st, ctx, chosen, shuffleR(g.map(resolve), rnd), cfg.grid)); }
   while (chosen.length < cfg.count) chosen.push(pickWrong(song, st, ctx, chosen, [], false));
@@ -1407,7 +1411,8 @@ const Solo = {
     if (g.phase === 'done') return 1;
     if (g.phase === 'connect') return g.cx && g.cx.idxs.includes(i) ? 1 : 0;
     if (g.solo && g.phase === 'ask' && !st.anchor && i !== g.cur) return 0;
-    if (g.placed[i]) return g.boost[i]; if (i === g.cur && g.curAudible && !g.mute) return 1; return 0; },
+    const hits = this.song.style === 'hits' && g.phase === 'ask';  /* in a full production, lift the instrument being judged so the difference is easy to hear */
+    if (g.placed[i]) return g.boost[i] * (hits ? .7 : 1); if (i === g.cur && g.curAudible && !g.mute) return hits ? 1.4 : 1; return 0; },
   applyMix(){ if (!this.mix) return; this.song.stems.forEach((st, i) => this.mix.setGain(i, this.targetGain(i))); },
   begin(){ const g = this.g; if (!g || g.phase !== 'idle') return; Audio.ensure(); Audio.ac.resume();
     this.mix.play(true); g.phase = 'play'; if (!g.rounds.length){ this.finish(); return; }
@@ -1453,7 +1458,8 @@ const Solo = {
     c.textContent = g.aud < 0 ? T('בחרו גרסה') : need > 0 ? `${T('שמעו עוד {0}', need === 1 ? T('גרסה אחת') : need + T(' גרסאות'))}` : `${T('גרסה {0} בזמן!', LETTERS[g.aud])}`; },
   audition(j){ const g = this.g; if (g.phase !== 'ask' || g.opts[j].wrong) return;
     if (g.aud === j && g.curAudible){ g.mute = !g.mute; this.applyMix(); this.renderOpts(); return; }
-    g.aud = j; g.mute = false; g.heard.add(j); this.mix.shift[g.cur] = g.opts[j].k; g.curAudible = true; this.applyMix(); if (!this.mix.playing) this.mix.play(false); this.mix.restartAll(true); this.renderOpts(); },
+    /* the song keeps running: only this instrument jumps to the chosen version */
+    g.aud = j; g.mute = false; g.heard.add(j); g.curAudible = true; this.applyMix(); if (!this.mix.playing){ this.mix.shift[g.cur] = g.opts[j].k; this.mix.play(false); } else this.mix.setShift(g.cur, g.opts[j].k); this.renderOpts(); },
   toggleSolo(){ const g = this.g; if (!g || g.phase !== 'ask') return; g.solo = !g.solo; this.applyMix(); if (this.o.mode === 'choose') this.renderOpts(); else { const d = $('#sDrums'); d.setAttribute('aria-pressed', String(g.solo)); d.classList.toggle('on', g.solo); } },
   commitChoose(){ const g = this.g; if (g.phase !== 'ask' || g.aud < 0) return; const j = g.aud, o = g.opts[j];
     if (isRightShift(this.song, this.song.stems[g.cur], o.k)){ const b = $('#sOpts').children[j]; b.classList.add('right'); this.won(); }
@@ -2142,12 +2148,13 @@ const Host = {
         else if (s.phase === 'turn' && r.turn && r.turn.role === rl){ if (r.turn.aud >= 0 && !r.turn.mute){ g = 1; k = P.opts[rl][r.turn.aud]; } }
         else if (P.choices[rl] != null){ g = (s.phase === 'turn' && r.turn && r.turn.solo) ? 0 : 1; k = P.choices[rl]; }
       }
-      P.mix.shift[i] = k; P.mix.setGain(i, g);
+      if (song.style === 'hits' && s.phase === 'turn' && r.turn) g *= r.turn.role === rl ? 1.4 : .7;  /* full productions: the instrument being judged stands out */
+      if (P.mix.shift[i] !== k) P.mix.setShift(i, k); P.mix.setGain(i, g);
     });
   },
   pick(j){ const r = this.st.round, P = this.P, t = r.turn; if (!(j >= 0 && j < t.labels.length) || t.struck[j]) return;
     if (t.aud === j){ t.mute = !t.mute; this.applyMix(); this.publish(); return; }
-    t.aud = j; t.mute = false; if (!t.heard.includes(j)) t.heard.push(j); this.applyMix(); P.mix.restartAll(true); Room.send({t:'sync', pos:0}); this.publish(); },
+    t.aud = j; t.mute = false; if (!t.heard.includes(j)) t.heard.push(j); this.applyMix(); this.publish(); },  /* the song keeps running; applyMix moves only this instrument */
   commit(){
     const s = this.st, r = s.round, P = this.P, t = r.turn; if (!t) return;
     let j = t.aud; if (j < 0 || t.struck[j]){ const free = t.struck.map((x, k) => x ? -1 : k).filter(k => k >= 0); j = free[Math.floor(Math.random() * free.length)]; }
