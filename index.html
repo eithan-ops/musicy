@@ -48,7 +48,10 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 .icon-btn{width:44px;height:44px;border-radius:14px;border:3px solid var(--ink);background:var(--paper);display:grid;place-items:center;padding:0;box-shadow:3px 3px 0 var(--ink);flex:none}
 .icon-btn svg{width:22px;height:22px}
 .icon-btn.ghost{background:transparent;border-color:transparent;box-shadow:none;color:#fff}
-.chip-me{color:var(--ink);display:flex;align-items:center;gap:8px;background:var(--paper);border:3px solid var(--ink);border-radius:999px;padding:3px 12px 3px 4px;font-weight:600;min-height:44px}
+.chip-me{color:var(--ink);display:flex;align-items:center;gap:8px;background:var(--paper);border:3px solid var(--ink);border-radius:999px;padding-block:3px;padding-inline:4px 12px;font-weight:600;min-height:44px}
+.chip-lang{min-height:44px;min-width:44px;border:3px solid var(--ink);background:var(--paper);border-radius:999px;font-weight:700;font-size:15px;padding:0 12px;color:var(--ink)}
+html[dir=ltr] [data-home] svg{transform:scaleX(-1)}
+html[dir=ltr] .roomcode{text-align:left}
 
 .card{background:var(--paper);border:3px solid var(--ink);border-radius:22px;box-shadow:5px 5px 0 var(--ink);padding:16px;display:flex;flex-direction:column;gap:10px}
 .card.gold{background:var(--gold)}
@@ -117,18 +120,19 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 .stageband .member{width:76px}
 
 /* home demo */
-.hero{background:var(--ink);color:#fff;border:3px solid var(--ink);border-radius:22px;padding:14px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;position:relative;overflow:hidden}
-.hero h1{font-size:32px;line-height:1.05}
-.hero p{margin:0;color:var(--lilac);font-size:15px;max-width:330px}
-.hero-band{display:flex;gap:8px;align-items:flex-end;justify-content:center;min-height:100px;position:relative;direction:ltr;padding-top:12px}
-.hj{display:flex;flex-direction:column;align-items:center;gap:2px;width:58px}
+.hero{background:var(--ink);color:#fff;border:3px solid var(--ink);border-radius:22px;padding:10px 14px 14px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;position:relative;overflow:hidden}
+.hero{cursor:pointer}
+.hero h1{font-size:26px;line-height:1.05}
+.hero p{margin:2px 0 0;color:var(--lilac);font-size:14px;max-width:330px;line-height:1.35}
+.hero-band{display:flex;gap:8px;align-items:flex-end;justify-content:center;min-height:74px;position:relative;direction:ltr;padding-top:10px}
+.hj{display:flex;flex-direction:column;align-items:center;gap:1px;width:46px}
 .hj small{font-size:12px;font-weight:700;color:var(--lilac)}
 .hj .jelly{transform-origin:50% 95%;animation:hop .5s cubic-bezier(.3,0,.4,1) infinite alternate}
 @keyframes hop{from{transform:translateY(0) scale(1.05,.95)}to{transform:translateY(-14px) scale(.97,1.03)}}
 .hero.broken .hj.odd .jelly{animation:stumble .37s ease-in-out infinite alternate;filter:saturate(.4)}
 @keyframes stumble{from{transform:translateY(-2px) rotate(-16deg)}to{transform:translateY(-9px) rotate(13deg)}}
 .hero.fixed .hj.odd .jelly{filter:drop-shadow(0 0 10px #FFD23F)}
-.tapfx{position:absolute;top:10px;left:calc(50% + 1px);width:64px;height:64px;border-radius:50%;border:4px solid var(--gold);opacity:0;pointer-events:none}
+.tapfx{position:absolute;top:6px;left:calc(50% + 2px);width:50px;height:50px;border-radius:50%;border:4px solid var(--gold);opacity:0;pointer-events:none}
 .hero.tap .tapfx{animation:tapring .45s ease-out}
 @keyframes tapring{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
 .hero-state{min-height:24px;display:flex;justify-content:center}
@@ -137,6 +141,9 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 .hero.fixed .hero-state .st-on{display:inline-block;background:var(--good);color:var(--ink)}
 
 /* home */
+.play h2{font-size:28px;line-height:1}
+.or{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px}
+.or::before,.or::after{content:'';flex:1;height:2px;background:var(--ink);opacity:.25}
 .codebox{display:flex;gap:8px}
 .codebox .input{flex:1}
 .card.near{flex-direction:row;align-items:center;gap:12px}
@@ -155,7 +162,7 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 .timer{position:relative;width:62px;height:62px;display:grid;place-items:center;flex:none}
 .timer svg{position:absolute;inset:0}
 .timer b{font-family:var(--font-display);font-size:22px;font-weight:400;position:relative}
-.opt{display:flex;align-items:center;gap:14px;background:var(--soft);border:3px solid var(--ink);border-radius:18px;box-shadow:4px 4px 0 var(--ink);padding:10px 16px;text-align:right;min-height:72px;width:100%}
+.opt{display:flex;align-items:center;gap:14px;background:var(--soft);border:3px solid var(--ink);border-radius:18px;box-shadow:4px 4px 0 var(--ink);padding:10px 16px;text-align:start;min-height:72px;width:100%}
 .opt .L{font-family:var(--font-display);font-size:44px;line-height:1;width:40px;text-align:center}
 .opt .mid{flex:1;font-weight:600;font-size:15px;color:var(--muted);display:flex;align-items:center;gap:3px;min-height:28px}
 .opt .eq{display:flex;align-items:flex-end;gap:3px;height:28px}
@@ -302,29 +309,30 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 <main id="s-home" class="screen" data-screen>
   <div class="topbar">
     <span class="logo">Musicy</span>
-    <button class="chip-me" id="meChip" aria-label="הפרופיל שלי"><span id="meJelly"></span><span id="meName">אורח</span></button>
+    <div class="row" style="gap:8px">
+      <button class="chip-lang" id="langBtn"></button>
+      <button class="chip-me" id="meChip" aria-label="הפרופיל שלי"><span id="meJelly"></span><span id="meName">אורח</span></button>
+    </div>
   </div>
+  <section id="nearby" class="stack" hidden></section>
   <section class="hero" id="hero" aria-label="הדגמה: אחד הכלים לא בזמן, נוגעים בו, והלהקה חוזרת לנגן יחד">
     <div class="hero-band" id="heroBand"></div>
-    <span class="hero-state" aria-hidden="true"><b class="st-off">הסינת׳ לא בזמן</b><b class="st-on">חזר לזמן!</b></span>
-    <h1 class="d">השיר התפרק לכלים</h1>
-    <p>כל אחד מחזיר כלי אחד לזמן, וביחד זה שוב נשמע כמו המקור.</p>
+    <div class="hero-txt">
+      <h1 class="d">השיר התפרק לכלים</h1>
+      <p>כל אחד מחזיר כלי אחד לזמן, וביחד זה שוב נשמע כמו המקור.</p>
+    </div>
   </section>
-  <button class="btn gold big" id="quickBtn">נסו עכשיו · 30 שניות</button>
-  <section class="card gold">
-    <h2 class="d" style="font-size:28px;line-height:1">שחקו עם חברים</h2>
-    <p class="small" style="margin:0">הטלפון שלכם יהיה הרמקול. חברים מצטרפים עם קוד, QR או לינק, בלי הרשמה ובלי הורדה.</p>
+  <section class="card gold play">
+    <h2 class="d">שחקו עם חברים</h2>
     <button class="btn inkb big" id="createBtn">פתחו חדר</button>
-  </section>
-  <section class="card">
-    <label class="d" for="codeIn" style="font-size:22px">יש לכם קוד?</label>
+    <div class="or" aria-hidden="true"><span>או הצטרפו עם קוד</span></div>
     <div class="codebox">
       <input id="codeIn" class="input code" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="····" aria-label="קוד חדר בן 4 ספרות">
-      <button class="btn gold" id="joinBtn" style="min-width:104px">הצטרפו</button>
+      <button class="btn" id="joinBtn" style="min-width:104px">הצטרפו</button>
     </div>
-    <p class="small muted" style="margin:0">יש לחבר QR? פתחו את המצלמה של הטלפון וכוונו אליו.</p>
+    <p class="small center" style="margin:0">בלי הרשמה ובלי הורדה · טלפון אחד הוא הרמקול</p>
   </section>
-  <section id="nearby" class="stack" hidden></section>
+  <button class="btn big" id="quickBtn">נסו לבד · 30 שניות</button>
   <section class="card" id="dailyCard"></section>
   <div class="grid2">
     <button class="btn" id="soloBtn">לשחק לבד</button>
@@ -452,6 +460,33 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 
 <script>
 'use strict';
+/* ===== language: Hebrew in Israel, English everywhere else. A manual switch wins, then the country the server saw, then the device time zone ===== */
+const LANG = (() => { try {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (q === 'he' || q === 'en'){ localStorage.setItem('musicy.lang', JSON.stringify(q)); return q; }
+  const s = JSON.parse(localStorage.getItem('musicy.lang') || 'null'); if (s === 'he' || s === 'en') return s;
+  const cc = JSON.parse(localStorage.getItem('musicy.cc') || 'null'); if (typeof cc === 'string' && cc) return cc === 'IL' ? 'he' : 'en';
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; return /^Asia\/(Jerusalem|Tel_Aviv)$/.test(tz) ? 'he' : 'en';
+} catch(e){ return 'he'; } })();
+const DIR = LANG === 'he' ? 'rtl' : 'ltr';
+document.documentElement.lang = LANG; document.documentElement.dir = DIR;
+const EN = {"המנון לשמחה": "Ode to Joy", "לודוויג ואן בטהובן · 1824": "Ludwig van Beethoven · 1824", "מילדרד ופטי היל · 1893": "Mildred & Patty Hill · 1893", "נצנץ כוכב קטן": "Twinkle, Twinkle, Little Star", "לחן עממי צרפתי · 1761": "French folk tune · 1761", "אחינו יעקב": "Frère Jacques", "לחן עממי צרפתי": "French folk tune", "ג׳ינגל בלס": "Jingle Bells", "ג׳יימס לורד פירפונט · 1857": "James Lord Pierpont · 1857", "לאליזה": "Für Elise", "לודוויג ואן בטהובן · 1810": "Ludwig van Beethoven · 1810", "מוזיקה לילית קטנה": "Eine kleine Nachtmusik", "וולפגנג אמדאוס מוצרט · 1787": "Wolfgang Amadeus Mozart · 1787", "בהיכלו של מלך ההר": "In the Hall of the Mountain King", "אדוארד גריג · 1875": "Edvard Grieg · 1875", "קורובייניקי (מנגינת טטריס)": "Korobeiniki (the Tetris theme)", "שיר עם רוסי · 1861": "Russian folk song · 1861", "למרי היה כבש קטן": "Mary Had a Little Lamb", "שרה ג׳וזפה הייל · 1830": "Sarah Josepha Hale · 1830", "לדוד משה הייתה חווה": "Old MacDonald Had a Farm", "לחן עממי": "Folk tune", "גשר לונדון": "London Bridge", "לחן עממי אנגלי": "English folk tune", "יונתן הקטן": "Little Jonathan (Hänschen klein)", "לחן עממי גרמני": "German folk tune", "ספיריצ׳ואל אמריקאי": "American spiritual", "אולד לאנג סיין": "Auld Lang Syne", "לחן עממי סקוטי": "Scottish folk tune", "גרינסליבס": "Greensleeves", "לחן עממי אנגלי · המאה ה-16": "English folk tune · 16th century", "יאנקי דודל": "Yankee Doodle", "לחן עממי אמריקאי": "American folk tune", "המארש הטורקי": "Turkish March", "וולפגנג אמדאוס מוצרט · 1783": "Wolfgang Amadeus Mozart · 1783", "הסימפוניה החמישית": "Symphony No. 5", "לודוויג ואן בטהובן · 1808": "Ludwig van Beethoven · 1808", "הקנון של פכלבל": "Pachelbel's Canon", "יוהאן פכלבל · בערך 1680": "Johann Pachelbel · c. 1680", "מינואט בסול": "Minuet in G", "כריסטיאן פצולד · 1725": "Christian Petzold · 1725", "מקהלת הכלולות": "Bridal Chorus", "ריכרד וגנר · 1850": "Richard Wagner · 1850", "לה קוקרצ׳ה": "La Cucaracha", "שיר עם מקסיקני": "Mexican folk song", "מאחלים לכם חג שמח": "We Wish You a Merry Christmas", "שיר עם אנגלי": "English folk song", "פופ": "Pop", "שירים מוכרים בהפקה שמחה": "Familiar songs, happy production", "אלקטרו": "Electro", "בעיטה על כל פעמה, סינת׳ שנושם": "A kick on every beat, a breathing synth", "רוק": "Rock", "גיטרות, תופים ורעש טוב": "Guitars, drums and good noise", "תופים": "Drums", "בס": "Bass", "אקורדים": "Chords", "סינת׳": "Synth", "גיטרה": "Guitar", "פעמונים": "Bells", "ארפג׳יו": "Arpeggio", "אורגן": "Organ", "כלי הקשה": "Percussion", "אפקטים": "FX", "טמבורין": "Tambourine", "חליל": "Flute", "ווקאל": "Vocal", "קול שני": "Harmony", "מלודיה": "Melody", "סינת׳ מוביל": "Lead synth", "גיטרה סולו": "Lead guitar", "איזו": "Which", "אילו": "Which", "איזה": "Which", "ה": "the ", "בדיוק בזמן": "exactly on time", "רבע פעמה": "a quarter beat", "חצי פעמה": "half a beat", "שלושה רבעי פעמה": "three quarters of a beat", "פעמה": "a beat", "תיבה שלמה": "a whole bar", "שתי תיבות": "two bars", "פעמה ורבע": "a beat and a quarter", "פעמה וחצי": "a beat and a half", "פעמה ושלושה רבעים": "a beat and three quarters", "שתי פעמות": "two beats", "{0} פעמות": "{0} beats", "איחור": "late", "הקדמה": "early", "{0} של {1}": "{0} by {1}", "אדום": "Red", "תכלת": "Light blue", "כתום": "Orange", "סגול": "Purple", "ירוק": "Green", "ורוד": "Pink", "קל": "Easy", "רגיל": "Normal", "קשה": "Hard", "איזה בזמן?": "Which is on time?", "שומעים כמה גרסאות של כל כלי ובוחרים את זו שבזמן.": "Hear a few versions of each instrument and pick the one that's on time.", "הכנסה בזמן": "Drop it in", "הכלי מחכה בצד. מקישים בדיוק על ה-1.": "The instrument waits on the side. Tap exactly on the 1.", "חוגה": "Dial", "מסובבים את הכלי לבד ונועלים. למקצוענים.": "Turn the instrument yourself and lock it. For pros.", "א": "A", "ב": "B", "ג": "C", "ד": "D", "הועתק": "Copied", "בומבה": "Boomba", "טמבורינה": "Tambo", "גרוב": "Groovy", "באסי": "Bassy", "פיקולו": "Piccolo", "מצילה": "Cymbal", "קצבי": "Beatsy", "צ׳לו": "Cello", "סינתי": "Synthy", "ביט": "Beat", "מרקדה": "Dancer", "רוקי": "Rocky", "איך יקראו לך בלהקה?": "What's your band name?", " (אפשר להשאיר)": " (keep it if you like)", "שם{0}": "Name{0}", "צבע": "Color", "שמירה": "Save", "מכינים כרטיס…": "Making your card…", "כרטיס שיתוף של הלהקה": "The band's share card", "{0} שיתוף": "{0} Share", "{0} שמירה": "{0} Save", "שתפו את הלהקה": "Share the band", "{0} וואטסאפ": "{0} WhatsApp", "{0} העתקת לינק": "{0} Copy link", "מעלים לסטורי ומתייגים חברים. כל מי שסורק מקבל את אותו אתגר.": "Post it to your story and tag friends. Everyone who scans gets the same challenge.", "<div class=\"rec-dot\">מקליטים קליפ עם סאונד…</div>": "<div class=\"rec-dot\">Recording a clip with sound…</div>", "לפני: השיר התפרק": "Before: the song fell apart", "מחזירים כלי אחרי כלי…": "Putting them back one by one…", "ככה זה נגמר אצלנו": "That's how it ended for us", "אחרי: הלהקה מתחברת!": "After: the band clicks!", "אתם תצליחו מהר יותר?": "Can you do it faster?", "הדפדפן הזה לא יודע להקליט קליפ. נסו Chrome או Safari מעודכנים.": "This browser can't record clips. Try an up-to-date Chrome or Safari.", "לא הצלחנו להקליט את הקליפ": "We couldn't record the clip", "בוחרים וואטסאפ ברשימת השיתוף, ואפשר גם לסטטוס.": "Pick WhatsApp in the share list. It works for Status too.", "שומרים את הקליפ ומעלים לוואטסאפ או לסטטוס.": "Save the clip and post it on WhatsApp or Status.", "הקליפ מוכן": "Your clip is ready", "{0} שליחת הלינק בוואטסאפ": "{0} Send the link on WhatsApp", "אורח": "Guest", "מישהו": "Someone", "נגן": "player", "נגנים": "players", "קרוב אליך · אותה רשת": "Near you · same network", "הלהקה של {0} · {1} {2}": "{0}'s band · {1} {2}", "הצטרפו": "Join", "שיתוף": "Share", "לשחק": "Play", "שיר היום #{0}": "Song of the day #{0}", "{0} · אותו שיר לכל הארץ": "{0} · same song for everyone", "{0} · {1} שיחקו היום": "{0} · {1} played today", "הפרופיל שלך": "Your profile", "הקוד הוא 4 ספרות": "The code is 4 digits", "Musicy במסך הבית": "Musicy on your home screen", "לוחצים על כפתור השיתוף של ספארי (הריבוע עם החץ).": "Tap Safari's share button (the square with the arrow).", "בוחרים ״הוספה למסך הבית״.": "Choose \"Add to Home Screen\".", "לוחצים ״הוספה״. זהו.": "Tap \"Add\". That's it.", "הבנתי": "Got it", "מכינים את הכלים…": "Setting up the instruments…", "מכינים את הכלים… {0}/{1}": "Setting up the instruments… {0}/{1}", "הדפדפן לא הצליח ליצור את הצלילים. נסו Chrome או Safari מעודכנים.": "Your browser couldn't make the sounds. Try an up-to-date Chrome or Safari.", "נסו עכשיו": "Try it now", "השיר שלך": "Your song", "הדגמה": "Demo", "ככה נשמע {0} בזמן": "This is {0} on time", "הקשיבו איך הוא נופל בדיוק על התופים.": "Hear how it lands right on the drums.", "בזמן ✓": "On time ✓", "ועכשיו לא בזמן": "And now off time", "שומעים איך הוא מקרטע מול התופים?": "Hear it stumble against the drums?", "לא בזמן ✗": "Off time ✗", "סבב {0} מתוך {1}": "Round {0} of {1}", "{0} {1} בזמן?": "{0} {1} is on time?", "שמעו את כל הגרסאות עם הלהקה. נגיעה נוספת בגרסה שבחרתם משמיעה את הלהקה בלי הכלי.": "Hear every version with the band. Tap your pick again to hear the band without the instrument.", "הכניסו את {0} על ה-1": "Drop {0} in on the 1", "הקשיבו לתופים. ה-1 מגיע מיד אחרי המעבר שלהם.": "Listen to the drums. The 1 comes right after their fill.", "כשהספירה מגיעה ל-1, הקישו על העיגול.": "When the count hits 1, tap the circle.", "סובבו את {0} לזמן": "Turn {0} into time", "כשנשמע לכם נכון, לחצו ״נעלו״. טעות עולה לב.": "When it sounds right, tap \"Lock\". A miss costs a heart.", ", הלהקה בלי הכלי": ", the band without the instrument", "לא בזמן": "Off time", "בלי הכלי": "Without it", "מתנגן": "Playing", "שמעתם ✓": "Heard ✓", "האזינו": "Listen", "גרסה {0}{1}": "Version {0}{1}", "נגיעה נוספת בגרסה שבחרתם משמיעה את הלהקה בלי הכלי, כדי להשוות.": "Tap your pick again to hear the band without the instrument, to compare.", "עכשיו בלי הכלי. נגיעה נוספת מחזירה אותו.": "Now without the instrument. Tap again to bring it back.", "נגעו שוב באותה גרסה כדי לשמוע את הלהקה בלי הכלי.": "Tap the same version again to hear the band without the instrument.", "בחרו גרסה": "Pick a version", "גרסה אחת": "one more version", " גרסאות": " more versions", "שמעו עוד {0}": "Hear {0}", "גרסה {0} בזמן!": "Version {0} is on time!", "לא זו. בגרסה {0}׳ יש {1}.": "Not that one. Version {0} is {1}.", "הקישו על ה-1": "Tap on the 1", "מושלם!": "Perfect!", "קצת מוקדם": "a bit early", "קצת מאוחר": "a bit late", "טוב! {0} ({1} מ״ש)": "Good! {0} ({1} ms)", "זה לא היה ה-1. חכו למעבר של התופים.": "That wasn't the 1. Wait for the drum fill.", "מוקדם": "Early", "מאוחר": "Late", "{0} מדי ב-{1} מ״ש": "{0} by {1} ms", "בזמן!": "On time!", "(רצף ×{0})": "(streak ×{0})", "<button class=\"btn\" id=\"ovEasy\">רמה קלה יותר</button>": "<button class=\"btn\" id=\"ovEasy\">An easier level</button>", "השיר התפרק": "The song fell apart", "הגעתם עד סבב {0} מתוך {1}, עם {2} נקודות. כל ניסיון מאמן את האוזן.": "You reached round {0} of {1} with {2} points. Every try trains your ear.", "עוד ניסיון": "Try again", "עוד {0}…": "{0} more…", "ככה זה נשמע מפורק": "This is how it sounds broken", "הלהקה מחוברת!": "The band is together!", "הלהקה מתחברת": "The band comes together", "קודם שומעים את הבלגן, ואז כל כלי חוזר למקום.": "First you hear the mess, then each instrument snaps back.", "השיר שלם!": "The song is whole!", "כל הלהקה מתנגנת יחד.": "The whole band plays together.", "נגן יחיד": "Solo player", "מקום {0} מתוך {1} בטבלת האתגר": "Place {0} of {1} on the challenge board", "עכשיו עם חברים · פתחו חדר": "Now with friends · open a room", "{0} אתגרו חברים": "{0} Challenge friends", "{0} קליפ עם סאונד לוואטסאפ": "{0} Clip with sound for WhatsApp", "לשחק עוד": "Play more", "השיר הבא": "Next song", "השיר שלם": "Song complete", "{0} כוכבים מתוך 3": "{0} stars out of 3", "נקודות": "Points", "זמן": "Time", "חיים": "Lives", "שוב": "Again", "להמשיך להאזין": "Keep listening", "מכינים לינק אתגר…": "Making a challenge link…", "השיר התפרק. החזרתי אותו לזמן": "The song fell apart. I put it back in time", "השיר התפרק לכלים והחזרתי אותו לזמן ב-Musicy. נסו לנצח אותי: {0}": "The song fell apart into instruments and I put it back in time on Musicy. Try to beat me: {0}", "יוצרים אתגר…": "Creating a challenge…", "הרכבתי את השיר לבד": "I rebuilt the song solo", "אני": "Me", "סגנון": "Style", "כוכבים": "Stars", "הרכבתי שיר מבולגן ב-{0} ב-Musicy. נסו לנצח אותי: {1}": "I rebuilt a scrambled song in {0} on Musicy. Try to beat me: {1}", "Musicy · שיר היום #{0}\n{1}\n⏱ {2} · {3}{4}\nhttps://musicy.fun": "Musicy · Song of the day #{0}\n{1}\n⏱ {2} · {3}{4}\nhttps://musicy.fun", "הצלחתי": "I did it", "שחקו את שיר היום": "Play the song of the day", "רצף ×{0}": "Streak ×{0}", "עכשיו!": "Now!", " רק עם התופים": " Drums only", "עדיין לא בזמן. הקשיבו לתופים ונסו שוב.": "Still off time. Listen to the drums and try again.", "המשך": "Resume", "עצירה": "Pause", "איזה שיר זה?": "Which song is it?", "נכון! זה {0}. +150": "Right! It's {0}. +150", "לא הפעם. −50": "Not this time. −50", "לא נמצאו קבצי שמע. נסו wav, mp3 או m4a.": "No audio files found. Try wav, mp3 or m4a.", "קורא את הקבצים…": "Reading the files…", "לא הצלחתי לקרוא את {0}.": "I couldn't read {0}.", "תפקיד": "Role", "הסר": "Remove", "קובץ": "File", "אורך": "Length", "{0} ערוצים · זוהה קצב של כ-{1}. כוונו את ״תחילת ההוק״ לפזמון ובדקו.": "{0} tracks · tempo about {1}. Set the \"hook start\" to the chorus and check.", "קצב לפי הקשות: {0}": "Tempo from taps: {0}", "עוד {0} הקשות…": "{0} more taps…", "קודם טענו קבצים.": "Load files first.", "משמיע את ההוק פעמיים. אם הלופ קופץ, כוונו קצב או התחלה.": "Playing the hook twice. If the loop jumps, adjust the tempo or start.", "צריך לפחות שני ערוצים.": "You need at least two tracks.", "הקצב צריך להיות בין 40 ל-240.": "Tempo must be between 40 and 240.", "הוסיפו את שם השיר.": "Add the song's name.", "ההוק ארוך מהקבצים. הקדימו את ההתחלה.": "The hook is longer than the files. Move the start earlier.", "בונים משחק מהשיר…": "Building a game from the song…", "לא נמצאו כלים שאפשר לבלגן. בדקו קצב ואורך.": "No instruments could be scrambled. Check the tempo and length.", "טוענים את האתגר…": "Loading the challenge…", "לא מצאנו את האתגר": "We couldn't find the challenge", "אולי הלינק נקטע. אפשר תמיד לפתוח חדר חדש.": "Maybe the link got cut. You can always open a new room.", "לדף הבית": "Home", "<p class=\"muted\" style=\"margin:0\">עדיין אף אחד. תהיו הראשונים.</p>": "<p class=\"muted\" style=\"margin:0\">Nobody yet. Be the first.</p>", "קיבלתם אתגר": "You got a challenge", "{0} הרכיבו שיר ב-{1}": "{0} rebuilt a song in {1}", "אותו שיר ואותו בלגן בדיוק. {0} · {1}. שם השיר נשאר סוד עד הסוף.": "Same song, same mess. {0} · {1}. The song's name stays secret until the end.", "מי כבר ניסה": "Who has tried", "פתחו חדר וקבלו את האתגר": "Open a room and take the challenge", "לנסות לבד קודם": "Try solo first", "בלי הרשמה ובלי הורדה": "No sign-up, no download", "הבסים": "Basses", "התופים": "Drums", "הפעמונים": "Bells", "המגברים": "Amps", "הרמקולים": "Speakers", "הקיפודים": "Hedgehogs", "הדינוזאורים": "Dinosaurs", "הפינגווינים": "Penguins", "הסנאים": "Squirrels", "הלמורים": "Lemurs", "הכרישים": "Sharks", "הדובים": "Bears", "הזועמים": "Angry", "הרדומים": "Sleepy", "המרקדים": "Dancing", "הקופצים": "Jumping", "המהירים": "Speedy", "הרועשים": "Noisy", "המבולגנים": "Messy", "המסונכרנים": "Synced", "הסגולים": "Purple", "הנוצצים": "Shiny", "החמודים": "Cute", "הלוהטים": "Blazing", "אין חיבור לאינטרנט כרגע": "No internet connection right now", "פותחים חדר…": "Opening a room…", "לא הצלחנו להתחבר. בדקו את האינטרנט ונסו שוב.": "We couldn't connect. Check your internet and try again.", "מתחברים לחדר {0}…": "Connecting to room {0}…", "לא הצלחנו להתחבר. נסו שוב.": "We couldn't connect. Try again.", "לא מצאנו חדר פעיל עם הקוד {0}": "No open room with code {0}", "החדר שלכם": "Your room", "הבומבוקס יצא מהחדר": "The boombox left the room", "החדר נסגר. אפשר לפתוח חדר חדש ולהזמין את כולם.": "The room closed. You can open a new room and invite everyone.", "מכינים את שיר {0}…": "Getting song {0} ready…", "הבומבוקס מכין את הכלים{0}": "The boombox is setting up the instruments{0}", "{0}וואטסאפ": "{0}WhatsApp", "{0}העתקת לינק": "{0}Copy link", "{0}שיתוף": "{0}Share", "בומבוקס": "Boombox", "מתחבר…": "Connecting…", "בפנים": "In", "מחכים…": "Waiting…", "אתגר פעיל": "Live challenge", "{0} הרכיבו את השיר ב-{1}. נראה אתכם.": "{0} rebuilt the song in {1}. Let's see you.", "· {0} בקהל": "· {0} watching", "בבדיקת להקה בסוף": "Band check at the end", "מיד בכל תור": "Right away, every turn", "אף אחד לא יודע עד הסוף. אז מקשיבים ללהקה ביחד, מצביעים ומתקנים. מומלץ למבוגרים.": "Nobody knows until the end. You listen to the band together, vote and fix. Best for adults.", "כל נגן שומע מיד אם צדק. טעות עולה לב לכל הלהקה. מומלץ לילדים.": "Every player hears right away if they got it. A miss costs the band a heart. Best for kids.", "הטלפון שלך הוא הבומבוקס. חברו אותו לרמקול והשאירו את המסך דלוק.": "Your phone is the boombox. Hook it up to a speaker and keep the screen on.", "מתחילים · {0} {1}": "Start · {0} {1}", "כל שיר מתעבד אוטומטית ל-{0} כלים": "Each song arranges itself for {0} instruments", "הבומבוקס": "the boombox", "מחכים ש{0} יתחיל": "Waiting for {0} to start", "קוד QR להצטרפות": "QR code to join", "קוד החדר": "Room code", "הלהקה": "The band", "{0} מתוך {1}{2}": "{0} of {1}{2}", "רמה": "Level", "מתי יודעים אם צדקנו?": "When do we find out?", "ההגרלה קבעה:": "The draw says:", "הקשיבו לכלי שלכם": "Listen to your instrument", "הפעם בקהל": "Watching this time", "תוכלו להגיב בכל תור ולהצביע בבדיקת הלהקה.": "You can react on every turn and vote in the band check.", "עוד רגע מתחיל השיר המלא": "The full song starts in a moment", "השיר המלא מתנגן ברמקול": "The full song is playing on the speaker", " והטלפון רוטט": " and your phone buzzes", "דלגו להתחלת התורות": "Skip to the turns", "{0} שלך!": "You're on {0}!", "בכל פעם ש{0} מנגן, העיגול פועם{1}. תזכרו איפה הוא נכנס, כי אחר כך תצטרכו להחזיר אותו לזמן.": "Every time {0} plays, the circle pulses{1}. Remember where it comes in. Later you'll put it back in time.", "התור שלך: {0} מתוך {1}": "Your turn: {0} of {1}", "תיקון · ": "Fix · ", "נשארו {0} לבבות ללהקה.": "The band has {0} hearts left.", "בלי הכלי · נגעו שוב להחזיר": "Without it · tap again to bring it back", "<span class=\"eq\" aria-hidden=\"true\"><i></i><i></i><i></i><i></i><i></i></span> מתנגן ברמקול": "<span class=\"eq\" aria-hidden=\"true\"><i></i><i></i><i></i><i></i><i></i></span> Playing on the speaker", "שמעתם ✓ · נגעו שוב": "Heard ✓ · tap again", "נגעו כדי לשמוע": "Tap to listen", "{0} אהב את {1}׳": "{0} liked {1}", "{0} לא בטוח לגבי {1}׳": "{0} isn't sure about {1}", "{0}׳ בזמן. נועלים!": "{0} is on time. Lock it!", "{0}תור {1} מתוך {2} · התור שלך": "{0}Turn {1} of {2} · your turn", "נגעו בגרסה כדי לשמוע אותה ברמקול. נגיעה נוספת באותה גרסה משמיעה את הלהקה בלי הכלי.{0}": "Tap a version to hear it on the speaker. Tap it again to hear the band without the instrument.{0}", "{0} רק עם התופים": "{0} Drums only", "עוד לא נבחרה גרסה": "No version picked yet", "ברמקול עכשיו: הלהקה בלי {0}": "On the speaker now: the band without {0}", "ברמקול עכשיו: גרסה {0}׳": "On the speaker now: version {0}", " · רק עם התופים": " · drums only", "{0} שלך כבר בלהקה.": "Your {0} is already in the band.", "{0} שלך עוד מחכה לתור.": "Your {0} is still waiting for its turn.", "תור {0} מתוך {1}": "Turn {0} of {1}", "התור של {0}: {1}": "{0}'s turn: {1}", "מה אתם שומעים?": "What do you hear?", "{0}נשמע בזמן": "{0}Sounds on time", "מקרטע": "Stumbling", "התגובה קופצת אצל {0}. את התשובה הנכונה אף אחד לא רואה עד הסוף.": "Your reaction pops up for {0}. Nobody sees the right answer until the end.", "הצבעתם. מחכים לשאר הלהקה…": "You voted. Waiting for the rest of the band…", "הצביעו {0} מתוך {1}": "{0} of {1} voted", "בדיקת להקה": "Band check", "איך זה נשמע?": "How does it sound?", "הרמקול מנגן את השיר כמו שבניתם אותו": "The speaker plays the song the way you built it", "כמו המקור": "Like the original", "{0} קולות": "{0} votes", "משהו עקום": "Something's off", "{0} · נשארו {1} תיקונים": "{0} · {1} fixes left", "הצבעתם. מחכים לשאר…": "You voted. Waiting for the rest…", "הצביעו בכלי שנשמע לכם עקום": "Vote for the instrument that sounds off", "איזה כלי לפתוח מחדש?": "Which instrument should we reopen?", "הרוב שמע שמשהו עקום. הכלי עם הכי הרבה קולות נפתח, והנגן שלו בוחר שוב.": "Most of you heard something off. The instrument with the most votes reopens and its player picks again.", "הקצב": "The beat", "זה מה שבניתם": "This is what you built", "הרגע של הלהקה": "The band moment", "הרמקול מנגן. כל כלי חוזר למקום שבחרתם לו.": "The speaker plays. Each instrument goes back where you put it.", "תוקן": "Fixed", "בזמן": "On time", "הלהקה שלמה · השיר היה": "The band is whole · the song was", "השיר התפרק · זה היה": "The song fell apart · it was", "· מקום {0} מתוך {1} באתגר": "· place {0} of {1} in the challenge", "שם אחר ללהקה": "Another band name", "השוו ברמקול": "Compare on the speaker", "הגרסה שלנו": "Our version", "המקור": "The original", "אוזן זהב:": "Golden ear:", "{0}. בזמן כבר בבחירה הראשונה, והכי מהר.": "{0}. On time on the first pick, and the fastest.", "{0} כרטיס לסטורי": "{0} Story card", "{0} שתפו את הלהקה": "{0} Share the band", "שיר הבא": "Next song", "ללובי": "Lobby", "מחכים לשיר הבא": "Waiting for the next song", "שם הלהקה": "Band name", "התגובה נשלחה ✓": "Reaction sent ✓", "בואו לנגן איתי ב-Musicy! חדר {0}: https://musicy.fun/{1}": "Come play with me on Musicy! Room {0}: https://musicy.fun/{1}", "הלהקה הרכיבה את השיר": "The band rebuilt the song", "הלהקה כמעט הרכיבה את השיר": "The band almost rebuilt the song", "{0} הרכיבו שיר מבולגן ב-{1} ב-Musicy. אתם תצליחו מהר יותר? {2}": "{0} rebuilt a scrambled song in {1} on Musicy. Can you do it faster? {2}", "הטלפון הזה הוא הבומבוקס. יציאה סוגרת את החדר לכולם.": "This phone is the boombox. Leaving closes the room for everyone.", "תוכלו לחזור עם אותו קוד.": "You can come back with the same code.", "לצאת מהחדר?": "Leave the room?", "יציאה": "Leave", "להישאר": "Stay", "לא הצלחנו להכין את השיר בטלפון הזה": "We couldn't get the song ready on this phone", "לא {0}׳: יש בה {1}": "Not {0}: it's {1}", "תוקן בבדיקת הלהקה": "Fixed in the band check", "בזמן כבר בבחירה הראשונה, תוך {0} שניות": "On time on the first pick, in {0} seconds", "בזמן אחרי ניסיון נוסף": "On time after another try", "נשאר עם {0}": "Stayed {0}", "לא נבחרה גרסה": "No version picked", "השיר התפרק. החזרנו אותו לזמן": "The song fell apart. We put it back in time", "השיר התפרק. כמעט החזרנו אותו": "The song fell apart. We almost put it back", "{0} החזירו שיר מפורק לזמן ב-Musicy. אתם תצליחו מהר יותר? {1}": "{0} put a broken song back in time on Musicy. Can you do it faster? {1}", "Musicy · הלהקה מתפרקת": "Musicy · The band fell apart", "משחק מוזיקה קבוצתי: השיר התפרק לכלים, כל חבר מקבל כלי, וביחד מחזירים את הלהקה לזמן.": "A group music game: the song fell apart into instruments, each friend gets one, and together you put the band back in time.", "Musicy · הלהקה מתפרקת. אתם מחזירים אותה.": "Musicy · The band fell apart. You put it back together.", "טלפון אחד מנגן, כל חבר מקבל כלי, ובתורות מחזירים כל כלי לזמן.": "One phone plays, every friend gets an instrument, and you take turns putting each one back in time.", "הפרופיל שלי": "My profile", "הדגמה: אחד הכלים לא בזמן, נוגעים בו, והלהקה חוזרת לנגן יחד": "Demo: one instrument is off time, a tap puts it back, and the band plays together again", "הסינת׳ לא בזמן": "The synth is off time", "חזר לזמן!": "Back in time!", "השיר התפרק לכלים": "The song fell apart", "כל אחד מחזיר כלי אחד לזמן, וביחד זה שוב נשמע כמו המקור.": "Everyone puts one instrument back in time, and together it sounds like the original again.", "נסו עכשיו · 30 שניות": "Try it now · 30 seconds", "שחקו עם חברים": "Play with friends", "הטלפון שלכם יהיה הרמקול. חברים מצטרפים עם קוד, QR או לינק, בלי הרשמה ובלי הורדה.": "Your phone becomes the speaker. Friends join with a code, QR or link. No sign-up, no download.", "פתחו חדר": "Open a room", "יש לכם קוד?": "Have a code?", "קוד חדר בן 4 ספרות": "4-digit room code", "יש לחבר QR? פתחו את המצלמה של הטלפון וכוונו אליו.": "Got a QR from a friend? Point your phone's camera at it.", "לשחק לבד": "Play solo", "הוסיפו את Musicy למסך הבית": "Add Musicy to your home screen", "כל המנגינות מנחלת הכלל ומנוגנות על ידי המשחק עצמו.": "Every melody is public domain and played by the game itself.", "חזרה לבית": "Back home", "בחרו שיר": "Pick a song", "אקראי": "Random", "שם השיר מתגלה רק בסוף. שירים שסיימתם מסומנים בירוק.": "The song's name is revealed at the end. Songs you've finished are green.", "סוג משחק": "Game type", "יאללה": "Let's go", "יציאה מהשיר": "Leave the song", "התחילו": "Start", "דלגו על ההדגמה": "Skip the demo", "חוגת הזמן": "Timing dial", "תיבה מוקדם": "A bar early", "חצי פעמה מוקדם": "Half a beat early", "חצי פעמה מאוחר": "Half a beat late", "תיבה מאוחר": "A bar late", "נעלו": "Lock", "ניחוש השיר": "Guess the song", "טענו ערוץ שמע לכל כלי, כולם באותו אורך ומאותה נקודת התחלה (ייצוא ערוצים מהאולפן, או קבצים מכלי הפרדה).": "Load one audio track per instrument, all the same length and from the same starting point (stem exports from your studio, or files from a separation tool).", "הקבצים נשארים רק בטלפון שלכם": "Your files stay on your phone", "גררו לכאן 2–8 קבצי שמע, או": "Drag 2–8 audio files here, or", "בחרו קבצים": "choose files", "שם השיר (התשובה בניחוש)": "Song name (the answer to guess)", "קצב (BPM)": "Tempo (BPM)", "משקל": "Time signature", "תחילת ההוק (שניות)": "Hook start (seconds)", "אורך ההוק": "Hook length", "2 תיבות": "2 bars", "4 תיבות": "4 bars", "8 תיבות": "8 bars", "הקשה לקצב": "Tap the tempo", "השמע את ההוק": "Play the hook", "בנו משחק מהשיר": "Build a game from the song", "יציאה מהחדר": "Leave the room", "חדר": "Room", "רגע…": "One sec…", "או הצטרפו עם קוד": "or join with a code", "בלי הרשמה ובלי הורדה · טלפון אחד הוא הרמקול": "No sign-up, no download · one phone is the speaker", "נסו לבד · 30 שניות": "Try it solo · 30 seconds", "החליפו לעברית": "החליפו לעברית", "Switch to English": "Switch to English"};
+function T(k, ...a){
+  const s = LANG === 'en' && Object.prototype.hasOwnProperty.call(EN, k) ? EN[k] : k;
+  return a.length ? s.replace(/\{(\d+)\}/g, (m, i) => { const v = a[+i]; return v == null ? '' : String(v); }) : s;
+}
+/* the page's fixed text (headings, labels) is written in Hebrew in the HTML; swap it once at start */
+function translateStatic(root){
+  if (LANG !== 'en') return; const H = /[֐-׿]/;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = []; while (w.nextNode()) nodes.push(w.currentNode);
+  nodes.forEach(n => { const t = n.nodeValue; if (!H.test(t)) return; const k = t.trim().split(/\s+/).join(' '); if (EN[k] != null) n.nodeValue = t.replace(t.trim(), EN[k]); });
+  root.querySelectorAll('[aria-label],[placeholder],[title]').forEach(el => ['aria-label', 'placeholder', 'title'].forEach(a => { const v = el.getAttribute(a); if (v && H.test(v) && EN[v.trim()] != null) el.setAttribute(a, EN[v.trim()]); }));
+  if (EN[document.title] != null) document.title = EN[document.title];
+  document.querySelectorAll('meta[content]').forEach(m => { const v = m.getAttribute('content'); if (H.test(v) && EN[v] != null) m.setAttribute('content', EN[v]); });
+}
+function setLang(l){ try { localStorage.setItem('musicy.lang', JSON.stringify(l)); } catch(e){} location.reload(); }
+translateStatic(document.body);
+
 /* ===== melody library: public-domain tunes only (composer died 70+ years ago, or traditional) ===== */
 const CH = {
   C:{r:36,n:[55,60,64]}, D:{r:38,n:[54,57,62]}, E:{r:40,n:[56,59,64]}, F:{r:41,n:[57,60,65]}, G:{r:43,n:[55,59,62]},
@@ -460,60 +495,60 @@ const CH = {
 };
 const ODE_A = [66,1,66,1,67,1,69,1, 69,1,67,1,66,1,64,1, 62,1,62,1,64,1,66,1];
 const MELODIES = [
-  {id:'ode', title:'המנון לשמחה', artist:'לודוויג ואן בטהובן · 1824', bpm:120, bpb:4, bars:4, chords:'D D A A D D A A', mel:[...ODE_A, 66,1.5,64,.5,64,2]},
-  {id:'hb', title:'Happy Birthday', artist:'מילדרד ופטי היל · 1893', bpm:100, bpb:3, bars:4, chords:'G D D G',
+  {id:'ode', title:T('המנון לשמחה'), artist:T('לודוויג ואן בטהובן · 1824'), bpm:120, bpb:4, bars:4, chords:'D D A A D D A A', mel:[...ODE_A, 66,1.5,64,.5,64,2]},
+  {id:'hb', title:'Happy Birthday', artist:T('מילדרד ופטי היל · 1893'), bpm:100, bpb:3, bars:4, chords:'G D D G',
    mel:[64,1,62,1,67,1, 66,2,62,.75,62,.25, 64,1,62,1,69,1, 67,2,62,.75,62,.25]},
-  {id:'twinkle', title:'נצנץ כוכב קטן', artist:'לחן עממי צרפתי · 1761', bpm:110, bpb:4, bars:4, chords:'C C F C F C G C',
+  {id:'twinkle', title:T('נצנץ כוכב קטן'), artist:T('לחן עממי צרפתי · 1761'), bpm:110, bpb:4, bars:4, chords:'C C F C F C G C',
    mel:[60,1,60,1,67,1,67,1, 69,1,69,1,67,2, 65,1,65,1,64,1,64,1, 62,1,62,1,60,2]},
-  {id:'jacques', title:'אחינו יעקב', artist:'לחן עממי צרפתי', bpm:112, bpb:4, bars:4, chords:'C C Am Am C C G G',
+  {id:'jacques', title:T('אחינו יעקב'), artist:T('לחן עממי צרפתי'), bpm:112, bpb:4, bars:4, chords:'C C Am Am C C G G',
    mel:[60,1,62,1,64,1,60,1, 60,1,62,1,64,1,60,1, 64,1,65,1,67,2, 64,1,65,1,67,2]},
-  {id:'jingle', title:'ג׳ינגל בלס', artist:'ג׳יימס לורד פירפונט · 1857', bpm:128, bpb:4, bars:8, chords:'G G G G G G G G C C C G A A D D',
+  {id:'jingle', title:T('ג׳ינגל בלס'), artist:T('ג׳יימס לורד פירפונט · 1857'), bpm:128, bpb:4, bars:8, chords:'G G G G G G G G C C C G A A D D',
    mel:[71,1,71,1,71,2, 71,1,71,1,71,2, 71,1,74,1,67,1.5,69,.5, 71,4, 72,1,72,1,72,1.5,72,.5, 72,1,71,1,71,1,71,.5,71,.5, 71,1,69,1,69,1,71,1, 69,2,74,2]},
-  {id:'elise', title:'לאליזה', artist:'לודוויג ואן בטהובן · 1810', bpm:132, bpb:3, bars:4, chords:'E Am E Am',
+  {id:'elise', title:T('לאליזה'), artist:T('לודוויג ואן בטהובן · 1810'), bpm:132, bpb:3, bars:4, chords:'E Am E Am',
    mel:[76,.5,75,.5,76,.5,71,.5,74,.5,72,.5, 69,1,0,.5,60,.5,64,.5,69,.5, 71,1,0,.5,64,.5,68,.5,71,.5, 72,1,0,.5,64,.5,76,.5,75,.5]},
-  {id:'nacht', title:'מוזיקה לילית קטנה', artist:'וולפגנג אמדאוס מוצרט · 1787', bpm:128, bpb:4, bars:4, chords:'G G G G D D D D',
+  {id:'nacht', title:T('מוזיקה לילית קטנה'), artist:T('וולפגנג אמדאוס מוצרט · 1787'), bpm:128, bpb:4, bars:4, chords:'G G G G D D D D',
    mel:[67,1,0,.5,62,.5,67,1,0,.5,62,.5, 67,.5,62,.5,67,.5,71,.5,74,2, 72,1,0,.5,69,.5,72,1,0,.5,69,.5, 72,.5,69,.5,66,.5,69,.5,62,2]},
-  {id:'mountain', title:'בהיכלו של מלך ההר', artist:'אדוארד גריג · 1875', bpm:116, bpb:4, bars:4, chords:'Am Am E E Em Em B B',
+  {id:'mountain', title:T('בהיכלו של מלך ההר'), artist:T('אדוארד גריג · 1875'), bpm:116, bpb:4, bars:4, chords:'Am Am E E Em Em B B',
    mel:[57,.5,59,.5,60,.5,62,.5,64,.5,60,.5,64,1, 63,.5,59,.5,63,1,62,.5,58,.5,62,1, 64,.5,66,.5,67,.5,69,.5,71,.5,67,.5,71,1, 70,.5,66,.5,70,1,69,.5,65,.5,69,1]},
-  {id:'tetris', title:'קורובייניקי (מנגינת טטריס)', artist:'שיר עם רוסי · 1861', bpm:140, bpb:4, bars:4, chords:'Em Em Am Am Em Em Am Am',
+  {id:'tetris', title:T('קורובייניקי (מנגינת טטריס)'), artist:T('שיר עם רוסי · 1861'), bpm:140, bpb:4, bars:4, chords:'Em Em Am Am Em Em Am Am',
    mel:[76,1,71,.5,72,.5,74,1,72,.5,71,.5, 69,1,69,.5,72,.5,76,1,74,.5,72,.5, 71,1.5,72,.5,74,1,76,1, 72,1,69,1,69,2]},
-  {id:'mary', title:'למרי היה כבש קטן', artist:'שרה ג׳וזפה הייל · 1830', bpm:120, bpb:4, bars:4, chords:'C C C C G G C C',
+  {id:'mary', title:T('למרי היה כבש קטן'), artist:T('שרה ג׳וזפה הייל · 1830'), bpm:120, bpb:4, bars:4, chords:'C C C C G G C C',
    mel:[64,1,62,1,60,1,62,1, 64,1,64,1,64,2, 62,1,62,1,62,2, 64,1,67,1,67,2]},
-  {id:'farm', title:'לדוד משה הייתה חווה', artist:'לחן עממי', bpm:120, bpb:4, bars:4, chords:'G G C G G D G G',
+  {id:'farm', title:T('לדוד משה הייתה חווה'), artist:T('לחן עממי'), bpm:120, bpb:4, bars:4, chords:'G G C G G D G G',
    mel:[67,1,67,1,67,1,62,1, 64,1,64,1,62,2, 71,1,71,1,69,1,69,1, 67,3,62,1]},
-  {id:'london', title:'גשר לונדון', artist:'לחן עממי אנגלי', bpm:116, bpb:4, bars:4, chords:'C C C C G G C C',
+  {id:'london', title:T('גשר לונדון'), artist:T('לחן עממי אנגלי'), bpm:116, bpb:4, bars:4, chords:'C C C C G G C C',
    mel:[67,1.5,69,.5,67,1,65,1, 64,1,65,1,67,2, 62,1,64,1,65,2, 64,1,65,1,67,2]},
-  {id:'yonatan', title:'יונתן הקטן', artist:'לחן עממי גרמני', bpm:112, bpb:4, bars:4, chords:'C C G G C C G C',
+  {id:'yonatan', title:T('יונתן הקטן'), artist:T('לחן עממי גרמני'), bpm:112, bpb:4, bars:4, chords:'C C G G C C G C',
    mel:[67,1,64,1,64,2, 65,1,62,1,62,2, 60,1,62,1,64,1,65,1, 67,1,67,1,67,2]},
-  {id:'saints', title:'When the Saints Go Marching In', artist:'ספיריצ׳ואל אמריקאי', bpm:140, bpb:4, bars:8, chords:'C C C C C C C C C C C C C C G G',
+  {id:'saints', title:'When the Saints Go Marching In', artist:T('ספיריצ׳ואל אמריקאי'), bpm:140, bpb:4, bars:8, chords:'C C C C C C C C C C C C C C G G',
    mel:[0,1,60,1,64,1,65,1, 67,4, 0,1,60,1,64,1,65,1, 67,4, 0,1,60,1,64,1,65,1, 67,2,64,2, 60,2,64,2, 62,4]},
-  {id:'auld', title:'אולד לאנג סיין', artist:'לחן עממי סקוטי', bpm:100, bpb:4, bars:4, chords:'C C G G C C F F',
+  {id:'auld', title:T('אולד לאנג סיין'), artist:T('לחן עממי סקוטי'), bpm:100, bpb:4, bars:4, chords:'C C G G C C F F',
    mel:[60,1.5,60,.5,60,1,64,1, 62,1.5,60,.5,62,1,64,.5,62,.5, 60,1.5,60,.5,64,1,67,1, 69,3,67,1]},
-  {id:'green', title:'גרינסליבס', artist:'לחן עממי אנגלי · המאה ה-16', bpm:120, bpb:3, bars:4, chords:'Am C G Em',
+  {id:'green', title:T('גרינסליבס'), artist:T('לחן עממי אנגלי · המאה ה-16'), bpm:120, bpb:3, bars:4, chords:'Am C G Em',
    mel:[72,2,74,1, 76,1.5,77,.5,76,1, 74,2,71,1, 67,1.5,69,.5,71,1]},
-  {id:'yankee', title:'יאנקי דודל', artist:'לחן עממי אמריקאי', bpm:126, bpb:4, bars:4, chords:'C C C G C C C G',
+  {id:'yankee', title:T('יאנקי דודל'), artist:T('לחן עממי אמריקאי'), bpm:126, bpb:4, bars:4, chords:'C C C G C C C G',
    mel:[60,1,60,1,62,1,64,1, 60,1,64,1,62,1,55,1, 60,1,60,1,62,1,64,1, 60,2,59,2]},
-  {id:'turkish', title:'המארש הטורקי', artist:'וולפגנג אמדאוס מוצרט · 1783', bpm:124, bpb:4, bars:4, chords:'Am Am Am E Am Am Am E',
+  {id:'turkish', title:T('המארש הטורקי'), artist:T('וולפגנג אמדאוס מוצרט · 1783'), bpm:124, bpb:4, bars:4, chords:'Am Am Am E Am Am Am E',
    mel:[71,.25,69,.25,68,.25,69,.25,72,.5,0,.5, 74,.25,72,.25,71,.25,72,.25,76,.5,0,.5, 77,.25,76,.25,75,.25,76,.25,83,.25,81,.25,80,.25,81,.25, 83,.25,81,.25,80,.25,81,.25,84,1,
         71,.25,69,.25,68,.25,69,.25,72,.5,0,.5, 74,.25,72,.25,71,.25,72,.25,76,.5,0,.5, 77,.25,76,.25,75,.25,76,.25,83,.25,81,.25,80,.25,81,.25, 83,.25,81,.25,80,.25,81,.25,84,1]},
-  {id:'fifth', title:'הסימפוניה החמישית', artist:'לודוויג ואן בטהובן · 1808', bpm:128, bpb:4, bars:4, chords:'Cm Cm G G Cm Cm G G',
+  {id:'fifth', title:T('הסימפוניה החמישית'), artist:T('לודוויג ואן בטהובן · 1808'), bpm:128, bpb:4, bars:4, chords:'Cm Cm G G Cm Cm G G',
    mel:[0,.5,67,.5,67,.5,67,.5,63,2, 0,.5,65,.5,65,.5,65,.5,62,2, 0,.5,67,.5,67,.5,67,.5,63,2, 0,.5,65,.5,65,.5,65,.5,62,2]},
-  {id:'canon', title:'הקנון של פכלבל', artist:'יוהאן פכלבל · בערך 1680', bpm:100, bpb:4, bars:4, chords:'D A Bm F#m G D G A',
+  {id:'canon', title:T('הקנון של פכלבל'), artist:T('יוהאן פכלבל · בערך 1680'), bpm:100, bpb:4, bars:4, chords:'D A Bm F#m G D G A',
    mel:[78,2,76,2,74,2,73,2,71,2,69,2,71,2,73,2]},
-  {id:'minuet', title:'מינואט בסול', artist:'כריסטיאן פצולד · 1725', bpm:120, bpb:3, bars:8, chords:'G G C G C G D D',
+  {id:'minuet', title:T('מינואט בסול'), artist:T('כריסטיאן פצולד · 1725'), bpm:120, bpb:3, bars:8, chords:'G G C G C G D D',
    mel:[74,1,67,.5,69,.5,71,.5,72,.5, 74,1,67,1,67,1, 76,1,72,.5,74,.5,76,.5,78,.5, 79,1,67,1,67,1, 72,1,74,.5,72,.5,71,.5,69,.5, 71,1,72,.5,71,.5,69,.5,67,.5, 66,1,67,.5,69,.5,71,.5,67,.5, 69,3]},
-  {id:'bridal', title:'מקהלת הכלולות', artist:'ריכרד וגנר · 1850', bpm:96, bpb:4, bars:4, chords:'F F C F F C F C',
+  {id:'bridal', title:T('מקהלת הכלולות'), artist:T('ריכרד וגנר · 1850'), bpm:96, bpb:4, bars:4, chords:'F F C F F C F C',
    mel:[60,1,65,.75,65,.25,65,2, 60,1,67,.75,64,.25,65,2, 60,1,65,.75,70,.25,70,1,69,.75,67,.25, 65,1,64,.75,65,.25,67,2]},
-  {id:'cucaracha', title:'לה קוקרצ׳ה', artist:'שיר עם מקסיקני', bpm:150, bpb:4, bars:4, chords:'F F F F C C C C',
+  {id:'cucaracha', title:T('לה קוקרצ׳ה'), artist:T('שיר עם מקסיקני'), bpm:150, bpb:4, bars:4, chords:'F F F F C C C C',
    mel:[60,.5,60,.5,60,.5,65,1.5,69,1, 60,.5,60,.5,60,.5,65,1.5,69,1, 65,.5,65,.5,64,.5,64,.5,62,.5,62,.5,60,1, 60,.5,60,.5,60,.5,64,1.5,67,1]},
-  {id:'merry', title:'מאחלים לכם חג שמח', artist:'שיר עם אנגלי', bpm:132, bpb:3, bars:8, chords:'G C A D B Em D G',
+  {id:'merry', title:T('מאחלים לכם חג שמח'), artist:T('שיר עם אנגלי'), bpm:132, bpb:3, bars:8, chords:'G C A D B Em D G',
    mel:[67,1,67,.5,69,.5,67,.5,66,.5, 64,1,64,1,64,1, 69,1,69,.5,71,.5,69,.5,67,.5, 66,1,62,1,62,1, 71,1,71,.5,72,.5,71,.5,69,.5, 67,1,64,1,62,.5,62,.5, 64,1,69,1,66,1, 67,3]}
 ].map(d => Object.assign(d, {chords: d.chords.split(' ')}));
 
 const STYLES = {
-  pop:     {name:'פופ',   tag:'שירים מוכרים בהפקה שמחה', bpm: d => d.bpm,                                   lift: 74, fits: () => true},
-  electro: {name:'אלקטרו', tag:'בעיטה על כל פעמה, סינת׳ שנושם', bpm: d => Math.max(122, Math.min(140, Math.round(d.bpm * 1.08))), lift: 71, fits: d => d.bpb === 4},
-  rock:    {name:'רוק',   tag:'גיטרות, תופים ורעש טוב',       bpm: d => Math.max(110, Math.min(150, Math.round(d.bpm * 1.06))), lift: 69, fits: d => d.bpb === 4}
+  pop:     {name:T('פופ'),   tag:T('שירים מוכרים בהפקה שמחה'), bpm: d => d.bpm,                                   lift: 74, fits: () => true},
+  electro: {name:T('אלקטרו'), tag:T('בעיטה על כל פעמה, סינת׳ שנושם'), bpm: d => Math.max(122, Math.min(140, Math.round(d.bpm * 1.08))), lift: 71, fits: d => d.bpb === 4},
+  rock:    {name:T('רוק'),   tag:T('גיטרות, תופים ורעש טוב'),       bpm: d => Math.max(110, Math.min(150, Math.round(d.bpm * 1.06))), lift: 69, fits: d => d.bpb === 4}
 };
 const STYLE_ORDER = ['electro', 'pop', 'rock'];
 function catalog(style){ return MELODIES.filter(d => STYLES[style].fits(d)); }
@@ -528,20 +563,20 @@ function mulberry32(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; let t
 function shuffleR(a, rnd){ rnd = rnd || Math.random; for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 
 const ROLE_META = {
-  drums:   {color:'#FF5A4E', order:-1, names:{pop:'תופים', electro:'תופים', rock:'תופים'}},
-  bass:    {color:'#22C1F0', order:0,  names:{pop:'בס', electro:'בס', rock:'בס'}},
-  chords:  {color:'#FF9F1C', order:1,  names:{pop:'אקורדים', electro:'סינת׳', rock:'גיטרה'}},
-  arp:     {color:'#B48CFF', order:2,  names:{pop:'פעמונים', electro:'ארפג׳יו', rock:'אורגן'}},
-  perc:    {color:'#14C9A8', order:3,  names:{pop:'כלי הקשה', electro:'אפקטים', rock:'טמבורין'}},
-  counter: {color:'#FF5DC8', order:4,  names:{pop:'חליל', electro:'ווקאל', rock:'קול שני'}},
-  melody:  {color:'#2BD67B', order:5,  names:{pop:'מלודיה', electro:'סינת׳ מוביל', rock:'גיטרה סולו'}}
+  drums:   {color:'#FF5A4E', order:-1, names:{pop:T('תופים'), electro:T('תופים'), rock:T('תופים')}},
+  bass:    {color:'#22C1F0', order:0,  names:{pop:T('בס'), electro:T('בס'), rock:T('בס')}},
+  chords:  {color:'#FF9F1C', order:1,  names:{pop:T('אקורדים'), electro:T('סינת׳'), rock:T('גיטרה')}},
+  arp:     {color:'#B48CFF', order:2,  names:{pop:T('פעמונים'), electro:T('ארפג׳יו'), rock:T('אורגן')}},
+  perc:    {color:'#14C9A8', order:3,  names:{pop:T('כלי הקשה'), electro:T('אפקטים'), rock:T('טמבורין')}},
+  counter: {color:'#FF5DC8', order:4,  names:{pop:T('חליל'), electro:T('ווקאל'), rock:T('קול שני')}},
+  melody:  {color:'#2BD67B', order:5,  names:{pop:T('מלודיה'), electro:T('סינת׳ מוביל'), rock:T('גיטרה סולו')}}
 };
 const ALL_ROLES = ['bass', 'chords', 'arp', 'perc', 'counter', 'melody'];
 const ROLE_PRIORITY = ['bass', 'melody', 'chords', 'arp', 'counter', 'perc'];
 const roleName = (role, style) => ROLE_META[role].names[style] || ROLE_META[role].names.pop;
 const roleColor = role => ROLE_META[role].color;
-function whichWord(name){ if (/^(מלודיה|גיטרה)/.test(name)) return 'איזו'; if (/(ים|ות)$/.test(name)) return 'אילו'; return 'איזה'; }
-function theName(name){ return 'ה' + name; }
+function whichWord(name){ if (LANG === 'en') return 'Which'; if (/^(מלודיה|גיטרה)/.test(name)) return 'איזו'; if (/(ים|ות)$/.test(name)) return 'אילו'; return 'איזה'; }
+function theName(name){ return LANG === 'en' ? 'the ' + String(name).toLowerCase() : 'ה' + name; }
 
 /* ===== offline synthesis ===== */
 function noiseBuf(oc){ const b = oc.createBuffer(1, SR, SR), d = b.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return b; }
@@ -840,10 +875,10 @@ const isRightShift = (song, st, k) => st.valid.has(mod(k, song.U));
 /* how far off a shift is, in words (gender-free): "איחור של חצי פעמה" */
 function describeShift(k, song){
   const U = song.U; let x = mod(k, U); if (x > U / 2) x -= U; const a = Math.abs(x), b4 = song.bpb * 4;
-  if (!a) return 'בדיוק בזמן';
-  const amt = a === 1 ? 'רבע פעמה' : a === 2 ? 'חצי פעמה' : a === 3 ? 'שלושה רבעי פעמה' : a === 4 ? 'פעמה' : a === b4 ? 'תיבה שלמה' : a === 2 * b4 ? 'שתי תיבות'
-    : a === 5 ? 'פעמה ורבע' : a === 6 ? 'פעמה וחצי' : a === 7 ? 'פעמה ושלושה רבעים' : a === 8 ? 'שתי פעמות' : a % 4 === 0 ? `${a / 4} פעמות` : `${a / 4} פעמות`;
-  return `${x > 0 ? 'איחור' : 'הקדמה'} של ${amt}`;
+  if (!a) return T('בדיוק בזמן');
+  const amt = a === 1 ? T('רבע פעמה') : a === 2 ? T('חצי פעמה') : a === 3 ? T('שלושה רבעי פעמה') : a === 4 ? T('פעמה') : a === b4 ? T('תיבה שלמה') : a === 2 * b4 ? T('שתי תיבות')
+    : a === 5 ? T('פעמה ורבע') : a === 6 ? T('פעמה וחצי') : a === 7 ? T('פעמה ושלושה רבעים') : a === 8 ? T('שתי פעמות') : a % 4 === 0 ? `${T('{0} פעמות', a / 4)}` : `${T('{0} פעמות', a / 4)}`;
+  return `${T('{0} של {1}', x > 0 ? T('איחור') : T('הקדמה'), amt)}`;
 }
 /* a clearly-wrong shift for a stem, used to show the band falling apart */
 function scrambleShift(song, st, salt){ const pref = [3, -3, 2, -2, 5, -5, 6, -6, 1, -1]; const k = salt % pref.length; return pickWrong(song, st, [], [0], pref.slice(k).concat(pref.slice(0, k)), false); }
@@ -919,11 +954,11 @@ const vibrate = p => { try { navigator.vibrate && navigator.vibrate(p); } catch(
 const store = {get(k, d){ try { const v = localStorage.getItem('musicy.' + k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } },
                set(k, v){ try { localStorage.setItem('musicy.' + k, JSON.stringify(v)); } catch(e){} }};
 const fmtTime = t => { const s = Math.max(0, Math.floor(t)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
-const COLORS = [['#FF5A4E','אדום'],['#22C1F0','תכלת'],['#FF9F1C','כתום'],['#B48CFF','סגול'],['#2BD67B','ירוק'],['#FF5DC8','ורוד']];
-const LEVELS = {easy:{name:'קל', rounds:3, mult:1, tol:.16, strip:'count', turn:30}, normal:{name:'רגיל', rounds:4, mult:1.5, tol:.11, strip:'beats', turn:25}, hard:{name:'קשה', rounds:6, mult:2, tol:.07, strip:'none', turn:20}};
+const COLORS = [['#FF5A4E',T('אדום')],['#22C1F0',T('תכלת')],['#FF9F1C',T('כתום')],['#B48CFF',T('סגול')],['#2BD67B',T('ירוק')],['#FF5DC8',T('ורוד')]];
+const LEVELS = {easy:{name:T('קל'), rounds:3, mult:1, tol:.16, strip:'count', turn:30}, normal:{name:T('רגיל'), rounds:4, mult:1.5, tol:.11, strip:'beats', turn:25}, hard:{name:T('קשה'), rounds:6, mult:2, tol:.07, strip:'none', turn:20}};
 const LEVEL_ORDER = ['easy', 'normal', 'hard'];
-const MODES = {choose:{name:'איזה בזמן?', tag:'שומעים כמה גרסאות של כל כלי ובוחרים את זו שבזמן.'}, tap:{name:'הכנסה בזמן', tag:'הכלי מחכה בצד. מקישים בדיוק על ה-1.'}, dial:{name:'חוגה', tag:'מסובבים את הכלי לבד ונועלים. למקצוענים.'}};
-const LETTERS = ['א', 'ב', 'ג', 'ד'];
+const MODES = {choose:{name:T('איזה בזמן?'), tag:T('שומעים כמה גרסאות של כל כלי ובוחרים את זו שבזמן.')}, tap:{name:T('הכנסה בזמן'), tag:T('הכלי מחכה בצד. מקישים בדיוק על ה-1.')}, dial:{name:T('חוגה'), tag:T('מסובבים את הכלי לבד ונועלים. למקצוענים.')}};
+const LETTERS = [T('א'), T('ב'), T('ג'), T('ד')];
 const randId = n => { const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let s = ''; for (let i = 0; i < n; i++) s += A[Math.floor(Math.random() * A.length)]; return s; };
 
 const ICON = {
@@ -995,7 +1030,7 @@ const Sheet = {
     if (mount) mount(bg.querySelector('.sheet')); return bg.querySelector('.sheet'); },
   close(){ $('#sheetRoot').innerHTML = ''; }
 };
-async function copyText(t){ try { await navigator.clipboard.writeText(t); toast('הועתק'); return true; } catch(e){ toast(t, 5000); return false; } }
+async function copyText(t){ try { await navigator.clipboard.writeText(t); toast(T('הועתק')); return true; } catch(e){ toast(t, 5000); return false; } }
 const waLink = text => 'https://wa.me/?text=' + encodeURIComponent(text);
 function drawQR(canvas, text, scale){
   scale = scale || 4;
@@ -1009,17 +1044,17 @@ function drawQR(canvas, text, scale){
 /* ===== me ===== */
 let ME = store.get('me', null);
 if (!ME || !ME.id){ ME = {id:'u' + randId(10), name:'', color:COLORS[Math.floor(Math.random() * 6)][0]}; store.set('me', ME); }
-const NICKS = ['בומבה','טמבורינה','גרוב','באסי','פיקולו','מצילה','קצבי','צ׳לו','סינתי','ביט','מרקדה','רוקי'];
+const NICKS = [T('בומבה'),T('טמבורינה'),T('גרוב'),T('באסי'),T('פיקולו'),T('מצילה'),T('קצבי'),T('צ׳לו'),T('סינתי'),T('ביט'),T('מרקדה'),T('רוקי')];
 function ensureProfile(next, title){
   if (ME.name){ next(); return; }
   editProfile(next, title, NICKS[Math.floor(Math.random() * NICKS.length)]);
 }
 function editProfile(next, title, suggest){
   let color = ME.color;
-  Sheet.open(`<h2>${esc(title || 'איך יקראו לך בלהקה?')}</h2>
-    <div class="field"><label class="label" for="pfName">שם${suggest ? ' (אפשר להשאיר)' : ''}</label><input id="pfName" class="input" maxlength="16" value="${esc(ME.name || suggest || '')}" autocomplete="nickname" enterkeyhint="done"></div>
-    <span class="label">צבע</span><div class="colors" id="pfColors">${COLORS.map(([c, n]) => `<button aria-label="${n}" data-c="${c}" style="background:${c}" aria-pressed="${c === color}"></button>`).join('')}</div>
-    <button class="btn gold big" id="pfSave">שמירה</button>`, el => {
+  Sheet.open(`<h2>${esc(title || T('איך יקראו לך בלהקה?'))}</h2>
+    <div class="field"><label class="label" for="pfName">${T('שם{0}', suggest ? T(' (אפשר להשאיר)') : '')}</label><input id="pfName" class="input" maxlength="16" value="${esc(ME.name || suggest || '')}" autocomplete="nickname" enterkeyhint="done"></div>
+    <span class="label">${T('צבע')}</span><div class="colors" id="pfColors">${COLORS.map(([c, n]) => `<button aria-label="${n}" data-c="${c}" style="background:${c}" aria-pressed="${c === color}"></button>`).join('')}</div>
+    <button class="btn gold big" id="pfSave">${T('שמירה')}</button>`, el => {
       const inp = el.querySelector('#pfName'); setTimeout(() => { inp.focus(); if (suggest) inp.select(); }, 50);
       el.querySelectorAll('#pfColors button').forEach(b => b.onclick = () => { color = b.dataset.c; el.querySelectorAll('#pfColors button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); });
       const save = () => { const n = inp.value.trim().slice(0, 16); if (!n){ inp.focus(); inp.classList.add('shake'); setTimeout(() => inp.classList.remove('shake'), 500); return; }
@@ -1083,7 +1118,7 @@ async function makeCard(o){
   g.fillStyle = '#3A2EF0'; g.fillRect(0, 0, W, H);
   g.textAlign = 'center'; g.textBaseline = 'alphabetic';
   g.direction = 'ltr'; g.fillStyle = '#fff'; g.font = '92px "Secular One", sans-serif'; g.fillText('Musicy', W / 2, 190);
-  g.direction = 'rtl'; g.fillStyle = '#FFD23F'; g.font = '700 46px Rubik, sans-serif'; g.fillText(o.kicker, W / 2, 300);
+  g.direction = DIR; g.fillStyle = '#FFD23F'; g.font = '700 46px Rubik, sans-serif'; g.fillText(o.kicker, W / 2, 300);
   g.fillStyle = '#fff'; let fs = 150; g.font = `${fs}px "Secular One", sans-serif`;
   const words = o.title.split(' '); let lines = [o.title];
   if (g.measureText(o.title).width > 940 && words.length > 1){ const h = Math.ceil(words.length / 2); lines = [words.slice(0, h).join(' '), words.slice(h).join(' ')]; }
@@ -1102,30 +1137,30 @@ async function makeCard(o){
   if (window.qrcode && o.link){ const q = window.qrcode(0, 'M'); q.addData(o.link); q.make(); const n = q.getModuleCount(), qs = 220, cell = qs / n, qx = 86 + 908 - 40 - qs, qy = yB + 40;
     g.fillStyle = '#fff'; g.fillRect(qx - 12, qy - 12, qs + 24, qs + 24); g.fillStyle = '#14112B';
     for (let r = 0; r < n; r++) for (let cc = 0; cc < n; cc++) if (q.isDark(r, cc)) g.fillRect(qx + cc * cell, qy + r * cell, Math.ceil(cell), Math.ceil(cell)); }
-  g.textAlign = 'right'; g.fillStyle = '#14112B'; g.font = '62px "Secular One", sans-serif';
-  const tx = 86 + 908 - 40 - 220 - 40; wrapText(g, o.cta, tx, yB + 110, 560, 66);
-  g.direction = 'ltr'; g.textAlign = 'right'; g.font = '700 40px Rubik, sans-serif'; g.fillText(o.linkText || '', tx, yB + 250);
+  g.textAlign = DIR === 'rtl' ? 'right' : 'left'; g.fillStyle = '#14112B'; g.font = '62px "Secular One", sans-serif';
+  const tx = DIR === 'rtl' ? 86 + 908 - 40 - 220 - 40 : 126; wrapText(g, o.cta, tx, yB + 110, 560, 66);
+  g.direction = 'ltr'; g.font = '700 40px Rubik, sans-serif'; g.fillText(o.linkText || '', tx, yB + 250);
   return new Promise(res => c.toBlob(res, 'image/png'));
 }
 function wrapText(g, text, x, y, maxW, lh){ const words = text.split(' '); let line = '', yy = y;
   words.forEach(w => { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line){ g.fillText(line, x, yy); line = w; yy += lh; } else line = t; });
   if (line) g.fillText(line, x, yy); }
 async function openShare(o){
-  track('share_card', {where:o.where || ''}); loading('מכינים כרטיס…');
+  track('share_card', {where:o.where || ''}); loading(T('מכינים כרטיס…'));
   let blob = null; try { blob = await makeCard(o); } catch(e){}
   loading(false);
   const url = blob ? URL.createObjectURL(blob) : '';
   const file = blob ? new File([blob], 'musicy.png', {type:'image/png'}) : null;
   const canFiles = !!(file && navigator.canShare && navigator.canShare({files:[file]}));
-  Sheet.open(`<h2>שתפו את הלהקה</h2>
-    ${url ? `<img class="card-preview" src="${url}" alt="כרטיס שיתוף של הלהקה">` : ''}
+  Sheet.open(`<h2>${T('שתפו את הלהקה')}</h2>
+    ${url ? `<img class="card-preview" src="${url}" alt="${T('כרטיס שיתוף של הלהקה')}">` : ''}
     <div class="grid2">
-      ${canFiles ? `<button class="btn gold" id="shNative">${ICON.share} שיתוף</button>` : ''}
-      <a class="btn ${canFiles ? '' : 'gold'}" id="shWa" href="${waLink(o.text)}" target="_blank" rel="noopener">${ICON.chat} וואטסאפ</a>
-      <button class="btn" id="shCopy">${ICON.link} העתקת לינק</button>
-      ${url ? `<a class="btn" id="shSave" href="${url}" download="musicy.png">${ICON.save} שמירה</a>` : ''}
+      ${canFiles ? `<button class="btn gold" id="shNative">${T('{0} שיתוף', ICON.share)}</button>` : ''}
+      <a class="btn ${canFiles ? '' : 'gold'}" id="shWa" href="${waLink(o.text)}" target="_blank" rel="noopener">${T('{0} וואטסאפ', ICON.chat)}</a>
+      <button class="btn" id="shCopy">${T('{0} העתקת לינק', ICON.link)}</button>
+      ${url ? `<a class="btn" id="shSave" href="${url}" download="musicy.png">${T('{0} שמירה', ICON.save)}</a>` : ''}
     </div>
-    <p class="small muted center" style="margin:0">מעלים לסטורי ומתייגים חברים. כל מי שסורק מקבל את אותו אתגר.</p>`, el => {
+    <p class="small muted center" style="margin:0">${T('מעלים לסטורי ומתייגים חברים. כל מי שסורק מקבל את אותו אתגר.')}</p>`, el => {
       const n = el.querySelector('#shNative'); if (n) n.onclick = async () => { track('share_native', {what:'card'}); try { await navigator.share({files:[file], text:o.text}); } catch(e){} };
       el.querySelector('#shWa').addEventListener('click', () => track('share_wa', {what:'card'}));
       el.querySelector('#shCopy').onclick = () => { track('share_copy', {what:'card'}); copyText(o.link || o.text); };
@@ -1145,7 +1180,7 @@ const Clip = {
     const W = 720, H = 1280, cv = document.createElement('canvas'); cv.width = W; cv.height = H; const g = cv.getContext('2d');
     const s = o.song, m = o.mix, bar = s.bpb * s.beatSec * 1000, order = o.idxs.filter(i => !s.stems[i].anchor);
     const T1 = Math.max(1700, bar), step = Math.max(520, bar / 2), Tend = T1 + order.length * step, TT = Tend + Math.max(3600, bar * 2);
-    const ov = document.createElement('div'); ov.className = 'rec-cover'; ov.innerHTML = '<div class="rec-dot">מקליטים קליפ עם סאונד…</div>'; ov.appendChild(cv); document.body.appendChild(ov);
+    const ov = document.createElement('div'); ov.className = 'rec-cover'; ov.innerHTML = T('<div class="rec-dot">מקליטים קליפ עם סאונד…</div>'); ov.appendChild(cv); document.body.appendChild(ov);
     let rec, mime = this.mime(); const chunks = [];
     try { const stream = new MediaStream([...cv.captureStream(30).getVideoTracks(), ...Audio.recStream().getAudioTracks()]);
       rec = new MediaRecorder(stream, mime ? {mimeType:mime, videoBitsPerSecond:2200000, audioBitsPerSecond:128000} : undefined); }
@@ -1169,10 +1204,10 @@ const Clip = {
     g.fillStyle = '#3A2EF0'; g.fillRect(0, 0, W, H);
     const pulse = beatPulse(pos, s.beatSec); g.fillStyle = `rgba(82,70,255,${.55 * pulse})`; g.beginPath(); g.arc(W / 2, 700, 420 + pulse * 30, 0, 7); g.fill();
     g.textAlign = 'center'; g.direction = 'ltr'; g.fillStyle = '#fff'; g.font = '64px "Secular One", sans-serif'; g.fillText('Musicy', W / 2, 110);
-    g.direction = 'rtl'; g.fillStyle = '#FFD23F'; g.font = '700 32px Rubik, sans-serif'; g.fillText(o.kicker, W / 2, 175);
+    g.direction = DIR; g.fillStyle = '#FFD23F'; g.font = '700 32px Rubik, sans-serif'; g.fillText(o.kicker, W / 2, 175);
     let fs = 70; g.font = `${fs}px "Secular One", sans-serif`; while (g.measureText(o.title).width > 640 && fs > 36){ fs -= 4; g.font = `${fs}px "Secular One", sans-serif`; }
     g.fillStyle = '#fff'; g.fillText(o.title, W / 2, 265);
-    const phase = t < P.T1 ? 0 : t < P.Tend ? 1 : 2, lbl = ['לפני: השיר התפרק', 'מחזירים כלי אחרי כלי…', o.allOk === false ? 'ככה זה נגמר אצלנו' : 'אחרי: הלהקה מתחברת!'][phase];
+    const phase = t < P.T1 ? 0 : t < P.Tend ? 1 : 2, lbl = [T('לפני: השיר התפרק'), T('מחזירים כלי אחרי כלי…'), o.allOk === false ? T('ככה זה נגמר אצלנו') : T('אחרי: הלהקה מתחברת!')][phase];
     g.font = '700 34px Rubik, sans-serif'; const lw = g.measureText(lbl).width + 56;
     g.fillStyle = ['#FF5A4E', '#FFD23F', '#2BD67B'][phase]; rr(g, W / 2 - lw / 2, 318, lw, 64, 32); g.fill(); g.lineWidth = 4; g.strokeStyle = '#14112B'; g.stroke();
     g.fillStyle = '#14112B'; g.fillText(lbl, W / 2, 362);
@@ -1188,21 +1223,21 @@ const Clip = {
     const yB = 1020, show = Math.min(1, Math.max(0, (t - P.Tend - 300) / 400));
     if (show > 0){ g.save(); g.globalAlpha = show; g.translate(0, (1 - show) * 60);
       g.fillStyle = '#FFD23F'; rr(g, 40, yB, W - 80, 170, 34); g.fill(); g.lineWidth = 5; g.strokeStyle = '#14112B'; g.stroke();
-      g.fillStyle = '#14112B'; g.font = '50px "Secular One", sans-serif'; g.fillText(o.cta || 'אתם תצליחו מהר יותר?', W / 2, yB + 74);
-      g.direction = 'ltr'; g.font = '700 34px Rubik, sans-serif'; g.fillText(o.linkText || 'musicy.fun', W / 2, yB + 132); g.direction = 'rtl'; g.restore(); }
+      g.fillStyle = '#14112B'; g.font = '50px "Secular One", sans-serif'; g.fillText(o.cta || T('אתם תצליחו מהר יותר?'), W / 2, yB + 74);
+      g.direction = 'ltr'; g.font = '700 34px Rubik, sans-serif'; g.fillText(o.linkText || 'musicy.fun', W / 2, yB + 132); g.direction = DIR; g.restore(); }
     g.fillStyle = 'rgba(255,255,255,.25)'; g.fillRect(40, H - 40, W - 80, 8); g.fillStyle = '#FFD23F'; g.fillRect(W - 40 - (W - 80) * Math.min(1, t / P.TT), H - 40, (W - 80) * Math.min(1, t / P.TT), 8);
   },
   async makeAndShare(o){
-    if (!this.supported()){ toast('הדפדפן הזה לא יודע להקליט קליפ. נסו Chrome או Safari מעודכנים.'); return; }
+    if (!this.supported()){ toast(T('הדפדפן הזה לא יודע להקליט קליפ. נסו Chrome או Safari מעודכנים.')); return; }
     const r = await this.record(o); if (o.after) o.after();
-    if (!r){ toast('לא הצלחנו להקליט את הקליפ'); return; }
+    if (!r){ toast(T('לא הצלחנו להקליט את הקליפ')); return; }
     const url = URL.createObjectURL(r.blob), file = new File([r.blob], `musicy.${r.ext}`, {type:r.type});
     const canFiles = !!(navigator.canShare && navigator.canShare({files:[file]}));
-    Sheet.open(`<h2>הקליפ מוכן</h2><video class="clip-preview" src="${url}" controls playsinline loop></video>
-      <div class="grid2">${canFiles ? `<button class="btn gold" id="clShare">${ICON.share} שיתוף</button>` : ''}
-        <a class="btn ${canFiles ? '' : 'gold'}" id="clSave" href="${url}" download="musicy.${r.ext}">${ICON.save} שמירה</a></div>
-      <a class="btn" id="clWa" href="${waLink(o.text)}" target="_blank" rel="noopener">${ICON.chat} שליחת הלינק בוואטסאפ</a>
-      <p class="small muted center" style="margin:0">${canFiles ? 'בוחרים וואטסאפ ברשימת השיתוף, ואפשר גם לסטטוס.' : 'שומרים את הקליפ ומעלים לוואטסאפ או לסטטוס.'}</p>`, el => {
+    Sheet.open(`<h2>${T('הקליפ מוכן')}</h2><video class="clip-preview" src="${url}" controls playsinline loop></video>
+      <div class="grid2">${canFiles ? `<button class="btn gold" id="clShare">${T('{0} שיתוף', ICON.share)}</button>` : ''}
+        <a class="btn ${canFiles ? '' : 'gold'}" id="clSave" href="${url}" download="musicy.${r.ext}">${T('{0} שמירה', ICON.save)}</a></div>
+      <a class="btn" id="clWa" href="${waLink(o.text)}" target="_blank" rel="noopener">${T('{0} שליחת הלינק בוואטסאפ', ICON.chat)}</a>
+      <p class="small muted center" style="margin:0">${canFiles ? T('בוחרים וואטסאפ ברשימת השיתוף, ואפשר גם לסטטוס.') : T('שומרים את הקליפ ומעלים לוואטסאפ או לסטטוס.')}</p>`, el => {
         const sh = el.querySelector('#clShare'); if (sh) sh.onclick = async () => { track('share_native', {what:'clip'}); try { await navigator.share({files:[file], text:o.text}); } catch(e){} };
         el.querySelector('#clSave').addEventListener('click', () => track('clip_save', {}));
         el.querySelector('#clWa').addEventListener('click', () => track('share_wa', {what:'clip'}));
@@ -1212,34 +1247,34 @@ const Clip = {
 
 /* ===== home ===== */
 const Home = {
-  renderMe(){ $('#meName').textContent = ME.name || 'אורח'; $('#meJelly').innerHTML = jelly(ME.color, 34, {sw:6}); },
+  renderMe(){ $('#meName').textContent = ME.name || T('אורח'); $('#meJelly').innerHTML = jelly(ME.color, 34, {sw:6}); },
   async nearby(){
     const box = $('#nearby');
     try { const r = await Net.fn('nearby'); const rooms = (r.rooms || []).filter(x => !Room.code || x.code !== Room.code);
       if (!rooms.length){ box.hidden = true; return; }
       box.innerHTML = rooms.map(x => `<div class="card ink near"><div class="row" style="direction:ltr">${jelly(COLORS[x.code % 6][0], 40, {stroke:'#fff', sw:6, blank:true})}</div>
-        <div class="grow"><div class="label">קרוב אליך · אותה רשת</div><div style="font-weight:700">הלהקה של ${esc(x.host_name || 'מישהו')} · ${x.players} ${x.players === 1 ? 'נגן' : 'נגנים'}</div></div>
-        <button class="btn gold sm" data-join="${esc(x.code)}">הצטרפו</button></div>`).join('');
+        <div class="grow"><div class="label">${T('קרוב אליך · אותה רשת')}</div><div style="font-weight:700">${T('הלהקה של {0} · {1} {2}', esc(x.host_name || T('מישהו')), x.players, x.players === 1 ? T('נגן') : T('נגנים'))}</div></div>
+        <button class="btn gold sm" data-join="${esc(x.code)}">${T('הצטרפו')}</button></div>`).join('');
       box.hidden = false; box.querySelectorAll('[data-join]').forEach(b => b.onclick = () => Room.join(b.dataset.join));
     } catch(e){ box.hidden = true; }
   },
   async daily(){
     const D = dailyInfo(), done = store.get('daily.' + D.ymd, null), card = $('#dailyCard');
     card.innerHTML = `<div class="row"><div class="grow stack" style="gap:4px">
-        <span class="d" style="font-size:23px;line-height:1">שיר היום #${D.n}</span>
-        <span class="small muted" id="dailyCount">${STYLES[D.style].name} · אותו שיר לכל הארץ</span>
+        <span class="d" style="font-size:23px;line-height:1">${T('שיר היום #{0}', D.n)}</span>
+        <span class="small muted" id="dailyCount">${T('{0} · אותו שיר לכל הארץ', STYLES[D.style].name)}</span>
         ${done ? `<div class="daily-sq">${done.grid.map(x => `<span style="background:${x === 0 ? '#2BD67B' : x === 1 ? '#FFD23F' : '#FF5A4E'}"></span>`).join('')}</div>` : ''}
-      </div><button class="btn ${done ? '' : 'blue'}" id="dailyGo" style="min-width:118px">${done ? 'שיתוף' : 'לשחק'}</button></div>`;
+      </div><button class="btn ${done ? '' : 'blue'}" id="dailyGo" style="min-width:118px">${done ? T('שיתוף') : T('לשחק')}</button></div>`;
     $('#dailyGo').onclick = () => done ? Solo.shareDaily(D, done) : (track('daily_play', {n:D.n}), Solo.start({def:D.def, style:D.style, level:'normal', mode:'choose', seed:D.seed, daily:D}));
     try { const r = await Net.rest(`musicy_daily?day=eq.${D.iso}&select=plays`); const n = r && r[0] ? r[0].plays : 0;
-      if (n) $('#dailyCount').textContent = `${STYLES[D.style].name} · ${n.toLocaleString('he-IL')} שיחקו היום`; } catch(e){}
+      if (n) $('#dailyCount').textContent = `${T('{0} · {1} שיחקו היום', STYLES[D.style].name, n.toLocaleString(LANG === 'en' ? 'en-US' : 'he-IL'))}`; } catch(e){}
   },
   render(){ this.renderMe(); this.daily(); this.nearby(); Hero.start(); }
 };
 /* the home demo: a band of jellies, one stumbles off the beat, a tap puts it back */
 const Hero = { t:0, tt:[],
   start(){ const h = $('#hero'); if (!h) return; this.stop();
-    if (!$('#heroBand').children.length) $('#heroBand').innerHTML = [['#FF5A4E', 'תופים'], ['#22C1F0', 'בס'], ['#FF9F1C', 'סינת׳'], ['#2BD67B', 'מלודיה']].map(([c, n], k) => `<span class="hj${k === 2 ? ' odd' : ''}">${jelly(c, 58)}<small>${n}</small></span>`).join('') + '<span class="tapfx" aria-hidden="true"></span>';
+    if (!$('#heroBand').children.length) $('#heroBand').innerHTML = [['#FF5A4E', T('תופים')], ['#22C1F0', T('בס')], ['#FF9F1C', T('סינת׳')], ['#2BD67B', T('מלודיה')]].map(([c, n], k) => `<span class="hj${k === 2 ? ' odd' : ''}">${jelly(c, 42)}<small>${n}</small></span>`).join('') + '<span class="tapfx" aria-hidden="true"></span>';
     if (reduced){ h.classList.add('fixed'); return; }
     const resync = () => $$('#heroBand .hj').forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
     const cyc = () => { h.classList.remove('fixed', 'tap'); h.classList.add('broken'); resync();
@@ -1247,13 +1282,14 @@ const Hero = { t:0, tt:[],
     cyc(); this.t = setInterval(cyc, 6000); },
   stop(){ clearInterval(this.t); this.tt.forEach(clearTimeout); this.tt = []; }
 };
+$('#hero').onclick = () => $('#quickBtn').click();
 $('#quickBtn').onclick = () => { const cat = catalog('electro'), pick = ['ode', 'tetris', 'jingle', 'twinkle'].map(id => cat.find(d => d.id === id)).filter(Boolean);
   const def = pick[Math.floor(Math.random() * pick.length)] || cat[0]; track('quick_start', {song:def.id}); Solo.start({def, style:'electro', level:'easy', mode:'choose', quick:true}); };
-$('#meChip').onclick = () => editProfile(null, 'הפרופיל שלך');
+$('#meChip').onclick = () => editProfile(null, T('הפרופיל שלך'));
 $('#createBtn').onclick = () => { track('create_click'); Room.create(); };
 $('#codeIn').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4); if (e.target.value.length === 4) e.target.blur(); });
 $('#codeIn').addEventListener('keydown', e => { if (e.key === 'Enter') $('#joinBtn').click(); });
-$('#joinBtn').onclick = () => { const c = $('#codeIn').value; if (!/^\d{4}$/.test(c)){ toast('הקוד הוא 4 ספרות'); $('#codeIn').focus(); return; } Room.join(c); };
+$('#joinBtn').onclick = () => { const c = $('#codeIn').value; if (!/^\d{4}$/.test(c)){ toast(T('הקוד הוא 4 ספרות')); $('#codeIn').focus(); return; } Room.join(c); };
 $('#soloBtn').onclick = () => { Setup.render(); show('s-setup'); };
 $('#mineBtn').onclick = () => show('s-mine');
 $$('[data-home]').forEach(b => { b.innerHTML = ICON.back; b.onclick = () => { show('s-home'); Home.render(); }; });
@@ -1262,7 +1298,7 @@ window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); instal
 if (/iphone|ipad/i.test(navigator.userAgent) && !navigator.standalone) $('#installBtn').hidden = false;
 $('#installBtn').onclick = async () => {
   if (installEvt){ installEvt.prompt(); try { await installEvt.userChoice; } catch(e){} installEvt = null; $('#installBtn').hidden = true; return; }
-  Sheet.open(`<h2>Musicy במסך הבית</h2><ol style="margin:0;padding-inline-start:20px;line-height:1.8"><li>לוחצים על כפתור השיתוף של ספארי (הריבוע עם החץ).</li><li>בוחרים ״הוספה למסך הבית״.</li><li>לוחצים ״הוספה״. זהו.</li></ol><button class="btn gold" onclick="Sheet.close()">הבנתי</button>`);
+  Sheet.open(`<h2>${T('Musicy במסך הבית')}</h2><ol style="margin:0;padding-inline-start:20px;line-height:1.8"><li>${T('לוחצים על כפתור השיתוף של ספארי (הריבוע עם החץ).')}</li><li>${T('בוחרים ״הוספה למסך הבית״.')}</li><li>${T('לוחצים ״הוספה״. זהו.')}</li></ol><button class="btn gold" onclick="Sheet.close()">${T('הבנתי')}</button>`);
 };
 
 /* ===== solo setup ===== */
@@ -1302,9 +1338,9 @@ const Solo = {
   clear(){ this.timers.forEach(clearTimeout); this.timers = []; },
   async start(o){
     this.stop(); this.o = o; Audio.ensure(); Audio.ac.resume();
-    loading('מכינים את הכלים…');
-    try { this.song = o.custom || await getSong(o.def, o.style, null, (k, n) => $('#loadingText').textContent = `מכינים את הכלים… ${k}/${n}`); }
-    catch(e){ loading(false); toast('הדפדפן לא הצליח ליצור את הצלילים. נסו Chrome או Safari מעודכנים.'); return; }
+    loading(T('מכינים את הכלים…'));
+    try { this.song = o.custom || await getSong(o.def, o.style, null, (k, n) => $('#loadingText').textContent = `${T('מכינים את הכלים… {0}/{1}', k, n)}`); }
+    catch(e){ loading(false); toast(T('הדפדפן לא הצליח ליצור את הצלילים. נסו Chrome או Safari מעודכנים.')); return; }
     loading(false); this.mix = new Mixer(this.song); this.newGame(); show('s-solo'); Hero.stop();
     track('solo_start', {song:o.def ? o.def.id : 'mine', style:o.style, level:o.level, mode:o.mode, quick:!!o.quick, daily:!!o.daily, chal:!!o.chal});
   },
@@ -1320,7 +1356,7 @@ const Solo = {
       curAudible:false, opts:[], aud:-1, results:[], guess:null, heard:new Set(), mute:false, solo:false, cx:null};
     s.stems.forEach((st, i) => { this.mix.shift[i] = 0; });
     this.mix.build(); this.applyMix();
-    $('#soloTitle').textContent = o.quick ? 'נסו עכשיו' : o.daily ? `שיר היום #${o.daily.n}` : o.custom ? 'השיר שלך' : `${STYLES[o.style].name} · ${catalog(o.style).indexOf(o.def) + 1}`;
+    $('#soloTitle').textContent = o.quick ? T('נסו עכשיו') : o.daily ? `${T('שיר היום #{0}', o.daily.n)}` : o.custom ? T('השיר שלך') : `${STYLES[o.style].name} · ${catalog(o.style).indexOf(o.def) + 1}`;
     $('#sGuessBox').hidden = true; $('#sGuess').disabled = false; this.renderHUD(); this.showPanel('idle');
     this.setQ(LEVELS[o.level].name + ' · ' + MODES[o.mode].name, MODES[o.mode].name, MODES[o.mode].tag); this.fb('');
     cancelAnimationFrame(this.raf); this.last = performance.now(); this.raf = requestAnimationFrame(t => this.frame(t));
@@ -1338,27 +1374,27 @@ const Solo = {
   demo(){ const g = this.g, i = g.rounds[0], st = this.song.stems[i], barMs = this.song.bpb * this.song.beatSec * 1000;
     g.r = 0; g.cur = i; g.phase = 'demo'; this.renderHUD(); this.showPanel('demo');
     const wrong = pickWrong(this.song, st, [], [0], [3, -3, 1, -1, 5], false);
-    this.setQ('הדגמה', `ככה נשמע ${theName(st.name)} בזמן`, 'הקשיבו איך הוא נופל בדיוק על התופים.');
+    this.setQ(T('הדגמה'), `${T('ככה נשמע {0} בזמן', theName(st.name))}`, T('הקשיבו איך הוא נופל בדיוק על התופים.'));
     this.mix.shift[i] = 0; g.curAudible = true; this.applyMix(); this.mix.restartAll(true);
-    const tag = $('#demoTag'); tag.textContent = 'בזמן ✓'; tag.style.color = '#14864B';
-    this.later(() => { this.setQ('הדגמה', 'ועכשיו לא בזמן', 'שומעים איך הוא מקרטע מול התופים?'); this.mix.shift[i] = wrong; this.mix.restartAll(true); tag.textContent = 'לא בזמן ✗'; tag.style.color = '#D2382B'; }, barMs * 2);
+    const tag = $('#demoTag'); tag.textContent = T('בזמן ✓'); tag.style.color = '#14864B';
+    this.later(() => { this.setQ(T('הדגמה'), T('ועכשיו לא בזמן'), T('שומעים איך הוא מקרטע מול התופים?')); this.mix.shift[i] = wrong; this.mix.restartAll(true); tag.textContent = T('לא בזמן ✗'); tag.style.color = '#D2382B'; }, barMs * 2);
     this.later(() => this.endDemo(), barMs * 4); },
   endDemo(){ const g = this.g; if (g.phase !== 'demo') return; this.clear(); g.curAudible = false; this.mix.shift[g.cur] = 0; this.applyMix(); this.round(0); },
   round(r){
     const s = this.song, g = this.g, i = g.rounds[r], st = s.stems[i], o = this.o;
     g.r = r; g.cur = i; g.phase = 'ask'; g.aud = -1; g.curAudible = false; g.heard = new Set(); g.mute = false; g.solo = false; g.results[r] = {i, miss:0}; this.roundT0 = g.elapsed;
     $('#soloStage').style.setProperty('--c', st.color); this.renderHUD(); this.fb('');
-    const meta = `סבב ${r + 1} מתוך ${g.rounds.length}`, ctx = s.stems.filter((x, j) => g.placed[j]);
+    const meta = `${T('סבב {0} מתוך {1}', r + 1, g.rounds.length)}`, ctx = s.stems.filter((x, j) => g.placed[j]);
     if (o.mode === 'choose'){
       g.opts = makeOptions(s, st, o.level, ctx, this.rnd(r)).map((k, j) => ({k, label:LETTERS[j], wrong:false}));
-      this.setQ(meta, `${whichWord(st.name)} ${st.name} בזמן?`, 'שמעו את כל הגרסאות עם הלהקה. נגיעה נוספת בגרסה שבחרתם משמיעה את הלהקה בלי הכלי.');
+      this.setQ(meta, `${T('{0} {1} בזמן?', whichWord(st.name), st.name)}`, T('שמעו את כל הגרסאות עם הלהקה. נגיעה נוספת בגרסה שבחרתם משמיעה את הלהקה בלי הכלי.'));
       this.renderOpts(); this.showPanel('choose');
     } else if (o.mode === 'tap'){
-      this.setQ(meta, `הכניסו את ${theName(st.name)} על ה-1`, LEVELS[o.level].strip === 'none' ? 'הקשיבו לתופים. ה-1 מגיע מיד אחרי המעבר שלהם.' : 'כשהספירה מגיעה ל-1, הקישו על העיגול.');
+      this.setQ(meta, `${T('הכניסו את {0} על ה-1', theName(st.name))}`, LEVELS[o.level].strip === 'none' ? T('הקשיבו לתופים. ה-1 מגיע מיד אחרי המעבר שלהם.') : T('כשהספירה מגיעה ל-1, הקישו על העיגול.'));
       this.buildStrip(); this.showPanel('tap'); this.tapBlock = 0;
     } else {
       const R = this.rnd(r); this.mix.shift[i] = pickWrong(s, st, ctx, [0], shuffleR([4, -4, 8, -8, 2, -2, 6, -6, s.bpb * 4, -s.bpb * 4], R), true); g.curAudible = true;
-      this.setQ(meta, `סובבו את ${theName(st.name)} לזמן`, 'כשנשמע לכם נכון, לחצו ״נעלו״. טעות עולה לב.');
+      this.setQ(meta, `${T('סובבו את {0} לזמן', theName(st.name))}`, T('כשנשמע לכם נכון, לחצו ״נעלו״. טעות עולה לב.'));
       $('#dialHub').textContent = st.name; this.showPanel('dial'); this.sizeRing(); this.mix.startStem(i, Audio.ac.currentTime + .01);
     }
     this.applyMix();
@@ -1366,13 +1402,13 @@ const Solo = {
   needHear(){ const g = this.g; return g.opts.filter((o, k) => !o.wrong && !g.heard.has(k)).length; },
   renderOpts(){ const g = this.g, box = $('#sOpts'), n = g.opts.length; box.style.setProperty('--n', n); box.classList.toggle('four', n === 4);
     box.innerHTML = g.opts.map((o, j) => { const on = g.aud === j, muted = on && g.mute;
-      return `<button class="sopt${o.wrong ? ' wrong' : ''}${muted ? ' muted' : ''}" data-j="${j}" aria-pressed="${on}" ${o.wrong ? 'disabled' : ''} aria-label="גרסה ${o.label}${muted ? ', הלהקה בלי הכלי' : ''}">
-      <span class="L">${o.label}</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="hint">${o.wrong ? 'לא בזמן' : muted ? 'בלי הכלי' : on ? 'מתנגן' : g.heard.has(j) ? 'שמעתם ✓' : 'האזינו'}</span></button>`; }).join('');
+      return `<button class="sopt${o.wrong ? ' wrong' : ''}${muted ? ' muted' : ''}" data-j="${j}" aria-pressed="${on}" ${o.wrong ? 'disabled' : ''} aria-label="${T('גרסה {0}{1}', o.label, muted ? T(', הלהקה בלי הכלי') : '')}">
+      <span class="L">${o.label}</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="hint">${o.wrong ? T('לא בזמן') : muted ? T('בלי הכלי') : on ? T('מתנגן') : g.heard.has(j) ? T('שמעתם ✓') : T('האזינו')}</span></button>`; }).join('');
     box.querySelectorAll('.sopt').forEach(b => b.onclick = () => this.audition(+b.dataset.j));
     const d = $('#sDrums'); d.setAttribute('aria-pressed', String(g.solo)); d.classList.toggle('on', g.solo);
-    $('#sTip').textContent = g.aud < 0 ? 'נגיעה נוספת בגרסה שבחרתם משמיעה את הלהקה בלי הכלי, כדי להשוות.' : g.mute ? 'עכשיו בלי הכלי. נגיעה נוספת מחזירה אותו.' : 'נגעו שוב באותה גרסה כדי לשמוע את הלהקה בלי הכלי.';
+    $('#sTip').textContent = g.aud < 0 ? T('נגיעה נוספת בגרסה שבחרתם משמיעה את הלהקה בלי הכלי, כדי להשוות.') : g.mute ? T('עכשיו בלי הכלי. נגיעה נוספת מחזירה אותו.') : T('נגעו שוב באותה גרסה כדי לשמוע את הלהקה בלי הכלי.');
     const need = this.needHear(), c = $('#sCommit'); c.disabled = g.aud < 0 || need > 0;
-    c.textContent = g.aud < 0 ? 'בחרו גרסה' : need > 0 ? `שמעו עוד ${need === 1 ? 'גרסה אחת' : need + ' גרסאות'}` : `גרסה ${LETTERS[g.aud]} בזמן!`; },
+    c.textContent = g.aud < 0 ? T('בחרו גרסה') : need > 0 ? `${T('שמעו עוד {0}', need === 1 ? T('גרסה אחת') : need + T(' גרסאות'))}` : `${T('גרסה {0} בזמן!', LETTERS[g.aud])}`; },
   audition(j){ const g = this.g; if (g.phase !== 'ask' || g.opts[j].wrong) return;
     if (g.aud === j && g.curAudible){ g.mute = !g.mute; this.applyMix(); this.renderOpts(); return; }
     g.aud = j; g.mute = false; g.heard.add(j); this.mix.shift[g.cur] = g.opts[j].k; g.curAudible = true; this.applyMix(); if (!this.mix.playing) this.mix.play(false); this.mix.restartAll(true); this.renderOpts(); },
@@ -1380,10 +1416,10 @@ const Solo = {
   commitChoose(){ const g = this.g; if (g.phase !== 'ask' || g.aud < 0) return; const j = g.aud, o = g.opts[j];
     if (isRightShift(this.song, this.song.stems[g.cur], o.k)){ const b = $('#sOpts').children[j]; b.classList.add('right'); this.won(); }
     else { o.wrong = true; g.aud = -1; g.mute = false; g.curAudible = false; this.applyMix(); this.renderOpts(); $('#sOpts').children[j].classList.add('shake');
-      this.wrong(`לא זו. בגרסה ${o.label}׳ יש ${describeShift(o.k, this.song)}.`); } },
+      this.wrong(`${T('לא זו. בגרסה {0}׳ יש {1}.', o.label, describeShift(o.k, this.song))}`); } },
   buildStrip(){ const s = this.song, box = $('#sStrip'), n = s.bars * s.bpb; box.hidden = LEVELS[this.o.level].strip === 'none';
     box.innerHTML = Array.from({length:n}, (_, b) => `<i class="${b === 0 ? 'bar1' : b % s.bpb === 0 ? 'bs' : ''}"></i>`).join('');
-    const pad = $('#sPad'); pad.disabled = false; pad.textContent = 'הקישו על ה-1'; pad.classList.remove('count'); },
+    const pad = $('#sPad'); pad.disabled = false; pad.textContent = T('הקישו על ה-1'); pad.classList.remove('count'); },
   tap(){ const g = this.g; if (!g || g.phase !== 'ask' || this.o.mode !== 'tap' || !this.mix.playing) return;
     const now = performance.now(); if (now < this.tapBlock) return;
     const s = this.song, st = s.stems[g.cur], lat = (Audio.ac.outputLatency || 0) + (Audio.ac.baseLatency || 0);
@@ -1391,8 +1427,8 @@ const Solo = {
     st.valid.forEach(v => { const d = mod(pos - v * s.unit + s.L / 2, s.L) - s.L / 2; if (best === null || Math.abs(d) < Math.abs(best)){ best = d; bestV = v; } });
     const ms = Math.round(Math.abs(best) * 1000);
     if (Math.abs(best) <= LEVELS[this.o.level].tol){ this.mix.shift[g.cur] = bestV; g.curAudible = true; this.applyMix(); this.mix.startStem(g.cur, Audio.ac.currentTime + .01);
-      this.won(ms <= 40 ? 'מושלם!' : `טוב! ${best < 0 ? 'קצת מוקדם' : 'קצת מאוחר'} (${ms} מ״ש)`, ms <= 40 ? 50 : 0); }
-    else { this.tapBlock = now + 500; this.wrong(Math.abs(best) > s.beatSec * .9 ? 'זה לא היה ה-1. חכו למעבר של התופים.' : `${best < 0 ? 'מוקדם' : 'מאוחר'} מדי ב-${ms} מ״ש`); } },
+      this.won(ms <= 40 ? T('מושלם!') : `${T('טוב! {0} ({1} מ״ש)', best < 0 ? T('קצת מוקדם') : T('קצת מאוחר'), ms)}`, ms <= 40 ? 50 : 0); }
+    else { this.tapBlock = now + 500; this.wrong(Math.abs(best) > s.beatSec * .9 ? T('זה לא היה ה-1. חכו למעבר של התופים.') : `${T('{0} מדי ב-{1} מ״ש', best < 0 ? T('מוקדם') : T('מאוחר'), ms)}`); } },
   won(msg, extra){
     const s = this.song, g = this.g, i = g.cur, st = s.stems[i], res = g.results[g.r], lv = LEVELS[this.o.level];
     g.phase = 'won'; g.placed[i] = true; g.curAudible = false; g.streak = res.miss ? 1 : g.streak + 1;
@@ -1400,7 +1436,7 @@ const Solo = {
     const pts = Math.round((100 + Math.max(0, Math.round((20 - secs) * 4)) + (extra || 0)) * lv.mult * mult); g.score += pts; res.pts = pts;
     g.boost[i] = 1.3; this.applyMix(); this.later(() => { g.boost[i] = 1; this.applyMix(); }, 650);
     Audio.good(); vibrate([25, 40, 60]); flash(st.color);
-    this.fb(`${msg || 'בזמן!'}  +${pts}${mult > 1 ? ` (רצף ×${mult})` : ''}`, 'good');
+    this.fb(`${msg || T('בזמן!')}  +${pts}${mult > 1 ? ` ${T('(רצף ×{0})', mult)}` : ''}`, 'good');
     if (this.o.mode === 'tap'){ $('#sPad').disabled = true; $('#sPad').textContent = '✓'; }
     this.renderHUD(i); const last = g.r >= g.rounds.length - 1;
     this.later(() => last ? this.finish() : this.round(g.r + 1), last ? 1200 : 2000);
@@ -1409,8 +1445,8 @@ const Solo = {
     const l = $('#soloLives'); l.classList.remove('shake'); void l.offsetWidth; l.classList.add('shake');
     this.renderHUD(); this.fb(msg, 'bad'); if (g.lives <= 0) this.over(); },
   over(){ const g = this.g; g.phase = 'over'; g.curAudible = false; this.applyMix(); track('solo_over', {song:this.o.def ? this.o.def.id : 'mine', r:g.r});
-    this.later(() => Sheet.open(`<h2>השיר התפרק</h2><p style="margin:0">הגעתם עד סבב ${g.r + 1} מתוך ${g.rounds.length}, עם ${g.score} נקודות. כל ניסיון מאמן את האוזן.</p>
-      <button class="btn gold big" id="ovAgain">עוד ניסיון</button>${this.o.level !== 'easy' ? '<button class="btn" id="ovEasy">רמה קלה יותר</button>' : ''}`, el => {
+    this.later(() => Sheet.open(`<h2>${T('השיר התפרק')}</h2><p style="margin:0">${T('הגעתם עד סבב {0} מתוך {1}, עם {2} נקודות. כל ניסיון מאמן את האוזן.', g.r + 1, g.rounds.length, g.score)}</p>
+      <button class="btn gold big" id="ovAgain">${T('עוד ניסיון')}</button>${this.o.level !== 'easy' ? T('<button class="btn" id="ovEasy">רמה קלה יותר</button>') : ''}`, el => {
         el.querySelector('#ovAgain').onclick = () => { Sheet.close(); this.newGame(); this.begin(); };
         const e2 = el.querySelector('#ovEasy'); if (e2) e2.onclick = () => { Sheet.close(); this.o.level = LEVEL_ORDER[LEVEL_ORDER.indexOf(this.o.level) - 1]; this.newGame(); this.begin(); };
       }), 700); },
@@ -1425,36 +1461,36 @@ const Solo = {
     $('#sStage').innerHTML = cx.idxs.map(i => { const st = s.stems[i], ok = st.anchor || cx.snapped.has(i);
       return `<div class="member dancer ${ok ? danceCls(s.style) : 'off'}" data-i="${i}" style="--glow:${st.color}"><span class="dz">${jelly(st.color, 60, {mood:ok ? '' : 'sad', cls:i === pop ? 'pop' : ''})}</span><span class="nm">${esc(st.name)}</span></div>`; }).join('');
     const left = cx.order.filter(i => !cx.snapped.has(i)).length;
-    $('#sConnectTag').textContent = left ? (cx.snapped.size ? `עוד ${left}…` : 'ככה זה נשמע מפורק') : 'הלהקה מחוברת!'; },
+    $('#sConnectTag').textContent = left ? (cx.snapped.size ? `${T('עוד {0}…', left)}` : T('ככה זה נשמע מפורק')) : T('הלהקה מחוברת!'); },
   async finish(){
     const g = this.g, o = this.o, s = this.song; g.phase = 'connect'; g.cur = -1; this.renderHUD(); this.showPanel('connect'); this.fb('');
-    this.setQ('', 'הלהקה מתחברת', 'קודם שומעים את הבלגן, ואז כל כלי חוזר למקום.');
+    this.setQ('', T('הלהקה מתחברת'), T('קודם שומעים את הבלגן, ואז כל כלי חוזר למקום.'));
     const idxs = s.stems.map((st, i) => i).filter(i => s.stems[i].anchor || g.rounds.includes(i)); g.clipIdxs = idxs;
     await this.connect(idxs); if (this.g !== g) return;
     g.phase = 'done'; this.applyMix(); this.renderHUD();
-    Audio.win(); confetti(); this.setQ('', 'השיר שלם!', 'כל הלהקה מתנגנת יחד.'); this.fb('');
+    Audio.win(); confetti(); this.setQ('', T('השיר שלם!'), T('כל הלהקה מתנגנת יחד.')); this.fb('');
     track('solo_finish', {song:o.def ? o.def.id : 'mine', style:o.style, level:o.level, quick:!!o.quick, lives:g.lives, secs:Math.round(g.elapsed)});
     const stars = 1 + (g.lives === 3 ? 1 : 0) + (g.elapsed < 90 ? 1 : 0);
     if (!o.custom){ const done = store.get('done', {}); done[o.def.id + ':' + o.style] = Math.max(done[o.def.id + ':' + o.style] || 0, stars); store.set('done', done); }
     const grid = g.results.map(r => r ? Math.min(2, r.miss) : 2);
     let extra = '';
     if (o.daily){ store.set('daily.' + o.daily.ymd, {grid, time:Math.round(g.elapsed), stars, score:g.score}); try { await Net.rest('rpc/musicy_daily_bump', {method:'POST', body:{p_day:o.daily.iso}}); } catch(e){} }
-    if (o.chal){ await addResult(o.chal.id, {band_name:(ME.name || 'נגן יחיד').slice(0, 40), players:1, time_ms:Math.round(g.elapsed * 1000), stars});
-      const rk = await rankOf(o.chal.id, Math.round(g.elapsed * 1000), stars); if (rk) extra = `<p class="center" style="margin:0;font-weight:700">מקום ${rk.rank} מתוך ${rk.total} בטבלת האתגר</p>`; }
+    if (o.chal){ await addResult(o.chal.id, {band_name:(ME.name || T('נגן יחיד')).slice(0, 40), players:1, time_ms:Math.round(g.elapsed * 1000), stars});
+      const rk = await rankOf(o.chal.id, Math.round(g.elapsed * 1000), stars); if (rk) extra = `<p class="center" style="margin:0;font-weight:700">${T('מקום {0} מתוך {1} בטבלת האתגר', rk.rank, rk.total)}</p>`; }
     this.later(() => this.results(stars, grid, extra), 1200);
   },
   results(stars, grid, extra){
     const g = this.g, o = this.o, s = this.song;
-    Sheet.open(`<span class="status-pill gold">השיר שלם</span><h2 class="center">${esc(s.title)}</h2><div class="center muted">${esc(s.artist || '')}</div>
-      <div class="stars center" role="img" aria-label="${stars} כוכבים מתוך 3">${'<span>★</span>'.repeat(stars)}${'<span class="off">★</span>'.repeat(3 - stars)}</div>
-      <div class="grid3 center"><div><div class="label">נקודות</div><b class="d" style="font-size:26px;font-weight:400">${g.score}</b></div><div><div class="label">זמן</div><b class="d" style="font-size:26px;font-weight:400">${fmtTime(g.elapsed)}</b></div><div><div class="label">חיים</div><b class="d" style="font-size:26px;font-weight:400">${g.lives}/3</b></div></div>
+    Sheet.open(`<span class="status-pill gold">${T('השיר שלם')}</span><h2 class="center">${esc(s.title)}</h2><div class="center muted">${esc(s.artist || '')}</div>
+      <div class="stars center" role="img" aria-label="${T('{0} כוכבים מתוך 3', stars)}">${'<span>★</span>'.repeat(stars)}${'<span class="off">★</span>'.repeat(3 - stars)}</div>
+      <div class="grid3 center"><div><div class="label">${T('נקודות')}</div><b class="d" style="font-size:26px;font-weight:400">${g.score}</b></div><div><div class="label">${T('זמן')}</div><b class="d" style="font-size:26px;font-weight:400">${fmtTime(g.elapsed)}</b></div><div><div class="label">${T('חיים')}</div><b class="d" style="font-size:26px;font-weight:400">${g.lives}/3</b></div></div>
       ${extra}
       <div class="stack">
-        ${o.quick ? `<button class="btn inkb big" id="rsRoom">עכשיו עם חברים · פתחו חדר</button>` : ''}
-        ${o.custom ? '' : `<button class="btn gold big" id="rsChal">${ICON.share} אתגרו חברים</button>`}
-        ${o.custom || !Clip.supported() ? '' : `<button class="btn blue" id="rsClip">${ICON.video} קליפ עם סאונד לוואטסאפ</button>`}
-        <div class="grid2"><button class="btn" id="rsAgain">שוב</button><button class="btn" id="rsNext">${o.daily ? 'לשחק עוד' : 'השיר הבא'}</button></div>
-        <button class="btn sm" id="rsClose">להמשיך להאזין</button>
+        ${o.quick ? `<button class="btn inkb big" id="rsRoom">${T('עכשיו עם חברים · פתחו חדר')}</button>` : ''}
+        ${o.custom ? '' : `<button class="btn gold big" id="rsChal">${T('{0} אתגרו חברים', ICON.share)}</button>`}
+        ${o.custom || !Clip.supported() ? '' : `<button class="btn blue" id="rsClip">${T('{0} קליפ עם סאונד לוואטסאפ', ICON.video)}</button>`}
+        <div class="grid2"><button class="btn" id="rsAgain">${T('שוב')}</button><button class="btn" id="rsNext">${o.daily ? T('לשחק עוד') : T('השיר הבא')}</button></div>
+        <button class="btn sm" id="rsClose">${T('להמשיך להאזין')}</button>
       </div>`, el => {
         const c = el.querySelector('#rsChal'); if (c) c.onclick = () => o.daily ? this.shareDaily(o.daily, store.get('daily.' + o.daily.ymd)) : this.challenge(stars);
         const rm = el.querySelector('#rsRoom'); if (rm) rm.onclick = () => { Sheet.close(); this.stop(); track('quick_to_room'); Room.create(); };
@@ -1470,35 +1506,35 @@ const Solo = {
     const g = this.g, o = this.o; if (g.chalId) return `https://musicy.fun/c/${g.chalId}`;
     if (o.chal) return `https://musicy.fun/c/${o.chal.id}`;
     let id = null; const seed = o.seed != null ? o.seed : Math.floor(Math.random() * 2e9);
-    try { id = await createChallenge({song_id:o.def.id, style:o.style, seed, level:o.level, players:1, band_name:(ME.name || 'נגן יחיד').slice(0, 40), members:[{name:ME.name, color:ME.color}], time_ms:Math.max(1000, Math.round(g.elapsed * 1000)), stars});
-      await addResult(id, {band_name:(ME.name || 'נגן יחיד').slice(0, 40), players:1, time_ms:Math.max(1000, Math.round(g.elapsed * 1000)), stars}); g.chalId = id; } catch(e){}
+    try { id = await createChallenge({song_id:o.def.id, style:o.style, seed, level:o.level, players:1, band_name:(ME.name || T('נגן יחיד')).slice(0, 40), members:[{name:ME.name, color:ME.color}], time_ms:Math.max(1000, Math.round(g.elapsed * 1000)), stars});
+      await addResult(id, {band_name:(ME.name || T('נגן יחיד')).slice(0, 40), players:1, time_ms:Math.max(1000, Math.round(g.elapsed * 1000)), stars}); g.chalId = id; } catch(e){}
     return id ? `https://musicy.fun/c/${id}` : 'https://musicy.fun';
   },
   async clip(stars){
     const g = this.g, o = this.o, s = this.song; if (!g || !this.mix) return;
     let link = 'https://musicy.fun';
-    if (!o.custom && !o.daily){ loading('מכינים לינק אתגר…'); link = await this.chalLink(stars); loading(false); }
+    if (!o.custom && !o.daily){ loading(T('מכינים לינק אתגר…')); link = await this.chalLink(stars); loading(false); }
     const idxs = g.clipIdxs || s.stems.map((st, i) => i), scr = {}, ok = {}; idxs.forEach((i, n) => { scr[i] = scrambleShift(s, s.stems[i], n + 1); ok[i] = true; });
-    const name = ME.name || 'נגן יחיד';
-    Clip.makeAndShare({where:'solo', mix:this.mix, song:s, idxs, scr, final:{}, ok, style:o.style, kicker:'השיר התפרק. החזרתי אותו לזמן', title:name,
-      cta:'אתם תצליחו מהר יותר?', linkText:link.replace('https://', ''), text:`השיר התפרק לכלים והחזרתי אותו לזמן ב-Musicy. נסו לנצח אותי: ${link}`,
+    const name = ME.name || T('נגן יחיד');
+    Clip.makeAndShare({where:'solo', mix:this.mix, song:s, idxs, scr, final:{}, ok, style:o.style, kicker:T('השיר התפרק. החזרתי אותו לזמן'), title:name,
+      cta:T('אתם תצליחו מהר יותר?'), linkText:link.replace('https://', ''), text:`${T('השיר התפרק לכלים והחזרתי אותו לזמן ב-Musicy. נסו לנצח אותי: {0}', link)}`,
       after:() => { this.applyMix(); this.mix.restartAll(true); }});
   },
   async challenge(stars){
     const g = this.g, o = this.o;
-    loading('יוצרים אתגר…');
+    loading(T('יוצרים אתגר…'));
     const link = await this.chalLink(stars);
     loading(false);
-    openShare({kicker:'הרכבתי את השיר לבד', title:ME.name || 'נגן יחיד', members:[{name:ME.name || 'אני', color:ME.color}],
-      stats:[['סגנון', STYLES[o.style].name], ['זמן', fmtTime(g.elapsed)], ['כוכבים', '★'.repeat(stars) + '☆'.repeat(3 - stars), '#D99A00']],
-      cta:'אתם תצליחו מהר יותר?', link, linkText:link.replace('https://', ''), text:`הרכבתי שיר מבולגן ב-${fmtTime(g.elapsed)} ב-Musicy. נסו לנצח אותי: ${link}`});
+    openShare({kicker:T('הרכבתי את השיר לבד'), title:ME.name || T('נגן יחיד'), members:[{name:ME.name || T('אני'), color:ME.color}],
+      stats:[[T('סגנון'), STYLES[o.style].name], [T('זמן'), fmtTime(g.elapsed)], [T('כוכבים'), '★'.repeat(stars) + '☆'.repeat(3 - stars), '#D99A00']],
+      cta:T('אתם תצליחו מהר יותר?'), link, linkText:link.replace('https://', ''), text:`${T('הרכבתי שיר מבולגן ב-{0} ב-Musicy. נסו לנצח אותי: {1}', fmtTime(g.elapsed), link)}`});
   },
   shareDaily(D, done){
     const sq = done.grid.map(x => x === 0 ? '🟩' : x === 1 ? '🟨' : '🟥').join('');
-    const text = `Musicy · שיר היום #${D.n}\n${sq}\n⏱ ${fmtTime(done.time)} · ${'★'.repeat(done.stars)}${'☆'.repeat(3 - done.stars)}\nhttps://musicy.fun`;
-    openShare({kicker:`שיר היום #${D.n}`, title:ME.name || 'הצלחתי', members:[{name:ME.name || 'אני', color:ME.color}],
-      stats:[['סגנון', STYLES[D.style].name], ['זמן', fmtTime(done.time)], ['כוכבים', '★'.repeat(done.stars) + '☆'.repeat(3 - done.stars), '#D99A00']],
-      cta:'שחקו את שיר היום', link:'https://musicy.fun', linkText:'musicy.fun', text});
+    const text = `${T('Musicy · שיר היום #{0}\n{1}\n⏱ {2} · {3}{4}\nhttps://musicy.fun', D.n, sq, fmtTime(done.time), '★'.repeat(done.stars), '☆'.repeat(3 - done.stars))}`;
+    openShare({kicker:`${T('שיר היום #{0}', D.n)}`, title:ME.name || T('הצלחתי'), members:[{name:ME.name || T('אני'), color:ME.color}],
+      stats:[[T('סגנון'), STYLES[D.style].name], [T('זמן'), fmtTime(done.time)], [T('כוכבים'), '★'.repeat(done.stars) + '☆'.repeat(3 - done.stars), '#D99A00']],
+      cta:T('שחקו את שיר היום'), link:'https://musicy.fun', linkText:'musicy.fun', text});
   },
   /* dial */
   sizeRing(){ const w = $('#dialWrap').clientWidth, dpr = Math.min(2, devicePixelRatio || 1), cv = $('#ring'); if (!w) return; cv.width = w * dpr; cv.height = w * dpr; cv.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0); this.ringSize = w; },
@@ -1522,7 +1558,7 @@ const Solo = {
     $('#soloLives').innerHTML = [0, 1, 2].map(k => `<span class="${k < g.lives ? '' : 'lost'}">♥</span>`).join('');
     $('#soloScore').textContent = g.score;
     $('#soloMeta').textContent = `${LEVELS[this.o.level].name} · ${MODES[this.o.mode].name}`;
-    const sk = $('#soloStreak'), mult = Math.min(3, 1 + (g.streak - 1) * .5); sk.hidden = g.streak < 2; sk.textContent = `רצף ×${mult}`; },
+    const sk = $('#soloStreak'), mult = Math.min(3, 1 + (g.streak - 1) * .5); sk.hidden = g.streak < 2; sk.textContent = `${T('רצף ×{0}', mult)}`; },
   frame(now){
     const dt = Math.min(.25, (now - this.last) / 1000); this.last = now;
     const g = this.g, s = this.song;
@@ -1537,8 +1573,8 @@ const Solo = {
         for (let k = 0; k < cells.length; k++) cells[k].classList.toggle('on', this.mix.playing && k === beatIdx);
         const pad = $('#sPad'), rem = (s.L - pos) / s.beatSec, maxC = s.bpb === 4 ? 3 : 2;
         if (lv.strip === 'count' && this.mix.playing && rem <= maxC){ pad.textContent = Math.ceil(rem); pad.classList.add('count'); }
-        else if (lv.strip === 'count' && this.mix.playing && pos < s.beatSec * .5){ pad.textContent = 'עכשיו!'; pad.classList.remove('count'); }
-        else if (pad.textContent !== 'הקישו על ה-1'){ pad.textContent = 'הקישו על ה-1'; pad.classList.remove('count'); }
+        else if (lv.strip === 'count' && this.mix.playing && pos < s.beatSec * .5){ pad.textContent = T('עכשיו!'); pad.classList.remove('count'); }
+        else if (pad.textContent !== T('הקישו על ה-1')){ pad.textContent = T('הקישו על ה-1'); pad.classList.remove('count'); }
       }
       if (this.o.mode === 'dial' && g.phase === 'ask') this.drawRing(pos);
     }
@@ -1550,24 +1586,24 @@ $('#soloBack').onclick = () => { Solo.stop(); Sheet.close(); history.back(); };
 $('#soloStart').onclick = () => Solo.begin();
 $('#skipDemo').onclick = () => Solo.endDemo();
 $('#sCommit').onclick = () => Solo.commitChoose();
-$('#sDrums').innerHTML = ICON.drum + ' רק עם התופים'; $('#sDrums').onclick = () => Solo.toggleSolo();
+$('#sDrums').innerHTML = ICON.drum + T(' רק עם התופים'); $('#sDrums').onclick = () => Solo.toggleSolo();
 $('#sPad').addEventListener('pointerdown', e => { e.preventDefault(); Solo.tap(); });
-$('#lockBtn').onclick = () => { const g = Solo.g; if (!g || g.phase !== 'ask') return; if (isRightShift(Solo.song, Solo.song.stems[g.cur], Solo.mix.shift[g.cur])) Solo.won(); else Solo.wrong('עדיין לא בזמן. הקשיבו לתופים ונסו שוב.'); };
+$('#lockBtn').onclick = () => { const g = Solo.g; if (!g || g.phase !== 'ask') return; if (isRightShift(Solo.song, Solo.song.stems[g.cur], Solo.mix.shift[g.cur])) Solo.won(); else Solo.wrong(T('עדיין לא בזמן. הקשיבו לתופים ונסו שוב.')); };
 $$('.nudge button').forEach(b => b.onclick = () => { const g = Solo.g; if (!g) return; const d = +b.dataset.d * (Solo.song.bpb === 3 && Math.abs(+b.dataset.d) === 8 ? 1.5 : 1); Solo.dialMove(Solo.mix.shift[g.cur] + d); });
 (() => { const ring = $('#ring'); let drag = null; const ang = e => { const r = ring.getBoundingClientRect(); return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2)); };
   ring.addEventListener('pointerdown', e => { const g = Solo.g; if (!g || g.phase !== 'ask') return; e.preventDefault(); ring.setPointerCapture(e.pointerId); drag = {last:ang(e), acc:0, start:Solo.mix.shift[g.cur]}; });
   ring.addEventListener('pointermove', e => { if (!drag) return; let a = ang(e), d = a - drag.last; if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; drag.acc += d; drag.last = a;
     const step = 2 * Math.PI / Solo.song.U * 2, ns = drag.start + Math.round(drag.acc / step) * 2; if (ns !== Solo.mix.shift[Solo.g.cur]) Solo.dialMove(ns); });
   ['pointerup', 'pointercancel'].forEach(t => ring.addEventListener(t, () => drag = null)); })();
-$('#sPause').onclick = () => { const m = Solo.mix; if (!m) return; if (m.playing){ m.pause(); $('#sPause').textContent = 'המשך'; } else { m.play(false); $('#sPause').textContent = 'עצירה'; } };
+$('#sPause').onclick = () => { const m = Solo.mix; if (!m) return; if (m.playing){ m.pause(); $('#sPause').textContent = T('המשך'); } else { m.play(false); $('#sPause').textContent = T('עצירה'); } };
 $('#sGuess').onclick = () => {
   const g = Solo.g, s = Solo.song; if (!g || g.guess || g.phase === 'done') return;
   const pool = shuffleR(MELODIES.map(d => d.title).filter(t => t !== s.title)).slice(0, 3);
   const box = $('#sGuessBox'); box.hidden = false;
-  box.innerHTML = `<span class="label on-stage" style="color:#fff">איזה שיר זה?</span><div class="grid2">${shuffleR([s.title, ...pool]).map(t => `<button class="btn sm">${esc(t)}</button>`).join('')}</div>`;
+  box.innerHTML = `<span class="label on-stage" style="color:#fff">${T('איזה שיר זה?')}</span><div class="grid2">${shuffleR([s.title, ...pool]).map(t => `<button class="btn sm">${esc(t)}</button>`).join('')}</div>`;
   box.querySelectorAll('button').forEach(b => b.onclick = () => { const ok = b.textContent === s.title; g.guess = {ok}; g.score += ok ? 150 : -50;
     box.querySelectorAll('button').forEach(x => { x.disabled = true; if (x.textContent === s.title) x.classList.add('gold'); });
-    toast(ok ? `נכון! זה ${s.title}. +150` : 'לא הפעם. −50'); $('#sGuess').disabled = true; Solo.renderHUD(); });
+    toast(ok ? `${T('נכון! זה {0}. +150', s.title)}` : T('לא הפעם. −50')); $('#sGuess').disabled = true; Solo.renderHUD(); });
 };
 
 /* ===== your own song (local files only) ===== */
@@ -1577,17 +1613,17 @@ function guessRole(n){ for (const [re, r] of ROLE_GUESS) if (re.test(n)) return 
 function upMsg(t, err){ const m = $('#upMsg'); m.textContent = t; m.style.color = err ? '#D2382B' : ''; }
 async function upAdd(list){
   const files = [...list].filter(f => f.type.startsWith('audio') || /\.(wav|mp3|m4a|aac|ogg|flac|aif|aiff)$/i.test(f.name));
-  if (!files.length){ upMsg('לא נמצאו קבצי שמע. נסו wav, mp3 או m4a.', true); return; }
-  upMsg('קורא את הקבצים…');
+  if (!files.length){ upMsg(T('לא נמצאו קבצי שמע. נסו wav, mp3 או m4a.'), true); return; }
+  upMsg(T('קורא את הקבצים…'));
   for (const f of files){ if (Up.files.length >= 8) break;
     try { const dc = new OfflineAudioContext(2, SR, SR); const buffer = await dc.decodeAudioData(await f.arrayBuffer()); Up.files.push({name:f.name.replace(/\.[^.]+$/, ''), role:guessRole(f.name), buffer}); }
-    catch(e){ upMsg(`לא הצלחתי לקרוא את ${f.name}.`, true); } }
+    catch(e){ upMsg(`${T('לא הצלחתי לקרוא את {0}.', f.name)}`, true); } }
   upRender(); upDetect();
 }
 function upRender(){
   const box = $('#upFiles'); box.hidden = !Up.files.length;
   const opts = ['drums', ...ALL_ROLES].map(k => `<option value="${k}">${roleName(k, 'pop')}</option>`).join('');
-  box.innerHTML = `<table><thead><tr><th>קובץ</th><th>אורך</th><th>תפקיד</th><th></th></tr></thead><tbody>${Up.files.map((f, i) => `<tr><td><bdi>${esc(f.name.slice(0, 18))}</bdi></td><td>${fmtTime(f.buffer.duration)}</td><td><select data-i="${i}" aria-label="תפקיד">${opts}</select></td><td><button class="btn sm" data-rm="${i}" style="min-height:36px">הסר</button></td></tr>`).join('')}</tbody></table>`;
+  box.innerHTML = `<table><thead><tr><th>${T('קובץ')}</th><th>${T('אורך')}</th><th>${T('תפקיד')}</th><th></th></tr></thead><tbody>${Up.files.map((f, i) => `<tr><td><bdi>${esc(f.name.slice(0, 18))}</bdi></td><td>${fmtTime(f.buffer.duration)}</td><td><select data-i="${i}" aria-label="${T('תפקיד')}">${opts}</select></td><td><button class="btn sm" data-rm="${i}" style="min-height:36px">${T('הסר')}</button></td></tr>`).join('')}</tbody></table>`;
   box.querySelectorAll('select').forEach(s => { s.value = Up.files[s.dataset.i].role; s.onchange = () => Up.files[s.dataset.i].role = s.value; });
   box.querySelectorAll('[data-rm]').forEach(b => b.onclick = () => { Up.files.splice(+b.dataset.rm, 1); upRender(); });
 }
@@ -1598,7 +1634,7 @@ function upDetect(){
   let best = 0, bestLag = 50; for (let lag = 30; lag <= 92; lag++){ let s = 0; for (let t = lag; t < o.length; t++) s += o[t] * o[t - lag]; const bpm = 6000 / lag, w = Math.exp(-.5 * Math.pow(Math.log2(bpm / 120) / .7, 2)); if (s * w > best){ best = s * w; bestLag = lag; } }
   const bpm = Math.round(6000 / bestLag * 10) / 10; let mx = 0; for (let t = 0; t < o.length; t++) mx = Math.max(mx, o[t]);
   let first = 0; for (let t = 0; t < o.length; t++) if (o[t] > mx * .35){ first = Math.max(0, t * .01 - .01); break; }
-  $('#upBpm').value = bpm; $('#upStart').value = first.toFixed(2); upMsg(`${Up.files.length} ערוצים · זוהה קצב של כ-${bpm}. כוונו את ״תחילת ההוק״ לפזמון ובדקו.`);
+  $('#upBpm').value = bpm; $('#upStart').value = first.toFixed(2); upMsg(`${T('{0} ערוצים · זוהה קצב של כ-{1}. כוונו את ״תחילת ההוק״ לפזמון ובדקו.', Up.files.length, bpm)}`);
 }
 const upForm = () => { const bpm = parseFloat($('#upBpm').value), bpb = +$('#upBpb').value, bars = +$('#upBars').value, start = parseFloat($('#upStart').value) || 0; return {bpm, bpb, bars, start, L:bars * bpb * 60 / bpm}; };
 let upPrev = [];
@@ -1607,19 +1643,19 @@ $('#upInput').onchange = e => { upAdd(e.target.files); e.target.value = ''; };
 ['dragleave','drop'].forEach(t => $('#drop').addEventListener(t, e => { e.preventDefault(); $('#drop').classList.remove('over'); }));
 $('#drop').addEventListener('drop', e => { if (e.dataTransfer && e.dataTransfer.files) upAdd(e.dataTransfer.files); });
 $('#upTap').onclick = () => { const now = performance.now(); Up.taps = Up.taps.filter(t => now - t < 3000); Up.taps.push(now);
-  if (Up.taps.length >= 4){ const iv = []; for (let i = 1; i < Up.taps.length; i++) iv.push(Up.taps[i] - Up.taps[i - 1]); $('#upBpm').value = Math.round(60000 / (iv.reduce((a, b) => a + b, 0) / iv.length) * 10) / 10; upMsg(`קצב לפי הקשות: ${$('#upBpm').value}`); }
-  else upMsg(`עוד ${4 - Up.taps.length} הקשות…`); };
-$('#upPreview').onclick = () => { if (!Up.files.length){ upMsg('קודם טענו קבצים.', true); return; } const f = upForm(); const ac = Audio.ensure(); ac.resume();
+  if (Up.taps.length >= 4){ const iv = []; for (let i = 1; i < Up.taps.length; i++) iv.push(Up.taps[i] - Up.taps[i - 1]); $('#upBpm').value = Math.round(60000 / (iv.reduce((a, b) => a + b, 0) / iv.length) * 10) / 10; upMsg(`${T('קצב לפי הקשות: {0}', $('#upBpm').value)}`); }
+  else upMsg(`${T('עוד {0} הקשות…', 4 - Up.taps.length)}`); };
+$('#upPreview').onclick = () => { if (!Up.files.length){ upMsg(T('קודם טענו קבצים.'), true); return; } const f = upForm(); const ac = Audio.ensure(); ac.resume();
   upPrev.forEach(s => { try { s.stop(); } catch(e){} }); upPrev = []; const at = ac.currentTime + .05;
   for (let r = 0; r < 2; r++) Up.files.forEach(x => { const s = ac.createBufferSource(); s.buffer = x.buffer; s.connect(Audio.comp); s.start(at + r * f.L, f.start, f.L); upPrev.push(s); });
-  upMsg(`משמיע את ההוק פעמיים. אם הלופ קופץ, כוונו קצב או התחלה.`); };
+  upMsg(`${T('משמיע את ההוק פעמיים. אם הלופ קופץ, כוונו קצב או התחלה.')}`); };
 $('#upBuild').onclick = async () => {
-  if (Up.files.length < 2){ upMsg('צריך לפחות שני ערוצים.', true); return; }
+  if (Up.files.length < 2){ upMsg(T('צריך לפחות שני ערוצים.'), true); return; }
   const f = upForm(), title = $('#upTitle').value.trim();
-  if (!(f.bpm > 40 && f.bpm < 240)){ upMsg('הקצב צריך להיות בין 40 ל-240.', true); return; }
-  if (!title){ upMsg('הוסיפו את שם השיר.', true); $('#upTitle').focus(); return; }
-  if (f.start + f.L > Math.min(...Up.files.map(x => x.buffer.duration)) + .25){ upMsg('ההוק ארוך מהקבצים. הקדימו את ההתחלה.', true); return; }
-  loading('בונים משחק מהשיר…'); upPrev.forEach(s => { try { s.stop(); } catch(e){} });
+  if (!(f.bpm > 40 && f.bpm < 240)){ upMsg(T('הקצב צריך להיות בין 40 ל-240.'), true); return; }
+  if (!title){ upMsg(T('הוסיפו את שם השיר.'), true); $('#upTitle').focus(); return; }
+  if (f.start + f.L > Math.min(...Up.files.map(x => x.buffer.duration)) + .25){ upMsg(T('ההוק ארוך מהקבצים. הקדימו את ההתחלה.'), true); return; }
+  loading(T('בונים משחק מהשיר…')); upPrev.forEach(s => { try { s.stop(); } catch(e){} });
   const len = Math.round(f.L * SR), s0 = Math.round(f.start * SR);
   let anchor = Up.files.findIndex(x => x.role === 'drums'); if (anchor < 0) anchor = 0;
   const stems = Up.files.map((x, i) => { const b = new AudioBuffer({length:len, numberOfChannels:x.buffer.numberOfChannels, sampleRate:SR});
@@ -1628,7 +1664,7 @@ $('#upBuild').onclick = async () => {
     return {role, name:roleName(role, 'pop'), color:roleColor(role), mix:1, send:.03, anchor:i === anchor, buffer:b}; });
   const song = makeSong({key:'mine', id:'mine', style:'pop', title, artist:'', bpm:f.bpm, bpb:f.bpb, bars:f.bars, len, stems});
   await analyzeSong(song); loading(false);
-  if (!song.stems.some(x => x.playable)){ upMsg('לא נמצאו כלים שאפשר לבלגן. בדקו קצב ואורך.', true); return; }
+  if (!song.stems.some(x => x.playable)){ upMsg(T('לא נמצאו כלים שאפשר לבלגן. בדקו קצב ואורך.'), true); return; }
   Solo.start({custom:song, style:'pop', level:'easy', mode:'choose'});
 };
 
@@ -1636,27 +1672,27 @@ $('#upBuild').onclick = async () => {
 const Chal = {
   async open(id){
     show('s-chal', false); const body = $('#chalBody'); track('chal_open', {id});
-    body.innerHTML = `<div class="card center"><b class="d" style="font-size:24px;font-weight:400">טוענים את האתגר…</b></div>`;
+    body.innerHTML = `<div class="card center"><b class="d" style="font-size:24px;font-weight:400">${T('טוענים את האתגר…')}</b></div>`;
     let c = null, rows = [];
     try { const r = await Net.rest(`musicy_challenges?id=eq.${encodeURIComponent(id)}&select=*`); c = r && r[0];
       rows = await Net.rest(`musicy_results?challenge_id=eq.${encodeURIComponent(id)}&select=band_name,time_ms,stars,players&order=stars.desc,time_ms.asc&limit=8`); } catch(e){}
-    if (!c){ body.innerHTML = `<div class="card center"><h2 class="d" style="font-size:30px">לא מצאנו את האתגר</h2><p class="muted" style="margin:0">אולי הלינק נקטע. אפשר תמיד לפתוח חדר חדש.</p></div><div class="bottom"><button class="btn gold big" data-go="home">לדף הבית</button></div>`;
+    if (!c){ body.innerHTML = `<div class="card center"><h2 class="d" style="font-size:30px">${T('לא מצאנו את האתגר')}</h2><p class="muted" style="margin:0">${T('אולי הלינק נקטע. אפשר תמיד לפתוח חדר חדש.')}</p></div><div class="bottom"><button class="btn gold big" data-go="home">${T('לדף הבית')}</button></div>`;
       body.querySelector('[data-go]').onclick = () => { show('s-home'); Home.render(); }; return; }
     const def = melodyById(c.song_id), stars = '★'.repeat(c.stars) + '☆'.repeat(3 - c.stars);
     body.innerHTML = `<section class="card center" style="align-items:center">
-        <span class="label" style="color:var(--stage)">קיבלתם אתגר</span>
+        <span class="label" style="color:var(--stage)">${T('קיבלתם אתגר')}</span>
         <div class="bandrow">${(c.members || []).map(m => `<div class="member">${jelly(m.color || '#22C1F0', 56)}<span class="nm">${esc(m.name || '')}</span></div>`).join('')}</div>
-        <h1 class="d" style="font-size:32px;line-height:1.05">${esc(c.band_name)} הרכיבו שיר ב-${fmtTime(c.time_ms / 1000)}</h1>
-        <p class="muted small" style="margin:0">אותו שיר ואותו בלגן בדיוק. ${STYLES[c.style].name} · ${LEVELS[c.level].name}. שם השיר נשאר סוד עד הסוף.</p>
-        <div class="row wrap" style="justify-content:center"><span class="tag fix">${stars}</span><span class="tag fix">${c.players} ${c.players === 1 ? 'נגן' : 'נגנים'}</span></div>
+        <h1 class="d" style="font-size:32px;line-height:1.05">${T('{0} הרכיבו שיר ב-{1}', esc(c.band_name), fmtTime(c.time_ms / 1000))}</h1>
+        <p class="muted small" style="margin:0">${T('אותו שיר ואותו בלגן בדיוק. {0} · {1}. שם השיר נשאר סוד עד הסוף.', STYLES[c.style].name, LEVELS[c.level].name)}</p>
+        <div class="row wrap" style="justify-content:center"><span class="tag fix">${stars}</span><span class="tag fix">${c.players} ${c.players === 1 ? T('נגן') : T('נגנים')}</span></div>
       </section>
-      <section class="card"><span class="d" style="font-size:22px">מי כבר ניסה</span>
-        ${rows.map((r, i) => `<div class="result-row"><b class="d" style="font-size:20px;font-weight:400;width:24px">${i + 1}</b><span class="grow" style="font-weight:700">${esc(r.band_name)}</span><span class="small muted">${'★'.repeat(r.stars)}</span><b style="direction:ltr">${fmtTime(r.time_ms / 1000)}</b></div>`).join('') || '<p class="muted" style="margin:0">עדיין אף אחד. תהיו הראשונים.</p>'}
+      <section class="card"><span class="d" style="font-size:22px">${T('מי כבר ניסה')}</span>
+        ${rows.map((r, i) => `<div class="result-row"><b class="d" style="font-size:20px;font-weight:400;width:24px">${i + 1}</b><span class="grow" style="font-weight:700">${esc(r.band_name)}</span><span class="small muted">${'★'.repeat(r.stars)}</span><b style="direction:ltr">${fmtTime(r.time_ms / 1000)}</b></div>`).join('') || T('<p class="muted" style="margin:0">עדיין אף אחד. תהיו הראשונים.</p>')}
       </section>
       <div class="bottom">
-        <button class="btn gold big" id="chRoom">פתחו חדר וקבלו את האתגר</button>
-        <button class="btn" id="chSolo">לנסות לבד קודם</button>
-        <p class="foot" style="margin:0">בלי הרשמה ובלי הורדה</p>
+        <button class="btn gold big" id="chRoom">${T('פתחו חדר וקבלו את האתגר')}</button>
+        <button class="btn" id="chSolo">${T('לנסות לבד קודם')}</button>
+        <p class="foot" style="margin:0">${T('בלי הרשמה ובלי הורדה')}</p>
       </div>`;
     $('#chRoom').onclick = () => (track('chal_room', {id:c.id}), Room.create({chalId:c.id, songId:c.song_id, style:c.style, level:c.level, seed:c.seed, band:c.band_name, time:c.time_ms, stars:c.stars}));
     $('#chSolo').onclick = () => def && (track('chal_solo', {id:c.id}), Solo.start({def, style:c.style, level:c.level, mode:'choose', seed:Number(c.seed), chal:{id:c.id}}));
@@ -1664,9 +1700,9 @@ const Chal = {
 };
 
 /* ===== group room: one phone is the boombox (host + audio), every phone is a controller ===== */
-const BAND_A = ['הבסים','התופים','הפעמונים','המגברים','הרמקולים','הקיפודים','הדינוזאורים','הפינגווינים','הסנאים','הלמורים','הכרישים','הדובים'];
-const BAND_B = ['הזועמים','הרדומים','המרקדים','הקופצים','המהירים','הרועשים','המבולגנים','המסונכרנים','הסגולים','הנוצצים','החמודים','הלוהטים'];
-const randomBand = () => BAND_A[Math.floor(Math.random() * BAND_A.length)] + ' ' + BAND_B[Math.floor(Math.random() * BAND_B.length)];
+const BAND_A = [T('הבסים'),T('התופים'),T('הפעמונים'),T('המגברים'),T('הרמקולים'),T('הקיפודים'),T('הדינוזאורים'),T('הפינגווינים'),T('הסנאים'),T('הלמורים'),T('הכרישים'),T('הדובים')];
+const BAND_B = [T('הזועמים'),T('הרדומים'),T('המרקדים'),T('הקופצים'),T('המהירים'),T('הרועשים'),T('המבולגנים'),T('המסונכרנים'),T('הסגולים'),T('הנוצצים'),T('החמודים'),T('הלוהטים')];
+const randomBand = () => { const a = BAND_A[Math.floor(Math.random() * BAND_A.length)], b = BAND_B[Math.floor(Math.random() * BAND_B.length)]; return LANG === 'en' ? `The ${b} ${a}` : a + ' ' + b; };
 const PHASE_MS = {assign:4500, listen:30000, check:15000, repair:12000};
 const MAX_PLAYERS = 6;
 
@@ -1684,25 +1720,25 @@ const Room = {
   send(msg){ if (this.ch) this.ch.send({type:'broadcast', event:'m', payload:msg}).catch(() => {}); },
   act(a, v){ const m = {t:'act', from:ME.id, a, v}; if (this.isHost) Host.handle(m); else this.send(m); vibrate(8); },
   create(preset){ ensureProfile(async () => {
-    if (!window.supabase){ toast('אין חיבור לאינטרנט כרגע'); return; }
-    loading('פותחים חדר…'); Audio.ensure(); Audio.ac.resume();
+    if (!window.supabase){ toast(T('אין חיבור לאינטרנט כרגע')); return; }
+    loading(T('פותחים חדר…')); Audio.ensure(); Audio.ac.resume();
     let code, token = null;
     try { const r = await Net.fn('create', {host:ME.name, style:(preset && preset.style) || 'electro'}); code = r.code; token = r.token; }
     catch(e){ code = String(1000 + Math.floor(Math.random() * 9000)); }
-    try { await this.connect(code, true); } catch(e){ loading(false); toast('לא הצלחנו להתחבר. בדקו את האינטרנט ונסו שוב.'); return; }
+    try { await this.connect(code, true); } catch(e){ loading(false); toast(T('לא הצלחנו להתחבר. בדקו את האינטרנט ונסו שוב.')); return; }
     this.token = token; Host.init(code, preset); loading(false); show('s-room'); this.render(); this.startLoop(); this.keepAwake(); Hero.stop(); track('room_create', {chal:!!preset});
     this.beatT = setInterval(() => this.token && Net.fn('beat', {code, token, players:Host.st.players.length, phase:Host.st.phase === 'lobby' ? 'lobby' : 'play', host:ME.name}).catch(() => {}), 30000);
-  }, 'איך יקראו לך בלהקה?'); },
+  }, T('איך יקראו לך בלהקה?')); },
   join(code){ ensureProfile(async () => {
-    if (!window.supabase){ toast('אין חיבור לאינטרנט כרגע'); return; }
-    loading(`מתחברים לחדר ${code}…`);
-    try { await this.connect(code, false); } catch(e){ loading(false); toast('לא הצלחנו להתחבר. נסו שוב.'); return; }
+    if (!window.supabase){ toast(T('אין חיבור לאינטרנט כרגע')); return; }
+    loading(`${T('מתחברים לחדר {0}…', code)}`);
+    try { await this.connect(code, false); } catch(e){ loading(false); toast(T('לא הצלחנו להתחבר. נסו שוב.')); return; }
     this.st = null; const t0 = performance.now();
     while (!this.st && performance.now() - t0 < 7000){ this.send({t:'hello', p:{id:ME.id, name:ME.name, color:ME.color}}); await sleep(900); }
     loading(false);
-    if (!this.st){ this.leave(false); track('room_join_fail'); toast(`לא מצאנו חדר פעיל עם הקוד ${code}`); show('s-home'); Home.render(); return; }
+    if (!this.st){ this.leave(false); track('room_join_fail'); toast(`${T('לא מצאנו חדר פעיל עם הקוד {0}', code)}`); show('s-home'); Home.render(); return; }
     this.joined = true; show('s-room'); this.render(); this.startLoop(); this.keepAwake(); Hero.stop(); track('room_join', {phase:this.st.phase});
-  }, 'איך יקראו לך בלהקה?'); },
+  }, T('איך יקראו לך בלהקה?')); },
   leave(fromPop){
     if (this.isHost){ Host.stop(); this.send({t:'end'}); if (this.token) Net.fn('close', {code:this.code, token:this.token}).catch(() => {}); }
     else if (this.ch) this.send({t:'act', from:ME.id, a:'leave'});
@@ -1753,7 +1789,7 @@ const Room = {
   /* ===== views ===== */
   render(){
     const s = this.st, body = $('#roomBody'); if (!s || current !== 's-room') return;
-    $('#roomTitle').textContent = s.phase === 'lobby' ? 'החדר שלכם' : s.band;
+    $('#roomTitle').textContent = s.phase === 'lobby' ? T('החדר שלכם') : s.band;
     const v = this.view(s); body.innerHTML = v; this.mount(body, s);
   },
   bandRow(s, opts){ opts = opts || {}; const r = s.round;
@@ -1768,9 +1804,9 @@ const Room = {
   timer(ms, total){ return `<div class="timer" id="roomTimer" data-remain="${ms}" data-total="${total}" role="timer"><svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true"><circle cx="31" cy="31" r="26" fill="none" stroke="#E1E0EC" stroke-width="7"/><circle class="arc" cx="31" cy="31" r="26" fill="none" stroke="#FF5A4E" stroke-width="7" stroke-linecap="round" stroke-dasharray="163 200" transform="rotate(-90 31 31)"/></svg><b>${Math.ceil(ms / 1000)}</b></div>`; },
   view(s){
     const me = this.me(), host = this.isHost, r = s.round, myRole = this.myRole();
-    if (s.phase === 'ended') return `<section class="card center" style="align-items:center">${jelly('#B48CFF', 120, {mood:'sad'})}<h2 class="d" style="font-size:30px">הבומבוקס יצא מהחדר</h2><p class="muted" style="margin:0">החדר נסגר. אפשר לפתוח חדר חדש ולהזמין את כולם.</p></section><div class="bottom"><button class="btn gold big" data-a="home">לדף הבית</button></div>`;
+    if (s.phase === 'ended') return `<section class="card center" style="align-items:center">${jelly('#B48CFF', 120, {mood:'sad'})}<h2 class="d" style="font-size:30px">${T('הבומבוקס יצא מהחדר')}</h2><p class="muted" style="margin:0">${T('החדר נסגר. אפשר לפתוח חדר חדש ולהזמין את כולם.')}</p></section><div class="bottom"><button class="btn gold big" data-a="home">${T('לדף הבית')}</button></div>`;
     if (s.phase === 'lobby') return this.vLobby(s, me, host);
-    if (s.phase === 'prep') return `${this.bandRow(s)}<section class="card center" style="align-items:center">${jelly(COLORS[(r && r.n || 0) % 6][0], 96, {cls:'spin', mood:'wow'})}<h2 class="d" style="font-size:30px">מכינים את שיר ${r ? r.n : ''}…</h2><p class="muted" style="margin:0">הבומבוקס מכין את הכלים${r && r.prep ? ` · ${r.prep}` : ''}</p></section>`;
+    if (s.phase === 'prep') return `${this.bandRow(s)}<section class="card center" style="align-items:center">${jelly(COLORS[(r && r.n || 0) % 6][0], 96, {cls:'spin', mood:'wow'})}<h2 class="d" style="font-size:30px">${T('מכינים את שיר {0}…', r ? r.n : '')}</h2><p class="muted" style="margin:0">${T('הבומבוקס מכין את הכלים{0}', r && r.prep ? ` · ${r.prep}` : '')}</p></section>`;
     if (s.phase === 'assign' || s.phase === 'listen') return this.vListen(s, myRole, host);
     if (s.phase === 'turn') return this.vTurn(s, myRole, host);
     if (s.phase === 'check') return this.vCheck(s, host);
@@ -1780,46 +1816,46 @@ const Room = {
     return '';
   },
   shareRow(code){ return `<div class="grid3">
-      <button class="btn gold col" data-a="wa">${ICON.chat}וואטסאפ</button>
-      <button class="btn col" data-a="copy">${ICON.link}העתקת לינק</button>
-      <button class="btn col" data-a="share">${ICON.share}שיתוף</button></div>`; },
+      <button class="btn gold col" data-a="wa">${T('{0}וואטסאפ', ICON.chat)}</button>
+      <button class="btn col" data-a="copy">${T('{0}העתקת לינק', ICON.link)}</button>
+      <button class="btn col" data-a="share">${T('{0}שיתוף', ICON.share)}</button></div>`; },
   vLobby(s, me, host){
-    const slots = s.players.map(p => `<div class="member">${jelly(p.color, 52)}<span class="nm">${esc(p.name)}</span><span class="tg">${p.host ? 'בומבוקס' : p.online === false ? 'מתחבר…' : 'בפנים'}</span></div>`);
-    for (let i = s.players.length; i < MAX_PLAYERS; i++) slots.push(`<div class="member">${jelly('none', 52, {blank:true, dash:'10 8', stroke:'#B9B6D0'})}<span class="nm muted">מחכים…</span></div>`);
+    const slots = s.players.map(p => `<div class="member">${jelly(p.color, 52)}<span class="nm">${esc(p.name)}</span><span class="tg">${p.host ? T('בומבוקס') : p.online === false ? T('מתחבר…') : T('בפנים')}</span></div>`);
+    for (let i = s.players.length; i < MAX_PLAYERS; i++) slots.push(`<div class="member">${jelly('none', 52, {blank:true, dash:'10 8', stroke:'#B9B6D0'})}<span class="nm muted">${T('מחכים…')}</span></div>`);
     const set = s.settings, seg = (k, items, cur) => `<div class="seg" data-set="${k}">${items.map(([v, l]) => `<button data-v="${v}" aria-pressed="${v === cur}" ${host && !s.preset ? '' : 'disabled'}>${l}</button>`).join('')}</div>`;
     return `<section class="card" style="flex-direction:row;align-items:center;gap:14px">
-        <div class="qr"><canvas id="roomQR" width="1" height="1" aria-label="קוד QR להצטרפות" role="img"></canvas></div>
-        <div class="grow stack" style="gap:4px"><span class="label">קוד החדר</span><span class="roomcode">${s.code}</span><span class="small" style="color:var(--stage);font-weight:700;direction:ltr;text-align:right">musicy.fun/${s.code}</span></div>
+        <div class="qr"><canvas id="roomQR" width="1" height="1" aria-label="${T('קוד QR להצטרפות')}" role="img"></canvas></div>
+        <div class="grow stack" style="gap:4px"><span class="label">${T('קוד החדר')}</span><span class="roomcode">${s.code}</span><span class="small" style="color:var(--stage);font-weight:700;direction:ltr;text-align:${DIR === 'rtl' ? 'right' : 'left'}">musicy.fun/${s.code}</span></div>
       </section>
       ${this.shareRow(s.code)}
-      ${s.preset ? `<section class="card gold"><span class="label" style="color:var(--ink)">אתגר פעיל</span><b>${esc(s.preset.band)} הרכיבו את השיר ב-${fmtTime(s.preset.time / 1000)}. נראה אתכם.</b></section>` : ''}
-      <section class="card"><div class="row"><span class="d grow" style="font-size:22px">הלהקה</span><span class="small muted">${s.players.length} מתוך ${MAX_PLAYERS}${s.audience.length ? ` · ${s.audience.length} בקהל` : ''}</span></div><div class="players-grid">${slots.join('')}</div></section>
+      ${s.preset ? `<section class="card gold"><span class="label" style="color:var(--ink)">${T('אתגר פעיל')}</span><b>${T('{0} הרכיבו את השיר ב-{1}. נראה אתכם.', esc(s.preset.band), fmtTime(s.preset.time / 1000))}</b></section>` : ''}
+      <section class="card"><div class="row"><span class="d grow" style="font-size:22px">${T('הלהקה')}</span><span class="small muted">${T('{0} מתוך {1}{2}', s.players.length, MAX_PLAYERS, s.audience.length ? ` ${T('· {0} בקהל', s.audience.length)}` : '')}</span></div><div class="players-grid">${slots.join('')}</div></section>
       <section class="card">
-        <span class="label">סגנון</span>${seg('style', STYLE_ORDER.map(k => [k, STYLES[k].name]), set.style)}
-        <span class="label">רמה</span>${seg('level', LEVEL_ORDER.map(k => [k, LEVELS[k].name]), set.level)}
-        <span class="label">מתי יודעים אם צדקנו?</span>${seg('mode', [['end', 'בבדיקת להקה בסוף'], ['instant', 'מיד בכל תור']], set.mode)}
-        <p class="small muted" style="margin:0">${set.mode === 'end' ? 'אף אחד לא יודע עד הסוף. אז מקשיבים ללהקה ביחד, מצביעים ומתקנים. מומלץ למבוגרים.' : 'כל נגן שומע מיד אם צדק. טעות עולה לב לכל הלהקה. מומלץ לילדים.'}</p>
+        <span class="label">${T('סגנון')}</span>${seg('style', STYLE_ORDER.map(k => [k, STYLES[k].name]), set.style)}
+        <span class="label">${T('רמה')}</span>${seg('level', LEVEL_ORDER.map(k => [k, LEVELS[k].name]), set.level)}
+        <span class="label">${T('מתי יודעים אם צדקנו?')}</span>${seg('mode', [['end', T('בבדיקת להקה בסוף')], ['instant', T('מיד בכל תור')]], set.mode)}
+        <p class="small muted" style="margin:0">${set.mode === 'end' ? T('אף אחד לא יודע עד הסוף. אז מקשיבים ללהקה ביחד, מצביעים ומתקנים. מומלץ למבוגרים.') : T('כל נגן שומע מיד אם צדק. טעות עולה לב לכל הלהקה. מומלץ לילדים.')}</p>
       </section>
-      ${host ? `<section class="card ink row">${ICON.speaker.replace('<svg', '<svg width="30" height="30"')}<span class="small">הטלפון שלך הוא הבומבוקס. חברו אותו לרמקול והשאירו את המסך דלוק.</span></section>
-        <div class="bottom"><button class="btn gold big" data-a="start">מתחילים · ${s.players.length} ${s.players.length === 1 ? 'נגן' : 'נגנים'}</button><p class="foot" style="margin:0">כל שיר מתעבד אוטומטית ל-${Math.min(s.players.length, MAX_PLAYERS)} כלים</p></div>`
-        : `<div class="bottom"><span class="status-pill gold">מחכים ש${esc((s.players.find(p => p.host) || {}).name || 'הבומבוקס')} יתחיל</span></div>`}`;
+      ${host ? `<section class="card ink row">${ICON.speaker.replace('<svg', '<svg width="30" height="30"')}<span class="small">${T('הטלפון שלך הוא הבומבוקס. חברו אותו לרמקול והשאירו את המסך דלוק.')}</span></section>
+        <div class="bottom"><button class="btn gold big" data-a="start">${T('מתחילים · {0} {1}', s.players.length, s.players.length === 1 ? T('נגן') : T('נגנים'))}</button><p class="foot" style="margin:0">${T('כל שיר מתעבד אוטומטית ל-{0} כלים', Math.min(s.players.length, MAX_PLAYERS))}</p></div>`
+        : `<div class="bottom"><span class="status-pill gold">${T('מחכים ש{0} יתחיל', esc((s.players.find(p => p.host) || {}).name || T('הבומבוקס')))}</span></div>`}`;
   },
   vListen(s, role, host){
     const r = s.round, x = r.roles.find(z => z.role === role), total = s.phase === 'listen' ? PHASE_MS.listen : PHASE_MS.assign;
-    const head = s.phase === 'assign' ? 'ההגרלה קבעה:' : 'הקשיבו לכלי שלכם';
-    if (!x) return `${this.bandRow(s)}<section class="card center" style="align-items:center">${jelly(ME.color, 110)}<h2 class="d" style="font-size:32px">הפעם בקהל</h2><p class="muted" style="margin:0">תוכלו להגיב בכל תור ולהצביע בבדיקת הלהקה.</p></section>${s.phase === 'listen' ? `<div class="progress" id="roomProg" data-remain="${r.remain}" data-total="${total}"><i></i></div>` : ''}`;
+    const head = s.phase === 'assign' ? T('ההגרלה קבעה:') : T('הקשיבו לכלי שלכם');
+    if (!x) return `${this.bandRow(s)}<section class="card center" style="align-items:center">${jelly(ME.color, 110)}<h2 class="d" style="font-size:32px">${T('הפעם בקהל')}</h2><p class="muted" style="margin:0">${T('תוכלו להגיב בכל תור ולהצביע בבדיקת הלהקה.')}</p></section>${s.phase === 'listen' ? `<div class="progress" id="roomProg" data-remain="${r.remain}" data-total="${total}"><i></i></div>` : ''}`;
     return `<section class="card rolecard" style="background:${x.color}">
         <span class="small" style="font-weight:700">${head}</span>
-        <h2 class="d" style="font-size:clamp(44px,12vw,62px);line-height:.95">${theName(esc(x.name))} שלך!</h2>
+        <h2 class="d" style="font-size:clamp(44px,12vw,62px);line-height:.95">${T('{0} שלך!', theName(esc(x.name)))}</h2>
         <div class="ring-wrap" id="pulseRing"><div class="r1"></div><div class="r2"></div><div class="r3"></div>${jelly(x.color, 150, {cls:'bounce'})}</div>
       </section>
       <section class="card">
-        <span class="d" style="font-size:22px">${s.phase === 'assign' ? 'עוד רגע מתחיל השיר המלא' : 'השיר המלא מתנגן ברמקול'}</span>
-        <p class="small" style="margin:0">בכל פעם ש${theName(x.name)} מנגן, העיגול פועם${navigator.vibrate ? ' והטלפון רוטט' : ''}. תזכרו איפה הוא נכנס, כי אחר כך תצטרכו להחזיר אותו לזמן.</p>
+        <span class="d" style="font-size:22px">${s.phase === 'assign' ? T('עוד רגע מתחיל השיר המלא') : T('השיר המלא מתנגן ברמקול')}</span>
+        <p class="small" style="margin:0">${T('בכל פעם ש{0} מנגן, העיגול פועם{1}. תזכרו איפה הוא נכנס, כי אחר כך תצטרכו להחזיר אותו לזמן.', theName(x.name), navigator.vibrate ? T(' והטלפון רוטט') : '')}</p>
         ${s.phase === 'listen' ? `<div class="row"><div class="progress grow" id="roomProg" data-remain="${r.remain}" data-total="${total}" style="--c:${x.color}"><i></i></div><b id="roomProgLbl" style="direction:ltr"></b></div>` : ''}
-        <p class="small muted" style="margin:0">התור שלך: ${r.order.indexOf(role) + 1} מתוך ${r.order.length}</p>
+        <p class="small muted" style="margin:0">${T('התור שלך: {0} מתוך {1}', r.order.indexOf(role) + 1, r.order.length)}</p>
       </section>
-      ${host && s.phase === 'listen' ? `<div class="bottom"><button class="btn sm" data-a="skip">דלגו להתחלת התורות</button></div>` : ''}`;
+      ${host && s.phase === 'listen' ? `<div class="bottom"><button class="btn sm" data-a="skip">${T('דלגו להתחלת התורות')}</button></div>` : ''}`;
   },
   vTurn(s, role, host){
     const r = s.round, t = r.turn, x = r.roles.find(z => z.role === t.role), p = s.players.find(pp => pp.id === t.pid) || {name:'?'}, mine = t.pid === ME.id;
@@ -1827,81 +1863,81 @@ const Room = {
     if (mine){
       return `${this.bandRow(s)}
         <section class="card" style="--c:${x.color}">
-          <div class="row"><div class="grow stack" style="gap:2px"><span class="label">${r.reopen ? 'תיקון · ' : ''}תור ${r.ti + 1} מתוך ${r.order.length} · התור שלך</span>
-            <span class="d" style="font-size:34px;line-height:1">${whichWord(x.name)} ${esc(x.name)} בזמן?</span></div>${this.timer(t.remain, t.total)}</div>
-          <p class="small muted" style="margin:0">נגעו בגרסה כדי לשמוע אותה ברמקול. נגיעה נוספת באותה גרסה משמיעה את הלהקה בלי הכלי.${s.settings.mode === 'instant' ? ` נשארו ${r.lives} לבבות ללהקה.` : ''}</p>
+          <div class="row"><div class="grow stack" style="gap:2px"><span class="label">${T('{0}תור {1} מתוך {2} · התור שלך', r.reopen ? T('תיקון · ') : '', r.ti + 1, r.order.length)}</span>
+            <span class="d" style="font-size:34px;line-height:1">${T('{0} {1} בזמן?', whichWord(x.name), esc(x.name))}</span></div>${this.timer(t.remain, t.total)}</div>
+          <p class="small muted" style="margin:0">${T('נגעו בגרסה כדי לשמוע אותה ברמקול. נגיעה נוספת באותה גרסה משמיעה את הלהקה בלי הכלי.{0}', s.settings.mode === 'instant' ? ` ${T('נשארו {0} לבבות ללהקה.', r.lives)}` : '')}</p>
           ${t.lastWrong ? `<p class="room-fb">${esc(t.lastWrong)}</p>` : ''}
           <div class="stack">${t.labels.map((L, j) => { const rc = reacts.find(z => z.o === j) || {up:[], down:[]}; const struck = t.struck[j], on = t.aud === j, muted = on && t.mute;
             return `<button class="opt${struck ? ' struck' : ''}${muted ? ' muted' : ''}" data-opt="${j}" aria-pressed="${on}" ${struck ? 'disabled' : ''}>
-              <span class="L">${L}</span><span class="mid">${struck ? 'לא בזמן' : muted ? 'בלי הכלי · נגעו שוב להחזיר' : on ? '<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span> מתנגן ברמקול' : (t.heard || []).includes(j) ? 'שמעתם ✓ · נגעו שוב' : 'נגעו כדי לשמוע'}</span>
+              <span class="L">${L}</span><span class="mid">${struck ? T('לא בזמן') : muted ? T('בלי הכלי · נגעו שוב להחזיר') : on ? T('<span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span> מתנגן ברמקול') : (t.heard || []).includes(j) ? T('שמעתם ✓ · נגעו שוב') : T('נגעו כדי לשמוע')}</span>
               <span class="votes">${ICON.up}${rc.up.length}</span></button>`; }).join('')}</div>
-          <button class="btn sm tool${t.solo ? ' on' : ''}" data-a="solo" aria-pressed="${!!t.solo}">${ICON.drum} רק עם התופים</button>
-          ${reacts.length ? `<div class="reacts">${reacts.flatMap(z => z.up.map(n => `<span>${esc(n)} אהב את ${t.labels[z.o]}׳</span>`).concat(z.down.map(n => `<span class="no">${esc(n)} לא בטוח לגבי ${t.labels[z.o]}׳</span>`))).join('')}</div>` : ''}
+          <button class="btn sm tool${t.solo ? ' on' : ''}" data-a="solo" aria-pressed="${!!t.solo}">${T('{0} רק עם התופים', ICON.drum)}</button>
+          ${reacts.length ? `<div class="reacts">${reacts.flatMap(z => z.up.map(n => `<span>${T('{0} אהב את {1}׳', esc(n), t.labels[z.o])}</span>`).concat(z.down.map(n => `<span class="no">${T('{0} לא בטוח לגבי {1}׳', esc(n), t.labels[z.o])}</span>`))).join('')}</div>` : ''}
         </section>
         <div class="bottom">${(() => { const need = t.labels.filter((L, j) => !t.struck[j] && !(t.heard || []).includes(j)).length;
-          return `<button class="btn gold big" data-a="commit" ${t.aud < 0 || t.struck[t.aud] || need > 0 ? 'disabled' : ''}>${t.aud < 0 ? 'בחרו גרסה' : need > 0 ? `שמעו עוד ${need === 1 ? 'גרסה אחת' : need + ' גרסאות'}` : `${t.labels[t.aud]}׳ בזמן. נועלים!`}</button>`; })()}</div>`;
+          return `<button class="btn gold big" data-a="commit" ${t.aud < 0 || t.struck[t.aud] || need > 0 ? 'disabled' : ''}>${t.aud < 0 ? T('בחרו גרסה') : need > 0 ? `${T('שמעו עוד {0}', need === 1 ? T('גרסה אחת') : need + T(' גרסאות'))}` : `${T('{0}׳ בזמן. נועלים!', t.labels[t.aud])}`}</button>`; })()}</div>`;
     }
     const mx = r.roles.find(z => z.pid === ME.id), myChoice = mx && r.status[mx.role] === 'done';
     return `${this.bandRow(s)}
       <section class="card center" style="align-items:center;background:${x.color}">
         ${jelly((s.players.find(pp => pp.id === t.pid) || {}).color || '#fff', 104, {mood:'look'})}
-        <div class="row" style="justify-content:center"><span class="small" style="font-weight:700">תור ${r.ti + 1} מתוך ${r.order.length}</span>${this.timer(t.remain, t.total)}</div>
-        <h2 class="d" style="font-size:32px;line-height:1.05">התור של ${esc(p.name)}: ${esc(x.name)}</h2>
-        <span class="status-pill">${t.aud < 0 ? 'עוד לא נבחרה גרסה' : t.mute ? `ברמקול עכשיו: הלהקה בלי ${theName(esc(x.name))}` : `ברמקול עכשיו: גרסה ${t.labels[t.aud]}׳`}${t.solo ? ' · רק עם התופים' : ''}</span>
+        <div class="row" style="justify-content:center"><span class="small" style="font-weight:700">${T('תור {0} מתוך {1}', r.ti + 1, r.order.length)}</span>${this.timer(t.remain, t.total)}</div>
+        <h2 class="d" style="font-size:32px;line-height:1.05">${T('התור של {0}: {1}', esc(p.name), esc(x.name))}</h2>
+        <span class="status-pill">${t.aud < 0 ? T('עוד לא נבחרה גרסה') : t.mute ? `${T('ברמקול עכשיו: הלהקה בלי {0}', theName(esc(x.name)))}` : `${T('ברמקול עכשיו: גרסה {0}׳', t.labels[t.aud])}`}${t.solo ? T(' · רק עם התופים') : ''}</span>
         ${t.lastWrong ? `<p class="small" style="margin:0;font-weight:700">${esc(t.lastWrong)}</p>` : ''}
       </section>
       <section class="card">
-        <span class="d" style="font-size:22px">מה אתם שומעים?</span>
-        <div class="grid2"><button class="btn vote-big" data-react="1" style="background:var(--good-soft)" ${t.aud < 0 || t.mute ? 'disabled' : ''}>${ICON.up}נשמע בזמן</button>
-          <button class="btn vote-big" data-react="-1" style="background:var(--bad-soft)" ${t.aud < 0 || t.mute ? 'disabled' : ''}><span style="display:inline-flex;transform:rotate(180deg)">${ICON.up}</span>מקרטע</button></div>
-        <p class="small muted" style="margin:0" id="reactNote">התגובה קופצת אצל ${esc(p.name)}. את התשובה הנכונה אף אחד לא רואה עד הסוף.</p>
+        <span class="d" style="font-size:22px">${T('מה אתם שומעים?')}</span>
+        <div class="grid2"><button class="btn vote-big" data-react="1" style="background:var(--good-soft)" ${t.aud < 0 || t.mute ? 'disabled' : ''}>${T('{0}נשמע בזמן', ICON.up)}</button>
+          <button class="btn vote-big" data-react="-1" style="background:var(--bad-soft)" ${t.aud < 0 || t.mute ? 'disabled' : ''}><span style="display:inline-flex;transform:rotate(180deg)">${ICON.up}</span>${T('מקרטע')}</button></div>
+        <p class="small muted" style="margin:0" id="reactNote">${T('התגובה קופצת אצל {0}. את התשובה הנכונה אף אחד לא רואה עד הסוף.', esc(p.name))}</p>
       </section>
-      ${mx ? `<section class="card ink row">${jelly(mx.color, 40, {blank:true, stroke:'#fff', sw:6})}<span class="small grow">${myChoice ? `${theName(mx.name)} שלך כבר בלהקה.` : `${theName(mx.name)} שלך עוד מחכה לתור.`}</span></section>` : ''}`;
+      ${mx ? `<section class="card ink row">${jelly(mx.color, 40, {blank:true, stroke:'#fff', sw:6})}<span class="small grow">${myChoice ? `${T('{0} שלך כבר בלהקה.', theName(mx.name))}` : `${T('{0} שלך עוד מחכה לתור.', theName(mx.name))}`}</span></section>` : ''}`;
   },
   vCheck(s, host){
     const r = s.round, my = r.votes.voters.includes(ME.id);
-    return `<section class="card ink center" style="align-items:center"><span class="label">בדיקת להקה</span><h2 class="d" style="font-size:38px;line-height:1">איך זה נשמע?</h2>
-        <p style="margin:0;color:var(--lilac)">הרמקול מנגן את השיר כמו שבניתם אותו</p>${this.timer(r.remain, PHASE_MS.check)}</section>
+    return `<section class="card ink center" style="align-items:center"><span class="label">${T('בדיקת להקה')}</span><h2 class="d" style="font-size:38px;line-height:1">${T('איך זה נשמע?')}</h2>
+        <p style="margin:0;color:var(--lilac)">${T('הרמקול מנגן את השיר כמו שבניתם אותו')}</p>${this.timer(r.remain, PHASE_MS.check)}</section>
       ${this.bandRow(s)}
-      <div class="grid2"><button class="btn vote-big" data-vote="good" style="background:var(--good)" ${my ? 'disabled' : ''}>כמו המקור<small>${r.votes.good} קולות</small></button>
-        <button class="btn vote-big" data-vote="bad" style="background:var(--bad)" ${my ? 'disabled' : ''}>משהו עקום<small>${r.votes.bad} קולות</small></button></div>
-      <p class="center on-stage small" style="margin:0">${my ? 'הצבעתם. מחכים לשאר הלהקה…' : `הצביעו ${r.votes.voters.length} מתוך ${r.votes.total}`} · נשארו ${r.repairs} תיקונים</p>`;
+      <div class="grid2"><button class="btn vote-big" data-vote="good" style="background:var(--good)" ${my ? 'disabled' : ''}>${T('כמו המקור')}<small>${T('{0} קולות', r.votes.good)}</small></button>
+        <button class="btn vote-big" data-vote="bad" style="background:var(--bad)" ${my ? 'disabled' : ''}>${T('משהו עקום')}<small>${T('{0} קולות', r.votes.bad)}</small></button></div>
+      <p class="center on-stage small" style="margin:0">${T('{0} · נשארו {1} תיקונים', my ? T('הצבעתם. מחכים לשאר הלהקה…') : `${T('הצביעו {0} מתוך {1}', r.votes.voters.length, r.votes.total)}`, r.repairs)}</p>`;
   },
   vRepair(s){
     const r = s.round, my = r.rvotes.voters.includes(ME.id);
-    return `<section class="card"><div class="row"><span class="d grow" style="font-size:24px">איזה כלי לפתוח מחדש?</span>${this.timer(r.remain, PHASE_MS.repair)}</div>
-      <p class="small muted" style="margin:0">הרוב שמע שמשהו עקום. הכלי עם הכי הרבה קולות נפתח, והנגן שלו בוחר שוב. <span style="display:inline-flex;gap:2px;vertical-align:middle">${(ICON.wrench.replace('<svg', '<svg width="20" height="20"')).repeat(r.repairs)}</span></p>
+    return `<section class="card"><div class="row"><span class="d grow" style="font-size:24px">${T('איזה כלי לפתוח מחדש?')}</span>${this.timer(r.remain, PHASE_MS.repair)}</div>
+      <p class="small muted" style="margin:0">${T('הרוב שמע שמשהו עקום. הכלי עם הכי הרבה קולות נפתח, והנגן שלו בוחר שוב.')} <span style="display:inline-flex;gap:2px;vertical-align:middle">${(ICON.wrench.replace('<svg', '<svg width="20" height="20"')).repeat(r.repairs)}</span></p>
       <div class="stack">${r.order.map(role => { const x = r.roles.find(z => z.role === role), p = s.players.find(pp => pp.id === x.pid) || {name:'?'};
-        return `<button class="btn" data-rvote="${role}" style="justify-content:flex-start;font-family:var(--font-body);font-weight:700;font-size:16px" ${my ? 'disabled' : ''}>${jelly(x.color, 34, {blank:true, sw:6})}<span class="grow" style="text-align:right">${esc(x.name)} · ${esc(p.name)}</span><span>${r.rvotes.counts[role] || 0}</span></button>`; }).join('')}</div></section>
-      <p class="center on-stage small" style="margin:0">${my ? 'הצבעתם. מחכים לשאר…' : 'הצביעו בכלי שנשמע לכם עקום'}</p>`;
+        return `<button class="btn" data-rvote="${role}" style="justify-content:flex-start;font-family:var(--font-body);font-weight:700;font-size:16px" ${my ? 'disabled' : ''}>${jelly(x.color, 34, {blank:true, sw:6})}<span class="grow" style="text-align:start">${esc(x.name)} · ${esc(p.name)}</span><span>${r.rvotes.counts[role] || 0}</span></button>`; }).join('')}</div></section>
+      <p class="center on-stage small" style="margin:0">${my ? T('הצבעתם. מחכים לשאר…') : T('הצביעו בכלי שנשמע לכם עקום')}</p>`;
   },
   vConnect(s, host){
     const r = s.round, c = r.connect || {snapped:[], ok:{}}, left = r.order.filter(rl => !c.snapped.includes(rl)).length;
-    const toks = [{role:'drums', name:roleName('drums', r.style), color:roleColor('drums'), who:'הקצב'}].concat(r.order.map(rl => { const x = r.roles.find(z => z.role === rl), p = s.players.find(pp => pp.id === x.pid) || {}; return {role:rl, name:x.name, color:x.color, who:p.name || ''}; }));
-    return `<section class="card ink center" style="align-items:center"><span class="label">הרגע של הלהקה</span>
-        <h2 class="d" style="font-size:36px;line-height:1">${left === r.order.length ? 'ככה זה נשמע מפורק' : left ? 'מחזירים כלי אחרי כלי…' : 'זה מה שבניתם'}</h2>
-        <p style="margin:0;color:var(--lilac)">הרמקול מנגן. כל כלי חוזר למקום שבחרתם לו.</p></section>
+    const toks = [{role:'drums', name:roleName('drums', r.style), color:roleColor('drums'), who:T('הקצב')}].concat(r.order.map(rl => { const x = r.roles.find(z => z.role === rl), p = s.players.find(pp => pp.id === x.pid) || {}; return {role:rl, name:x.name, color:x.color, who:p.name || ''}; }));
+    return `<section class="card ink center" style="align-items:center"><span class="label">${T('הרגע של הלהקה')}</span>
+        <h2 class="d" style="font-size:36px;line-height:1">${left === r.order.length ? T('ככה זה נשמע מפורק') : left ? T('מחזירים כלי אחרי כלי…') : T('זה מה שבניתם')}</h2>
+        <p style="margin:0;color:var(--lilac)">${T('הרמקול מנגן. כל כלי חוזר למקום שבחרתם לו.')}</p></section>
       <section class="card"><div class="stageband">${toks.map(x => { const snapped = x.role === 'drums' || c.snapped.includes(x.role), good = snapped && c.ok[x.role] !== false;
         return `<div class="member ${good ? 'dancer ' + danceCls(r.style) : 'dancer off'}" data-role="${x.role}" style="--glow:${x.color}"><span class="dz">${jelly(good ? x.color : '#C9C5FF', 62, {mood:good ? '' : 'sad'})}</span><span class="nm">${esc(x.name)}</span><span class="tg">${esc(x.who)}</span></div>`; }).join('')}</div></section>`;
   },
   vReveal(s, host){
     const r = s.round, v = r.reveal;
     const rows = r.order.map(role => { const x = r.roles.find(z => z.role === role), p = s.players.find(pp => pp.id === x.pid) || {name:'?', color:'#fff'}, res = v.results[role] || {};
-      return `<div class="result-row">${jelly(x.color, 40)}<div class="grow"><div style="font-weight:700">${esc(p.name)} · ${esc(x.name)}</div><div class="small muted">${res.note || ''}</div></div><span class="tag ${res.ok ? (res.fixed ? 'fix' : 'ok') : 'no'}">${res.ok ? (res.fixed ? 'תוקן' : 'בזמן') : 'לא בזמן'}</span></div>`; }).join('');
+      return `<div class="result-row">${jelly(x.color, 40)}<div class="grow"><div style="font-weight:700">${esc(p.name)} · ${esc(x.name)}</div><div class="small muted">${res.note || ''}</div></div><span class="tag ${res.ok ? (res.fixed ? 'fix' : 'ok') : 'no'}">${res.ok ? (res.fixed ? T('תוקן') : T('בזמן')) : T('לא בזמן')}</span></div>`; }).join('');
     const gold = v.gold ? s.players.find(p => p.id === v.gold) : null;
     return `<section class="card gold center" style="align-items:center">
-        <span class="small" style="font-weight:700">${v.allOk ? 'הלהקה שלמה · השיר היה' : 'השיר התפרק · זה היה'}</span>
+        <span class="small" style="font-weight:700">${v.allOk ? T('הלהקה שלמה · השיר היה') : T('השיר התפרק · זה היה')}</span>
         <h2 class="d" style="font-size:34px;line-height:1.05">${esc(v.title)}</h2><span class="small">${esc(v.artist)} · ${STYLES[r.style].name}</span>
-        <div class="stars" role="img" aria-label="${v.stars} כוכבים מתוך 3">${'<span>★</span>'.repeat(v.stars)}${'<span class="off">★</span>'.repeat(3 - v.stars)}</div>
-        <span class="small" style="font-weight:700">${fmtTime(v.time / 1000)}${v.rank ? ` · מקום ${v.rank.rank} מתוך ${v.rank.total} באתגר` : ''}</span>
+        <div class="stars" role="img" aria-label="${T('{0} כוכבים מתוך 3', v.stars)}">${'<span>★</span>'.repeat(v.stars)}${'<span class="off">★</span>'.repeat(3 - v.stars)}</div>
+        <span class="small" style="font-weight:700">${fmtTime(v.time / 1000)}${v.rank ? ` ${T('· מקום {0} מתוך {1} באתגר', v.rank.rank, v.rank.total)}` : ''}</span>
       </section>
-      <section class="card blue row" style="background:var(--stage);color:#fff;flex-direction:row"><div class="grow"><div class="label" style="color:var(--gold)">שם הלהקה</div><div class="d" style="font-size:26px;line-height:1.1">${esc(s.band)}</div></div>${host ? `<button class="icon-btn" data-a="band" aria-label="שם אחר ללהקה"><svg viewBox="0 0 24 24" fill="none" stroke="#14112B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg></button>` : ''}</section>
+      <section class="card blue row" style="background:var(--stage);color:#fff;flex-direction:row"><div class="grow"><div class="label" style="color:var(--gold)">${T('שם הלהקה')}</div><div class="d" style="font-size:26px;line-height:1.1">${esc(s.band)}</div></div>${host ? `<button class="icon-btn" data-a="band" aria-label="${T('שם אחר ללהקה')}"><svg viewBox="0 0 24 24" fill="none" stroke="#14112B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg></button>` : ''}</section>
       <section class="card">${rows}</section>
-      ${!v.allOk ? `<section class="card"><span class="d" style="font-size:20px">השוו ברמקול</span><div class="seg"><button data-listen="ours" aria-pressed="${r.listen === 'ours'}">הגרסה שלנו</button><button data-listen="orig" aria-pressed="${r.listen !== 'ours'}">המקור</button></div></section>` : ''}
-      ${gold ? `<section class="card ink row">${ICON.star.replace('<svg', '<svg width="30" height="30"')}<span class="small"><b>אוזן זהב:</b> ${esc(gold.name)}. בזמן כבר בבחירה הראשונה, והכי מהר.</span></section>` : ''}
+      ${!v.allOk ? `<section class="card"><span class="d" style="font-size:20px">${T('השוו ברמקול')}</span><div class="seg"><button data-listen="ours" aria-pressed="${r.listen === 'ours'}">${T('הגרסה שלנו')}</button><button data-listen="orig" aria-pressed="${r.listen !== 'ours'}">${T('המקור')}</button></div></section>` : ''}
+      ${gold ? `<section class="card ink row">${ICON.star.replace('<svg', '<svg width="30" height="30"')}<span class="small"><b>${T('אוזן זהב:')}</b> ${T('{0}. בזמן כבר בבחירה הראשונה, והכי מהר.', esc(gold.name))}</span></section>` : ''}
       <div class="bottom">
-        ${host && Clip.supported() ? `<button class="btn blue big" data-a="clip">${ICON.video} קליפ עם סאונד לוואטסאפ</button><button class="btn" data-a="sharecard">${ICON.share} כרטיס לסטורי</button>` : `<button class="btn blue big" data-a="sharecard">${ICON.share} שתפו את הלהקה</button>`}
-        ${host ? `<div class="grid2"><button class="btn gold" data-a="next">שיר הבא</button><button class="btn" data-a="lobby">ללובי</button></div>` : `<span class="status-pill gold">מחכים לשיר הבא</span>`}
+        ${host && Clip.supported() ? `<button class="btn blue big" data-a="clip">${T('{0} קליפ עם סאונד לוואטסאפ', ICON.video)}</button><button class="btn" data-a="sharecard">${T('{0} כרטיס לסטורי', ICON.share)}</button>` : `<button class="btn blue big" data-a="sharecard">${T('{0} שתפו את הלהקה', ICON.share)}</button>`}
+        ${host ? `<div class="grid2"><button class="btn gold" data-a="next">${T('שיר הבא')}</button><button class="btn" data-a="lobby">${T('ללובי')}</button></div>` : `<span class="status-pill gold">${T('מחכים לשיר הבא')}</span>`}
       </div>`;
   },
   mount(body, s){
@@ -1909,12 +1945,12 @@ const Room = {
     body.querySelectorAll('[data-a]').forEach(b => b.onclick = () => this.ui(b.dataset.a, s));
     body.querySelectorAll('[data-set] button').forEach(b => b.onclick = () => this.isHost && Host.setSetting(b.parentElement.dataset.set, b.dataset.v));
     body.querySelectorAll('[data-opt]').forEach(b => b.onclick = () => this.act('pick', +b.dataset.opt));
-    body.querySelectorAll('[data-react]').forEach(b => b.onclick = () => { this.act('react', +b.dataset.react); body.querySelectorAll('[data-react]').forEach(x => x.classList.toggle('pressed', x === b)); const n = body.querySelector('#reactNote'); if (n) n.textContent = 'התגובה נשלחה ✓'; });
+    body.querySelectorAll('[data-react]').forEach(b => b.onclick = () => { this.act('react', +b.dataset.react); body.querySelectorAll('[data-react]').forEach(x => x.classList.toggle('pressed', x === b)); const n = body.querySelector('#reactNote'); if (n) n.textContent = T('התגובה נשלחה ✓'); });
     body.querySelectorAll('[data-listen]').forEach(b => b.onclick = () => this.act('listen', b.dataset.listen));
     body.querySelectorAll('[data-vote]').forEach(b => b.onclick = () => this.act('vote', b.dataset.vote));
     body.querySelectorAll('[data-rvote]').forEach(b => b.onclick = () => this.act('rvote', b.dataset.rvote));
   },
-  inviteText(s){ return `בואו לנגן איתי ב-Musicy! חדר ${s.code}: https://musicy.fun/${s.code}`; },
+  inviteText(s){ return `${T('בואו לנגן איתי ב-Musicy! חדר {0}: https://musicy.fun/{1}', s.code, s.code)}`; },
   async ui(a, s){
     if (a === 'home'){ this.leave(); return; }
     if (a === 'wa'){ track('invite', {how:'wa'}); window.open(waLink(this.inviteText(s)), '_blank', 'noopener'); return; }
@@ -1934,15 +1970,15 @@ const Room = {
       if (!id){ if (this.isHost){ id = await Host.makeChallenge(); } else { this.act('mkchal'); const t0 = performance.now(); while (!(this.st.round && this.st.round.chal) && performance.now() - t0 < 6000) await sleep(300); id = this.st.round && this.st.round.chal; } }
       const link = id ? `https://musicy.fun/c/${id}` : 'https://musicy.fun';
       const members = r.order.map(role => { const x = r.roles.find(z => z.role === role), p = s.players.find(pp => pp.id === x.pid) || {}; return {name:p.name || '', color:p.color || x.color}; });
-      openShare({where:'room', kicker:v.allOk ? 'הלהקה הרכיבה את השיר' : 'הלהקה כמעט הרכיבה את השיר', title:s.band, members,
-        stats:[['סגנון', STYLES[r.style].name], ['זמן', fmtTime(v.time / 1000)], ['כוכבים', '★'.repeat(v.stars) + '☆'.repeat(3 - v.stars), '#D99A00']],
-        cta:'אתם תצליחו מהר יותר?', link, linkText:link.replace('https://', ''), text:`${s.band} הרכיבו שיר מבולגן ב-${fmtTime(v.time / 1000)} ב-Musicy. אתם תצליחו מהר יותר? ${link}`});
+      openShare({where:'room', kicker:v.allOk ? T('הלהקה הרכיבה את השיר') : T('הלהקה כמעט הרכיבה את השיר'), title:s.band, members,
+        stats:[[T('סגנון'), STYLES[r.style].name], [T('זמן'), fmtTime(v.time / 1000)], [T('כוכבים'), '★'.repeat(v.stars) + '☆'.repeat(3 - v.stars), '#D99A00']],
+        cta:T('אתם תצליחו מהר יותר?'), link, linkText:link.replace('https://', ''), text:`${T('{0} הרכיבו שיר מבולגן ב-{1} ב-Musicy. אתם תצליחו מהר יותר? {2}', s.band, fmtTime(v.time / 1000), link)}`});
     }
   }
 };
 $('#roomLeave').innerHTML = ICON.close;
 $('#roomLeave').onclick = () => {
-  Sheet.open(`<h2>לצאת מהחדר?</h2><p style="margin:0">${Room.isHost ? 'הטלפון הזה הוא הבומבוקס. יציאה סוגרת את החדר לכולם.' : 'תוכלו לחזור עם אותו קוד.'}</p><div class="grid2"><button class="btn gold" id="lvYes">יציאה</button><button class="btn" id="lvNo">להישאר</button></div>`, el => {
+  Sheet.open(`<h2>${T('לצאת מהחדר?')}</h2><p style="margin:0">${Room.isHost ? T('הטלפון הזה הוא הבומבוקס. יציאה סוגרת את החדר לכולם.') : T('תוכלו לחזור עם אותו קוד.')}</p><div class="grid2"><button class="btn gold" id="lvYes">${T('יציאה')}</button><button class="btn" id="lvNo">${T('להישאר')}</button></div>`, el => {
     el.querySelector('#lvYes').onclick = () => { Sheet.close(); Room.leave(); };
     el.querySelector('#lvNo').onclick = () => Sheet.close();
   });
@@ -1978,7 +2014,7 @@ const Host = {
     const s = this.st; if (!s) return;
     if (m.t === 'peek'){ this.publish(); return; }
     if (m.t === 'hello'){ const p = m.p || {}; if (!p.id) return;
-      const name = String(p.name || 'נגן').slice(0, 16), color = /^#[0-9A-F]{6}$/i.test(p.color) ? p.color : '#22C1F0';
+      const name = String(p.name || T('נגן')).slice(0, 16), color = /^#[0-9A-F]{6}$/i.test(p.color) ? p.color : '#22C1F0';
       const ex = s.players.find(x => x.id === p.id) || s.audience.find(x => x.id === p.id);
       if (ex){ ex.name = name; ex.color = color; ex.online = true; }
       else if (s.players.length < MAX_PLAYERS && (s.phase === 'lobby' || s.phase === 'reveal')) s.players.push({id:p.id, name, color, online:true});
@@ -2016,7 +2052,7 @@ const Host = {
     s.round = {n, style, songId:null, roles:[], order:[], status:{}, prep:'', chal:null};
     this.setPhase('prep'); this.publish();
     let song; try { song = await getSong(def, style, ALL_ROLES, (k, t) => { s.round.prep = `${k}/${t}`; if (performance.now() - this.lastPub > 400) this.publish(); }); }
-    catch(e){ toast('לא הצלחנו להכין את השיר בטלפון הזה'); this.toLobby(); return; }
+    catch(e){ toast(T('לא הצלחנו להכין את השיר בטלפון הזה')); this.toLobby(); return; }
     if (!this.st || this.st.round !== s.round) return;
     const P2 = this.P, idx = {}; song.stems.forEach((st, i) => idx[st.role] = i);
     const playable = ROLE_PRIORITY.filter(rl => song.stems[idx[rl]].playable);
@@ -2075,7 +2111,7 @@ const Host = {
     if (P.first[role] == null){ P.first[role] = ok; P.dec[role] = performance.now() - P.turnStart; }
     if (s.settings.mode === 'instant'){
       if (ok){ P.choices[role] = k; r.status[role] = 'done'; Audio.good(); flash(roleColor(role)); this.publish(); setTimeout(() => this.afterTurn(), 900); }
-      else { t.struck[j] = true; t.lastWrong = `לא ${t.labels[j]}׳: יש בה ${describeShift(k, P.song)}`; t.aud = -1; t.mute = false; r.lives--; Audio.bad(); flash(null, true); this.applyMix();
+      else { t.struck[j] = true; t.lastWrong = `${T('לא {0}׳: יש בה {1}', t.labels[j], describeShift(k, P.song))}`; t.aud = -1; t.mute = false; r.lives--; Audio.bad(); flash(null, true); this.applyMix();
         if (r.lives <= 0){ P.choices[role] = k; this.reveal(); return; }
         P.deadline = performance.now() + 15000; P.turnTotal = 15000; this.publish(); }
       return;
@@ -2106,7 +2142,7 @@ const Host = {
     const results = {}; let okN = 0;
     r.order.forEach(rl => { const st = P.song.stems[P.idx[rl]], ok = P.choices[rl] != null && isRightShift(P.song, st, P.choices[rl]); if (ok) okN++;
       const fixed = !!P.fixed[rl] && ok; const firstOk = P.first[rl];
-      results[rl] = {ok, fixed, note:ok ? (fixed ? 'תוקן בבדיקת הלהקה' : firstOk ? `בזמן כבר בבחירה הראשונה, תוך ${Math.max(1, Math.round((P.dec[rl] || 0) / 1000))} שניות` : 'בזמן אחרי ניסיון נוסף') : P.choices[rl] != null ? `נשאר עם ${describeShift(P.choices[rl], P.song)}` : 'לא נבחרה גרסה'}; });
+      results[rl] = {ok, fixed, note:ok ? (fixed ? T('תוקן בבדיקת הלהקה') : firstOk ? `${T('בזמן כבר בבחירה הראשונה, תוך {0} שניות', Math.max(1, Math.round((P.dec[rl] || 0) / 1000)))}` : T('בזמן אחרי ניסיון נוסף')) : P.choices[rl] != null ? `${T('נשאר עם {0}', describeShift(P.choices[rl], P.song))}` : T('לא נבחרה גרסה')}; });
     const allOk = okN === r.order.length, mistakes = s.settings.mode === 'instant' ? 3 - r.lives : 2 - r.repairs;
     const stars = allOk ? (mistakes === 0 ? 3 : mistakes === 1 ? 2 : 1) : okN * 2 >= r.order.length ? 1 : 0;
     let gold = null, best = Infinity; r.order.forEach(rl => { if (P.first[rl] && !P.fixed[rl] && results[rl].ok && P.dec[rl] < best){ best = P.dec[rl]; gold = P.assign[rl]; } });
@@ -2130,13 +2166,13 @@ const Host = {
   },
   async clip(){
     const s = this.st, r = s.round, P = this.P; if (!r || !r.reveal || !P.mix) return;
-    loading('מכינים לינק אתגר…'); const id = await this.makeChallenge(); loading(false);
+    loading(T('מכינים לינק אתגר…')); const id = await this.makeChallenge(); loading(false);
     const link = id || r.chal ? `https://musicy.fun/c/${id || r.chal}` : 'https://musicy.fun', v = r.reveal;
     const idxs = [P.idx.drums].concat(r.order.map(rl => P.idx[rl])), scr = {}, fin = {}, ok = {};
     r.order.forEach(rl => { const i = P.idx[rl]; scr[i] = P.scr[rl]; fin[i] = P.choices[rl] != null ? P.choices[rl] : P.scr[rl]; ok[i] = v.results[rl].ok; });
     Clip.makeAndShare({where:'room', mix:P.mix, song:P.song, idxs, scr, final:fin, ok, allOk:v.allOk, style:r.style,
-      kicker:v.allOk ? 'השיר התפרק. החזרנו אותו לזמן' : 'השיר התפרק. כמעט החזרנו אותו', title:s.band, cta:'אתם תצליחו מהר יותר?', linkText:link.replace('https://', ''),
-      text:`${s.band} החזירו שיר מפורק לזמן ב-Musicy. אתם תצליחו מהר יותר? ${link}`,
+      kicker:v.allOk ? T('השיר התפרק. החזרנו אותו לזמן') : T('השיר התפרק. כמעט החזרנו אותו'), title:s.band, cta:T('אתם תצליחו מהר יותר?'), linkText:link.replace('https://', ''),
+      text:`${T('{0} החזירו שיר מפורק לזמן ב-Musicy. אתם תצליחו מהר יותר? {1}', s.band, link)}`,
       after:() => { if (!this.P.mix) return; this.applyMix(); this.P.mix.restartAll(true); Room.send({t:'sync', pos:0}); }});
   },
   async makeChallenge(){
@@ -2165,10 +2201,17 @@ const Host = {
 /* ===== boot & routing ===== */
 document.addEventListener('DOMContentLoaded', () => {
   Home.renderMe();
+  const lb = $('#langBtn'); lb.textContent = LANG === 'he' ? 'EN' : 'עב'; lb.setAttribute('aria-label', LANG === 'he' ? 'Switch to English' : 'החליפו לעברית'); lb.lang = LANG === 'he' ? 'en' : 'he';
+  lb.onclick = () => { track('lang_switch', {to:LANG === 'he' ? 'en' : 'he'}); setLang(LANG === 'he' ? 'en' : 'he'); };
+  let touched = false; document.addEventListener('pointerdown', () => touched = true, {capture:true, once:true});
+  /* confirm the country with the server (Vercel knows it); if it disagrees with the time-zone guess on a fresh visit, switch before anyone touches anything */
+  if (!store.get('lang', null)) fetch('/api/geo', {cache:'no-store'}).then(r => r.ok ? r.json() : null).then(j => { const c = j && j.country; if (!c) return;
+    const had = store.get('cc', null); store.set('cc', c); const want = c === 'IL' ? 'he' : 'en';
+    if (want !== LANG && !had && !touched && current === 's-home') location.reload(); }).catch(() => {});
   /* first touch anywhere unlocks audio (and keeps iPhones playing when the silent switch is on) */
   ['pointerdown', 'keydown', 'touchend'].forEach(t => document.addEventListener(t, () => Audio.unlock(), {capture:true, passive:true}));
   let ref = ''; try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch(e){}
-  track('visit', {route:/^\/\d{4}/.test(location.pathname) ? 'room' : /^\/c\//.test(location.pathname) ? 'chal' : 'home', ref, standalone:!!(navigator.standalone || matchMedia('(display-mode: standalone)').matches)});
+  track('visit', {lang:LANG, route:/^\/\d{4}/.test(location.pathname) ? 'room' : /^\/c\//.test(location.pathname) ? 'chal' : 'home', ref, standalone:!!(navigator.standalone || matchMedia('(display-mode: standalone)').matches)});
   try { history.replaceState({s:'s-home'}, ''); } catch(e){}
   const p = location.pathname; let m;
   if ((m = p.match(/^\/(\d{4})\/?$/))){ show('s-home', false); Home.render(); Room.join(m[1]); }
