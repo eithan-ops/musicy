@@ -1,12 +1,12 @@
 {
  "tracks": [
   {
-   "id": "kids_pop",
-   "title": "פופ ילדים",
-   "title_en": "Kids Pop",
+   "id": "rock_pulse",
+   "title": "רוק פולס",
+   "title_en": "Rock Pulse",
    "artist": "Musicy",
    "artist_en": "Musicy",
-   "bpm": 118,
+   "bpm": 130,
    "bpb": 4,
    "bars": 8,
    "stems": [
@@ -31,29 +31,413 @@
     {
      "role": "chords",
      "file": "chords.flac",
-     "name": "קלידים",
-     "name_en": "Keys"
+     "name": "פסנתר",
+     "name_en": "Piano"
     },
     {
-     "role": "perc",
-     "file": "perc.flac",
-     "name": "כלי הקשה",
-     "name_en": "Percussion"
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "צ׳לו",
+     "name_en": "Cello"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "piano_pop",
+   "title": "פסנתר פופ",
+   "title_en": "Piano Pop",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 125,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כינור",
+     "name_en": "Violin"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "violin_techno",
+   "title": "כינור טכנו",
+   "title_en": "Violin Techno",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 132,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "כינור וצ׳לו",
+     "name_en": "Violin & cello"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "electro_funk",
+   "title": "אלקטרו פאנק",
+   "title_en": "Electro Funk",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 119,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "מרימבה",
+     "name_en": "Marimba"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כלי נשיפה",
+     "name_en": "Brass"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "violin_rock",
+   "title": "כינור רוק",
+   "title_en": "Violin Rock",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 138,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כלי מיתר",
+     "name_en": "Strings"
     },
     {
      "role": "melody",
      "file": "melody.flac",
      "name": "סינת׳",
      "name_en": "Synth"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "rock_pulse_2",
+   "title": "רוק פולס 2",
+   "title_en": "Rock Pulse 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 133,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "צ׳לו",
+     "name_en": "Cello"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "piano_pop_2",
+   "title": "פסנתר פופ 2",
+   "title_en": "Piano Pop 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 125,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
     },
     {
      "role": "counter",
      "file": "counter.flac",
-     "name": "מלודיה",
-     "name_en": "Hook"
+     "name": "כינור",
+     "name_en": "Violin"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
     }
    ],
-   "active": false,
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "violin_techno_2",
+   "title": "כינור טכנו 2",
+   "title_en": "Violin Techno 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 132,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "כינור וצ׳לו",
+     "name_en": "Violin & cello"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "electro_funk_2",
+   "title": "אלקטרו פאנק 2",
+   "title_en": "Electro Funk 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 119,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "מרימבה",
+     "name_en": "Marimba"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כלי נשיפה",
+     "name_en": "Brass"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "violin_rock_2",
+   "title": "כינור רוק 2",
+   "title_en": "Violin Rock 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 137,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כלי מיתר",
+     "name_en": "Strings"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    }
+   ],
+   "active": true,
    "source": "suno"
   }
  ],
