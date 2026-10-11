@@ -8,7 +8,7 @@
    "artist_en": "Musicy",
    "bpm": 130,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
@@ -52,7 +52,7 @@
    "artist_en": "Musicy",
    "bpm": 125,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
@@ -77,12 +77,6 @@
      "file": "melody.flac",
      "name": "פסנתר",
      "name_en": "Piano"
-    },
-    {
-     "role": "counter",
-     "file": "counter.flac",
-     "name": "כינור",
-     "name_en": "Violin"
     }
    ],
    "active": true,
@@ -228,7 +222,7 @@
    "artist_en": "Musicy",
    "bpm": 133,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
@@ -272,7 +266,7 @@
    "artist_en": "Musicy",
    "bpm": 125,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
@@ -316,7 +310,7 @@
    "artist_en": "Musicy",
    "bpm": 132,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
@@ -337,12 +331,6 @@
      "name_en": "Piano"
     },
     {
-     "role": "melody",
-     "file": "melody.flac",
-     "name": "כינור וצ׳לו",
-     "name_en": "Violin & cello"
-    },
-    {
      "role": "arp",
      "file": "arp.flac",
      "name": "סינת׳",
@@ -360,7 +348,7 @@
    "artist_en": "Musicy",
    "bpm": 119,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
@@ -404,7 +392,7 @@
    "artist_en": "Musicy",
    "bpm": 137,
    "bpb": 4,
-   "bars": 8,
+   "bars": 4,
    "stems": [
     {
      "role": "drums",
