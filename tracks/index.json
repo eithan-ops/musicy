@@ -45,6 +45,44 @@
    "source": "suno"
   },
   {
+   "id": "sax_house",
+   "title": "סקס האוס",
+   "title_en": "Sax House",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 124,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "פסנתר חשמלי",
+     "name_en": "Electric piano"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "סקסופון",
+     "name_en": "Saxophone"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
    "id": "piano_pop",
    "title": "פסנתר פופ",
    "title_en": "Piano Pop",
@@ -75,6 +113,44 @@
     {
      "role": "melody",
      "file": "melody.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "accordion_techno",
+   "title": "אקורדיון טכנו",
+   "title_en": "Accordion Techno",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 130.01,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "אקורדיון",
+     "name_en": "Accordion"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
      "name": "פסנתר",
      "name_en": "Piano"
     }
@@ -127,6 +203,50 @@
    "source": "suno"
   },
   {
+   "id": "flute_pop",
+   "title": "חליל פופ",
+   "title_en": "Flute Pop",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 116,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "קלידים",
+     "name_en": "Keys"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כלי הקשה",
+     "name_en": "Percussion"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "חליל",
+     "name_en": "Flute"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
    "id": "electro_funk",
    "title": "אלקטרו פאנק",
    "title_en": "Electro Funk",
@@ -165,6 +285,50 @@
      "file": "counter.flac",
      "name": "כלי נשיפה",
      "name_en": "Brass"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "banjo_stomp",
+   "title": "בנג׳ו סטומפ",
+   "title_en": "Banjo Stomp",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 141,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "בנג׳ו וגיטרה",
+     "name_en": "Banjo & guitar"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "מלודיה",
+     "name_en": "Hook"
     }
    ],
    "active": true,
@@ -215,6 +379,50 @@
    "source": "suno"
   },
   {
+   "id": "steel_drum_party",
+   "title": "מסיבת תופי פלדה",
+   "title_en": "Steel Drum Party",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 121,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "אורגן",
+     "name_en": "Organ"
+    },
+    {
+     "role": "perc",
+     "file": "perc.flac",
+     "name": "כלי הקשה",
+     "name_en": "Percussion"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "חצוצרה",
+     "name_en": "Trumpet"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
    "id": "rock_pulse_2",
    "title": "רוק פולס 2",
    "title_en": "Rock Pulse 2",
@@ -253,6 +461,50 @@
      "file": "melody.flac",
      "name": "צ׳לו",
      "name_en": "Cello"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "sax_house_2",
+   "title": "סקס האוס 2",
+   "title_en": "Sax House 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 127,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "arp",
+     "file": "arp.flac",
+     "name": "גיטרה",
+     "name_en": "Guitar"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "פסנתר חשמלי",
+     "name_en": "Electric piano"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "סקסופון",
+     "name_en": "Saxophone"
     }
    ],
    "active": true,
@@ -303,6 +555,44 @@
    "source": "suno"
   },
   {
+   "id": "accordion_techno_2",
+   "title": "אקורדיון טכנו 2",
+   "title_en": "Accordion Techno 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 130,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "פסנתר",
+     "name_en": "Piano"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "אקורדיון",
+     "name_en": "Accordion"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
    "id": "violin_techno_2",
    "title": "כינור טכנו 2",
    "title_en": "Violin Techno 2",
@@ -335,6 +625,50 @@
      "file": "arp.flac",
      "name": "סינת׳",
      "name_en": "Synth"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "flute_pop_2",
+   "title": "חליל פופ 2",
+   "title_en": "Flute Pop 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 119,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "חליל",
+     "name_en": "Flute"
+    },
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "קלידים",
+     "name_en": "Keys"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "כלי הקשה",
+     "name_en": "Percussion"
     }
    ],
    "active": true,
@@ -385,6 +719,50 @@
    "source": "suno"
   },
   {
+   "id": "banjo_stomp_2",
+   "title": "בנג׳ו סטומפ 2",
+   "title_en": "Banjo Stomp 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 141,
+   "bpb": 4,
+   "bars": 4,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "בנג׳ו וגיטרה",
+     "name_en": "Banjo & guitar"
+    },
+    {
+     "role": "perc",
+     "file": "perc.flac",
+     "name": "כלי הקשה",
+     "name_en": "Percussion"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "מלודיה",
+     "name_en": "Hook"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
    "id": "violin_rock_2",
    "title": "כינור רוק 2",
    "title_en": "Violin Rock 2",
@@ -423,6 +801,50 @@
      "file": "melody.flac",
      "name": "סינת׳",
      "name_en": "Synth"
+    }
+   ],
+   "active": true,
+   "source": "suno"
+  },
+  {
+   "id": "steel_drum_party_2",
+   "title": "מסיבת תופי פלדה 2",
+   "title_en": "Steel Drum Party 2",
+   "artist": "Musicy",
+   "artist_en": "Musicy",
+   "bpm": 121,
+   "bpb": 4,
+   "bars": 8,
+   "stems": [
+    {
+     "role": "drums",
+     "file": "drums.flac",
+     "name": "תופים",
+     "name_en": "Drums"
+    },
+    {
+     "role": "bass",
+     "file": "bass.flac",
+     "name": "בס",
+     "name_en": "Bass"
+    },
+    {
+     "role": "chords",
+     "file": "chords.flac",
+     "name": "אורגן",
+     "name_en": "Organ"
+    },
+    {
+     "role": "melody",
+     "file": "melody.flac",
+     "name": "סינת׳",
+     "name_en": "Synth"
+    },
+    {
+     "role": "counter",
+     "file": "counter.flac",
+     "name": "חצוצרה",
+     "name_en": "Trumpet"
     }
    ],
    "active": true,
