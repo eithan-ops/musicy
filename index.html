@@ -1338,6 +1338,7 @@ const Clip = {
     catch(e){ ov.remove(); this.busy = false; return null; }
     rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
     const stopped = new Promise(r => rec.onstop = r);
+    m.stopEvolve();
     s.stems.forEach((st, i) => m.setGain(i, o.idxs.includes(i) ? 1 : 0, .01));
     order.forEach(i => m.shift[i] = o.scr[i]);
     if (!m.playing) m.play(true); else m.restartAll(true);
