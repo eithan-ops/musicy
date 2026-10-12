@@ -39,7 +39,7 @@
       ]
     },
     {
-      "source": "/chars/:file",
+      "source": "/chars/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

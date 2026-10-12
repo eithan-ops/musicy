@@ -305,16 +305,17 @@ html[dir=ltr] .roomcode{text-align:left}
   .btn{transition:none}
 }
 /* musician characters */
-.chr{position:relative;display:inline-block;width:var(--s);height:var(--s);vertical-align:bottom}
-.chr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;-webkit-user-drag:none;user-select:none}
-.chr .cb{visibility:hidden}
-.chr.hit .ca{visibility:hidden}.chr.hit .cb{visibility:visible}
+.chr{position:relative;display:inline-block;height:var(--s);width:var(--s);vertical-align:bottom;background-repeat:no-repeat}
 .chr.off{filter:grayscale(1) brightness(1.2) contrast(.8);opacity:.42}
 .chr.cur{filter:drop-shadow(0 0 7px var(--glow,#FFD23F)) drop-shadow(0 0 2px #fff)}
 .chr.pop{animation:chrpop .5s ease-out}
+.dancer .dz:has(.mus),.dancer.off .dz:has(.mus){transform:none!important}
+.hero.broken .hj.odd .chr{filter:saturate(.45) brightness(.9)}
+.hero.fixed .hj.odd .chr{filter:drop-shadow(0 0 8px #FFD23F)}
+.hj:has(.chr){width:auto;min-width:46px}
 @keyframes chrpop{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
 .stageband.big{gap:4px 6px}
-.stageband .member:has(.chr){width:auto;min-width:76px}
+.stageband .member:has(.chr){width:auto;min-width:64px}
 #pConnect .stageband{gap:2px 4px}
 .stageband.big .member .nm{max-width:88px}
 .hj .chr{filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
@@ -1056,8 +1057,14 @@ const CHAR_RULES = [[/תופ|drum/i, 'drums'], [/בנג׳ו|banjo/i, 'banjo'], [
   [/בס|bass/i, 'bass'], [/פסנתר|קלידים|אורגן|piano|keys|organ|keyboard|אקורדים|chord/i, 'keys'], [/גיטר|guitar/i, 'guitar'], [/סינת|synth|מלודיה|hook/i, 'synth']];
 const CHAR_ROLE = {drums:'drums', bass:'bass', chords:'keys', arp:'synth', perc:'perc', counter:'violin', melody:'synth'};
 function charKey(x){ const n = (x && (x.name || '')) + ' ' + ((x && x.name_en) || ''); for (const [re, k] of CHAR_RULES) if (re.test(n)) return k; return CHAR_ROLE[x && x.role] || 'synth'; }
-function charEl(x, size, o){ o = o || {}; const k = charKey(x);
-  return `<span class="chr${o.off ? ' off' : ''}${o.cls ? ' ' + o.cls : ''}" style="--s:${size}px"><img class="ca" src="/chars/${k}_a.webp" alt="" draggable="false"><img class="cb" src="/chars/${k}_b.webp" alt="" draggable="false"></span>`; }
+/* every musician is a looped clip of 4 beats (sprite sheet), always drawn at the frame for the song's current beat */
+const MUS = {"drums":{"n":40,"c":8,"w":161,"h":180,"b":4,"idle":0.5,"v":2},"bass":{"n":40,"c":8,"w":136,"h":180,"b":4,"idle":0.5,"v":2},"keys":{"n":40,"c":8,"w":124,"h":180,"b":4,"idle":0.5,"v":2},"guitar":{"n":40,"c":8,"w":142,"h":180,"b":4,"idle":0.5,"v":2},"violin":{"n":60,"c":10,"w":123,"h":180,"b":6,"idle":0.5,"v":2},"cello":{"n":40,"c":8,"w":113,"h":180,"b":4,"idle":0.5,"v":2},"sax":{"n":40,"c":8,"w":80,"h":180,"b":4,"idle":0.5,"v":2},"synth":{"n":40,"c":8,"w":124,"h":180,"b":4,"idle":0.5,"v":2},"accordion":{"n":40,"c":8,"w":109,"h":180,"b":4,"idle":0.5,"v":2},"trumpet":{"n":40,"c":8,"w":98,"h":180,"b":4,"idle":0.5,"v":2},"marimba":{"n":40,"c":8,"w":138,"h":180,"b":4,"idle":0.5,"v":2},"banjo":{"n":40,"c":8,"w":120,"h":180,"b":4,"idle":0.5,"v":2},"flute":{"n":40,"c":8,"w":97,"h":180,"b":4,"idle":0.5,"v":2},"perc":{"n":40,"c":8,"w":113,"h":180,"b":4,"idle":0.5,"v":2}};
+function musPos(m, beat){ const B = m.b || 4, f = Math.floor(mod(beat, B) / B * m.n) % m.n, c = f % m.c, r = (f / m.c) | 0, rows = Math.ceil(m.n / m.c);
+  return [f, `${m.c > 1 ? (c / (m.c - 1) * 100).toFixed(3) : 0}% ${rows > 1 ? (r / (rows - 1) * 100).toFixed(3) : 0}%`]; }
+function charEl(x, size, o){ o = o || {}; const k = charKey(x), m = MUS[k] || MUS.drums, kk = MUS[k] ? k : 'drums', rows = Math.ceil(m.n / m.c);
+  return `<span class="chr mus${o.off ? ' off' : ''}${o.cls ? ' ' + o.cls : ''}" data-k="${kk}" style="--s:${size}px;width:${Math.round(size * m.w / m.h)}px;background-image:url(/chars/m/${kk}.webp?v=${m.v || 1});background-size:${m.c * 100}% ${rows * 100}%;background-position:${musPos(m, m.idle || .5)[1]}"></span>`; }
+function musSet(el, beat){ const m = MUS[el.dataset.k]; if (!m) return; const [f, bp] = musPos(m, beat); if (el._f === f) return; el._f = f; el.style.backgroundPosition = bp; }
+function musIdle(el){ const m = MUS[el.dataset.k]; if (m) musSet(el, m.idle || .5); }
 function jelly(color, size, o){
   o = o || {}; const s = o.stroke || '#14112B', sw = o.sw || 5, dash = o.dash ? ` stroke-dasharray="${o.dash}"` : '';
   let inner = '';
@@ -1076,8 +1083,9 @@ function jelly(color, size, o){
 /* ===== dancing jellies: each style has its own moves, driven by the instrument's own loudness ===== */
 const DANCE_CLS = {pop:'dance-pop', electro:'dance-electro', rock:'dance-rock'};
 const danceCls = style => DANCE_CLS[style] || 'dance-pop';
-function danceVars(el, v, pos, beatSec){ if (reduced || !beatSec) return; const b = pos / beatSec, f = b - Math.floor(b);
-  const c = el.querySelector('.chr'); if (c){ const now = performance.now(); if (v - (el._pv || 0) > .1 || (v > .7 && now - (el._ht || 0) > 190)) el._ht = now; c.classList.toggle('hit', now - (el._ht || 0) < 120); el._pv = v; }
+function danceVars(el, v, pos, beatSec, shiftSec, on){ if (!beatSec) return; const c = el.querySelector('.chr');
+  if (c){ if (reduced || on === false) musIdle(c); else musSet(c, (pos - (shiftSec || 0)) / beatSec); }
+  if (reduced) return; const b = pos / beatSec, f = b - Math.floor(b);
   el.style.setProperty('--v', Math.min(1, v).toFixed(2)); el.style.setProperty('--sw', Math.sin(b * Math.PI).toFixed(3)); el.style.setProperty('--hb', Math.pow(1 - f, 3).toFixed(3)); }
 const beatPulse = (pos, beatSec) => { if (!beatSec) return 0; const f = pos / beatSec - Math.floor(pos / beatSec); return Math.pow(1 - f, 2.2) * .9; };
 
@@ -1355,15 +1363,19 @@ const Home = {
   render(){ this.renderMe(); this.daily(); this.nearby(); Hero.start(); renderQuick(); }
 };
 /* the home demo: a band of jellies, one stumbles off the beat, a tap puts it back */
-const Hero = { t:0, tt:[],
+const Hero = { t:0, tt:[], raf:0,
   start(){ const h = $('#hero'); if (!h) return; this.stop();
-    if (!$('#heroBand').children.length) $('#heroBand').innerHTML = [['drums', T('תופים')], ['bass', T('בס')], ['synth', T('סינת׳')], ['keys', T('פסנתר')]].map(([r, n], k) => `<span class="hj${k === 2 ? ' odd' : ''}">${charEl({role:r, name:n}, 56)}<small>${n}</small></span>`).join('') + '<span class="tapfx" aria-hidden="true"></span>';
+    if (!$('#heroBand').children.length) $('#heroBand').innerHTML = [['drums', T('תופים')], ['bass', T('בס')], ['synth', T('סינת׳')], ['keys', T('פסנתר')]].map(([r, n], k) => `<span class="hj${k === 2 ? ' odd' : ''}">${charEl({role:r, name:n}, 64)}<small>${n}</small></span>`).join('') + '<span class="tapfx" aria-hidden="true"></span>';
     if (reduced){ h.classList.add('fixed'); return; }
-    const resync = () => $$('#heroBand .hj').forEach(el => { el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
-    const cyc = () => { h.classList.remove('fixed', 'tap'); h.classList.add('broken'); resync();
-      this.tt.push(setTimeout(() => h.classList.add('tap'), 2400)); this.tt.push(setTimeout(() => { h.classList.remove('broken', 'tap'); h.classList.add('fixed'); resync(); }, 2750)); };
-    cyc(); this.t = setInterval(cyc, 6000); },
-  stop(){ clearInterval(this.t); this.tt.forEach(clearTimeout); this.tt = []; }
+    const cyc = () => { h.classList.remove('fixed', 'tap'); h.classList.add('broken');
+      this.tt.push(setTimeout(() => h.classList.add('tap'), 2400)); this.tt.push(setTimeout(() => { h.classList.remove('broken', 'tap'); h.classList.add('fixed'); }, 2750)); };
+    cyc(); this.t = setInterval(cyc, 6000);
+    const t0 = performance.now(), beatSec = 60 / 104, els = $$('#heroBand .hj');
+    const loop = now => { if (current !== 's-home'){ this.raf = 0; return; } const pos = (now - t0) / 1000, broken = h.classList.contains('broken');
+      els.forEach(el => { const c = el.querySelector('.chr'); if (c) musSet(c, (pos - (broken && el.classList.contains('odd') ? beatSec * .45 : 0)) / beatSec); });
+      this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop); },
+  stop(){ clearInterval(this.t); this.tt.forEach(clearTimeout); this.tt = []; cancelAnimationFrame(this.raf); this.raf = 0; }
 };
 $('#hero').onclick = e => { if (!e.target.closest('button')) $('#quickBtn').click(); };
 /* first visit: a 2-round taste. After that, the same button walks through the songs you haven't finished yet */
@@ -1661,7 +1673,7 @@ const Solo = {
     if (g && this.mix && s){
       if (this.mix.playing && ['demo', 'ask', 'won'].includes(g.phase)) g.elapsed += dt;
       const pos = this.mix.pos();
-      $$('#soloBand .dancer, #sStage .dancer').forEach(el => danceVars(el, this.mix.level(+el.dataset.i), pos, s.beatSec));
+      $$('#soloBand .member, #sStage .member').forEach(el => { const i = +el.dataset.i, live = el.classList.contains('dancer') || (i === g.cur && g.curAudible !== false && this.mix.gain[i] > 0); danceVars(el, this.mix.level(i), pos, s.beatSec, this.mix.shiftSec(i), this.mix.playing && live); });
       const ai = s.stems.findIndex(x => x.anchor); $('#soloGlow').style.setProperty('--beat', (ai >= 0 ? this.mix.level(ai) * .85 : 0).toFixed(2));
       if (this.o.mode === 'choose' && g.aud >= 0 && g.cur >= 0){ const c = $('#sOpts').children[g.aud]; if (c) c.style.setProperty('--v', this.mix.level(g.cur).toFixed(2)); }
       if (this.o.mode === 'tap' && g.phase === 'ask'){
@@ -1878,9 +1890,9 @@ const Room = {
     }
     if (r && r.beatSec){ const pos = this.loopPos(), hostMix = this.isHost && Host.P.mix, hard = s.settings && s.settings.level === 'hard';
       $$('#roomBody .dancer').forEach(el => { const role = el.dataset.role; let v;
-        if (hostMix){ const i = Host.P.idx && Host.P.idx[hard && s.phase === 'turn' && r.turn && r.turn.role === role ? 'drums' : role]; v = i != null ? hostMix.level(i) : 0; }
+        let sh = 0; if (hostMix){ const i = Host.P.idx && Host.P.idx[hard && s.phase === 'turn' && r.turn && r.turn.role === role ? 'drums' : role]; v = i != null ? hostMix.level(i) : 0; const j = Host.P.idx && Host.P.idx[role]; if (j != null) sh = hostMix.shiftSec(j); }
         else v = beatPulse(pos, r.beatSec);
-        danceVars(el, v, pos, r.beatSec); }); }
+        danceVars(el, v, pos, r.beatSec, sh); }); }
   },
   /* ===== views ===== */
   render(){
