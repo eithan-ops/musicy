@@ -2785,7 +2785,7 @@
      ]
     }
    ],
-   "active": true,
+   "active": false,
    "source": "suno",
    "evolve": {
     "file": "evolve.m4a",
@@ -3674,8 +3674,8 @@
   },
   {
    "id": "rock_pulse_2",
-   "title": "רוק פולס 2",
-   "title_en": "Rock Pulse 2",
+   "title": "רוק דרייב",
+   "title_en": "Rock Drive",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 133,
@@ -3986,8 +3986,8 @@
   },
   {
    "id": "sax_house_2",
-   "title": "סקסופון האוס 2",
-   "title_en": "Sax House 2",
+   "title": "סקסופון בחצות",
+   "title_en": "Midnight Sax",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 127,
@@ -4554,8 +4554,8 @@
   },
   {
    "id": "piano_pop_2",
-   "title": "פסנתר פופ 2",
-   "title_en": "Piano Pop 2",
+   "title": "פסנתר שמש",
+   "title_en": "Sunny Piano",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 125,
@@ -4866,8 +4866,8 @@
   },
   {
    "id": "accordion_techno_2",
-   "title": "אקורדיון טכנו 2",
-   "title_en": "Accordion Techno 2",
+   "title": "אקורדיון רייב",
+   "title_en": "Accordion Rave",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 130,
@@ -5106,8 +5106,8 @@
   },
   {
    "id": "violin_techno_2",
-   "title": "כינור טכנו 2",
-   "title_en": "Violin Techno 2",
+   "title": "כינור ניאון",
+   "title_en": "Neon Violin",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 132,
@@ -5346,8 +5346,8 @@
   },
   {
    "id": "flute_pop_2",
-   "title": "חליל פופ 2",
-   "title_en": "Flute Pop 2",
+   "title": "חליל בעננים",
+   "title_en": "Cloud Flute",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 119,
@@ -5658,8 +5658,8 @@
   },
   {
    "id": "electro_funk_2",
-   "title": "אלקטרו פאנק 2",
-   "title_en": "Electro Funk 2",
+   "title": "פאנק גלקטי",
+   "title_en": "Galaxy Funk",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 119,
@@ -5970,8 +5970,8 @@
   },
   {
    "id": "banjo_stomp_2",
-   "title": "בנג׳ו סטומפ 2",
-   "title_en": "Banjo Stomp 2",
+   "title": "באנג׳ו רודיאו",
+   "title_en": "Banjo Rodeo",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 141,
@@ -6282,8 +6282,8 @@
   },
   {
    "id": "violin_rock_2",
-   "title": "כינור רוק 2",
-   "title_en": "Violin Rock 2",
+   "title": "כינור רעם",
+   "title_en": "Thunder Violin",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 137,
@@ -6594,8 +6594,8 @@
   },
   {
    "id": "steel_drum_party_2",
-   "title": "מסיבת תופי פלדה 2",
-   "title_en": "Steel Drum Party 2",
+   "title": "חוף התופים",
+   "title_en": "Drum Beach",
    "artist": "Musicy",
    "artist_en": "Musicy",
    "bpm": 121,
