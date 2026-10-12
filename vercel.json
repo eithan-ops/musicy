@@ -8,6 +8,10 @@
     {
       "source": "/c/:id",
       "destination": "/"
+    },
+    {
+      "source": "/ear",
+      "destination": "/"
     }
   ],
   "headers": [
