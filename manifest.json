@@ -1,18 +1,21 @@
 {
   "name": "Musicy · הלהקה מתפרקת",
   "short_name": "Musicy",
+  "description": "משחק מוזיקה: השיר התפרק לכלים, וביחד מחזירים את הלהקה לזמן.",
   "lang": "he",
   "dir": "rtl",
-  "start_url": "/",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#3A2EF0",
   "theme_color": "#3A2EF0",
+  "categories": ["games", "music", "entertainment"],
   "icons": [
-    {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }

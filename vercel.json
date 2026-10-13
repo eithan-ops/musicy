@@ -25,11 +25,11 @@
       ]
     },
     {
-      "source": "/tracks/(.*)\\.flac",
+      "source": "/tracks/(.*)\\.(flac|m4a)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=604800"
+          "value": "public, max-age=2592000, immutable"
         }
       ]
     },
@@ -43,11 +43,20 @@
       ]
     },
     {
-      "source": "/chars/(.*)",
+      "source": "/(chars|icons|og)/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
         }
       ]
     }

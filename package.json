@@ -1,0 +1,8 @@
+{
+  "name": "musicy",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@vercel/og": "^0.6.3"
+  }
+}
