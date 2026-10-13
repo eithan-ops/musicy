@@ -12,7 +12,7 @@ M = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mel
 NAME = {  # Suno stem name -> (role, he, en)
   'Drums': ('drums', 'תופים', 'Drums'), 'Percussion': ('perc', 'כלי הקשה', 'Percussion'), 'Bass': ('bass', 'בס', 'Bass'),
   'Keyboard': ('chords', 'פסנתר', 'Piano'), 'Guitar': ('arp', 'גיטרה', 'Guitar'), 'Synth': ('melody', 'סינת׳', 'Synth'),
-  'Strings': ('counter', 'כלי מיתר', 'Strings'), 'Brass': ('counter', 'כלי נשיפה', 'Brass'), 'Other': ('counter', 'ליווי', 'Backing'),
+  'Strings': ('counter', 'כלי מיתר', 'Strings'), 'Brass': ('counter', 'כלי נשיפה', 'Brass'), 'Other': ('counter', 'גיטרה', 'Guitar'),
   'Lead Vocal': ('melody', 'קול', 'Voice'), 'Backing Vocals': ('counter', 'קולות רקע', 'Backing vocals'), 'Woodwinds': ('counter', 'חליל', 'Flute'),
 }
 ROLE_SLOTS = ['bass', 'chords', 'arp', 'counter', 'perc', 'melody']
@@ -72,6 +72,8 @@ def main():
     scored.sort(reverse=True)
     for x in scored[:5]: print('cand score %.3f mel %.3f cover %.2f at %.2fs tr %d stems %d' % (x[0], x[1], x[2], x[3] / SR, x[4], x[5]), file=sys.stderr)
     _, mscore, cover, st, tr, _ = scored[0]
+    if os.environ.get('FORCE_AT'):  # hand-picked window (seconds): snap it to the nearest drum onset like the others
+        st = int(snap(int(float(os.environ['FORCE_AT']) * fps)) * hop); print('forced start %.2fs' % (st / SR), file=sys.stderr)
 
     # --- refine the start: the loop should repeat itself, so slide ±60 ms for the best self-similarity at L
     win = np.ones(int(SR * .004)) / int(SR * .004); env = np.convolve(np.abs(drums), win, mode='same'); env = np.diff(env, prepend=0); env[env < 0] = 0
