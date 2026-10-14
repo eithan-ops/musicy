@@ -364,9 +364,6 @@ html[dir=ltr] .roomcode{text-align:left}
 .sc-diff.d0{background:var(--good-soft)}.sc-diff.d1{background:var(--gold-soft)}.sc-diff.d2{background:var(--bad-soft)}
 .sc-stars{font-size:13px;color:#E0A100;letter-spacing:1px;direction:ltr}.sc-stars i{font-style:normal;color:#C9C7D9}
 #s-setup .bottom{position:sticky;bottom:0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 10px);margin-bottom:calc(-1 * (env(safe-area-inset-bottom,0px) + 18px));background:linear-gradient(transparent,var(--stage) 30%);padding-top:18px}
-.beatview{width:100%;background:var(--soft);border:2px solid var(--ink);border-radius:14px;padding:6px 8px 8px;display:flex;flex-direction:column;gap:4px}
-.beatview canvas{width:100%;display:block}
-.beatview p{font-weight:600;color:var(--muted);font-size:12.5px;line-height:1.3}
 .tip-ear{margin:0;font-size:14px;font-weight:600;color:var(--muted);display:flex;gap:6px;align-items:center;justify-content:center;text-align:center}
 #demoTag{font-size:56px!important;line-height:1}
 
@@ -396,7 +393,6 @@ body[data-scr="s-solo"]{background:#120E2E}
 #s-solo .sopt{min-height:104px}
 .row.tools{justify-content:center}
 #sPause svg{width:24px;height:24px}
-#soloStage.teach #qSub,#soloStage.teach #sTip{display:none}
 #s-solo #sConnectTag{font-size:22px;color:var(--stage)}
 #s-solo #sConnectTag:empty{display:none}
 .stage-top.full{flex:1}
@@ -538,7 +534,6 @@ body.tv #s-room .title-bar{font-size:40px}
     <div class="panel" id="pIdle"><button class="btn gold big" id="soloStart" style="width:100%">התחילו</button><p class="tip-ear"><span aria-hidden="true">🎧</span> עם אוזניות או רמקול שומעים הרבה יותר טוב מי לא בזמן</p></div>
     <div class="panel" id="pDemo" hidden><div class="d" id="demoTag" style="font-size:40px"></div><button class="btn sm" id="skipDemo">דלגו על ההדגמה</button></div>
     <div class="panel" id="pChoose" hidden>
-      <div class="beatview" id="sBeat" hidden><canvas id="sBeatCv" aria-hidden="true"></canvas><p class="small" id="sBeatTxt" style="margin:0"></p></div>
       <div class="opts3" id="sOpts"></div>
       <div class="row tools"><button class="btn sm tool" id="sDrums" aria-pressed="false"></button></div>
       <p class="small muted" id="sTip" style="margin:0"></p>
@@ -1731,25 +1726,6 @@ async function getSong(def, style, roles, onStep){
   songCache.set(key, s); return s;
 }
 
-/* teach the ear: one bar of the drums and of the instrument, where it hit in the wrong version vs where it belongs */
-const BeatView = {
-  show(song, st, k){ const box = $('#sBeat'), cv = $('#sBeatCv'); if (!box || !st.env) return;
-    const drums = song.stems.find(x => x.anchor), barSec = song.bpb * song.beatSec, U = song.bpb * 4;
-    const hits = (env, off) => { const out = []; onsetsFromEnv(env).forEach(t => { const x = mod(t + off, song.L); if (x < barSec) out.push(x / barSec); }); return out; };
-    this.d = drums && drums.env ? hits(drums.env, 0) : []; this.ok = hits(st.env, 0); this.bad = hits(st.env, k * song.unit); this.U = U; this.bpb = song.bpb; this.song = song; this.k = k; this.color = st.color;
-    const dpr = Math.min(2, devicePixelRatio || 1), w = box.clientWidth || 320; cv.width = w * dpr; cv.height = 70 * dpr; cv.style.height = '70px'; this.w = w; this.g = cv.getContext('2d'); this.g.setTransform(dpr, 0, 0, dpr, 0, 0);
-    $('#sBeatTxt').innerHTML = `${T('<b style="color:#D2382B">●</b> איפה הכלי נפל בגרסה שבחרתם · <b style="color:#14864B">○</b> איפה הוא צריך ליפול, על התופים')}`;
-    box.hidden = false; this.on = true; $('#soloStage').classList.add('teach'); this.draw(0); },
-  hide(){ const box = $('#sBeat'); if (box) box.hidden = true; this.on = false; const c = $('#soloStage'); if (c) c.classList.remove('teach'); },
-  draw(pos){ if (!this.on) return; const g = this.g, W = this.w, H = 70, L = 34, R = W - 8, x = f => DIR === 'rtl' ? R - f * (R - L) : L + f * (R - L);
-    g.clearRect(0, 0, W, H); g.font = '700 11px Rubik, sans-serif'; g.textBaseline = 'middle'; g.fillStyle = '#4A4766';
-    const lx = DIR === 'rtl' ? W - 2 : 2; g.textAlign = DIR === 'rtl' ? 'right' : 'left';
-    for (let s = 0; s <= this.U; s++){ const xx = x(s / this.U); g.strokeStyle = s % 4 === 0 ? '#B9B6D0' : '#E6E4F2'; g.lineWidth = s % 4 === 0 ? 2 : 1; g.beginPath(); g.moveTo(xx, 8); g.lineTo(xx, H - 8); g.stroke(); }
-    const row = (y, arr, fill, stroke, r) => arr.forEach(f => { g.beginPath(); g.arc(x(f), y, r, 0, 7); if (fill){ g.fillStyle = fill; g.fill(); } if (stroke){ g.strokeStyle = stroke; g.lineWidth = 2.5; g.stroke(); } });
-    row(20, this.d, '#14112B', null, 5);
-    row(50, this.ok, null, '#14864B', 7); row(50, this.bad, '#FF5A4E', null, 5);
-    if (this.song){ const f = mod(pos, this.song.bpb * this.song.beatSec) / (this.song.bpb * this.song.beatSec); g.strokeStyle = 'rgba(58,46,240,.7)'; g.lineWidth = 2; g.beginPath(); g.moveTo(x(f), 6); g.lineTo(x(f), H - 6); g.stroke(); } }
-};
 const Solo = {
   o:null, song:null, mix:null, g:null, timers:[], roundT0:0, tapBlock:0, raf:0, last:0, drag:null,
   later(fn, ms){ this.timers.push(setTimeout(fn, ms)); },
@@ -1808,7 +1784,7 @@ const Solo = {
   endDemo(){ const g = this.g; if (g.phase !== 'demo') return; this.clear(); g.curAudible = false; this.mix.shift[g.cur] = 0; this.applyMix(); this.round(0); },
   round(r){
     const s = this.song, g = this.g, i = g.rounds[r], st = s.stems[i], o = this.o;
-    BeatView.hide(); g.r = r; g.cur = i; g.phase = 'ask'; g.aud = -1; g.curAudible = false; g.heard = new Set(); g.mute = false; g.solo = false; g.results[r] = {i, miss:0}; this.roundT0 = g.elapsed;
+    g.r = r; g.cur = i; g.phase = 'ask'; g.aud = -1; g.curAudible = false; g.heard = new Set(); g.mute = false; g.solo = false; g.results[r] = {i, miss:0}; this.roundT0 = g.elapsed;
     $('#soloStage').style.setProperty('--c', st.color); this.renderHUD(); this.fb('');
     const meta = `${T('סבב {0} מתוך {1}', r + 1, g.rounds.length)}`, ctx = s.stems.filter((x, j) => g.placed[j]);
     if (o.mode === 'choose'){
@@ -1840,13 +1816,11 @@ const Solo = {
     if (g.aud === j && g.curAudible){ g.mute = !g.mute; this.applyMix(); this.renderOpts(); return; }
     /* the song keeps running: only this instrument jumps to the chosen version */
     g.aud = j; g.mute = false; g.heard.add(j); g.curAudible = true; this.applyMix(); if (!this.mix.playing){ this.mix.shift[g.cur] = g.opts[j].k; this.mix.play(false); } else this.mix.setShift(g.cur, g.opts[j].k); this.renderOpts();
-    /* easy level teaches the ear while you listen: where this version lands against the drums */
-    if (this.o.level === 'easy' && !this.o.ear) BeatView.show(this.song, this.song.stems[g.cur], g.opts[j].k); },
+  },
   toggleSolo(){ const g = this.g; if (!g || g.phase !== 'ask') return; g.solo = !g.solo; this.applyMix(); if (this.o.mode === 'choose') this.renderOpts(); else { const d = $('#sDrums'); d.setAttribute('aria-pressed', String(g.solo)); d.classList.toggle('on', g.solo); } },
   commitChoose(){ const g = this.g; if (g.phase !== 'ask' || g.aud < 0) return; const j = g.aud, o = g.opts[j];
     if (isRightShift(this.song, this.song.stems[g.cur], o.k)){ const b = $('#sOpts').children[j]; b.classList.add('right'); this.won(); }
     else { o.wrong = true; g.aud = -1; g.mute = false; g.curAudible = false; this.applyMix(); this.renderOpts(); $('#sOpts').children[j].classList.add('shake');
-      BeatView.show(this.song, this.song.stems[g.cur], o.k);
       this.wrong(`${T('לא זו. בגרסה {0}׳ יש {1}.', o.label, describeShift(o.k, this.song))}`); } },
   buildStrip(){ const s = this.song, box = $('#sStrip'), n = s.bars * s.bpb; box.hidden = LEVELS[this.o.level].strip === 'none';
     box.innerHTML = Array.from({length:n}, (_, b) => `<i class="${b === 0 ? 'bar1' : b % s.bpb === 0 ? 'bs' : ''}"></i>`).join('');
@@ -2016,7 +1990,6 @@ const Solo = {
       const pos = this.mix.pos();
       $$('#soloBand .member').forEach(el => { const i = +el.dataset.i, live = el.classList.contains('dancer') || (i === g.cur && g.curAudible !== false && this.mix.gain[i] > 0); danceVars(el, this.mix.level(i), pos, s.beatSec, this.mix.shiftSec(i), this.mix.playing && live); });
       const ai = s.stems.findIndex(x => x.anchor); $('#soloGlow').style.setProperty('--beat', (ai >= 0 ? this.mix.level(ai) * .85 : 0).toFixed(2));
-      if (BeatView.on) BeatView.draw(pos);
       if (g.phase === 'intro'){ const n = Math.floor(mod(pos, s.bpb * s.beatSec) / s.beatSec) + 1, tg = $('#demoTag'); if (tg.textContent !== String(n)){ tg.textContent = n; tg.classList.remove('pop'); void tg.offsetWidth; tg.classList.add('pop'); } }
       if (this.o.mode === 'choose' && g.aud >= 0 && g.cur >= 0){ const c = $('#sOpts').children[g.aud]; if (c) c.style.setProperty('--v', this.mix.level(g.cur).toFixed(2)); }
       if (this.o.mode === 'tap' && g.phase === 'ask'){
