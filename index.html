@@ -1327,8 +1327,8 @@ function jelly(color, size, o){
 /* ===== dancing jellies: each style has its own moves, driven by the instrument's own loudness ===== */
 const DANCE_CLS = {pop:'dance-pop', electro:'dance-electro', rock:'dance-rock'};
 const danceCls = style => DANCE_CLS[style] || 'dance-pop';
-function danceVars(el, v, pos, beatSec, shiftSec, on){ if (!beatSec) return; const c = el.querySelector('.chr');
-  if (c){ if (reduced || on === false) musIdle(c); else musSet(c, (pos - (shiftSec || 0)) / beatSec); }
+function danceVars(el, v, pos, beatSec, shiftSec, on, phase){ if (!beatSec) return; const c = el.querySelector('.chr');
+  if (c){ if (reduced || on === false) musIdle(c); else musSet(c, phase != null ? phase : (pos - (shiftSec || 0)) / beatSec); }
   if (reduced) return; const b = pos / beatSec, f = b - Math.floor(b);
   el.style.setProperty('--v', Math.min(1, v).toFixed(2)); el.style.setProperty('--sw', Math.sin(b * Math.PI).toFixed(3)); el.style.setProperty('--hb', Math.pow(1 - f, 3).toFixed(3)); }
 /* ===== the show: while the real production plays, the stage follows it — guests walk on at the back when their part
@@ -1341,15 +1341,29 @@ const Show = {
   stop(){ if (!this.on) return; this.on = false; const row = $('#soloGuests'); if (row){ row.innerHTML = ''; row.hidden = true; }
     const hud = $('#soloHud'); if (hud){ hud.classList.remove('show', 'drop'); hud.style.removeProperty('--energy'); hud.onpointerdown = null; }
     $$('#soloBand .member.quiet').forEach(el => el.classList.remove('quiet')); if (this.spot){ this.spot.classList.remove('spot'); this.spot = null; } },
-  frame(mix, pos, beatSec){ if (!this.on || !mix) return; const t = mix.evoT(); if (t < 0) return; const b = this.band, hud = $('#soloHud'), en = mix.energy();
+  /* each musician moves on the hits of their own part, whatever the song is doing at that moment: the part's loudness is known
+     ahead of time, so an onset is spotted a few ms early and the hit pose lands exactly on the sound. One hit plays the clip from
+     the hit pose to the ready pose over half a beat; with no new hit the player eases on slowly, so a sparse part stays almost still */
+  hitPhase(el, raw, beatSec, now){ const dt = el._ht ? Math.min(.1, (now - el._ht) / 1000) : 0; el._ht = now;
+    /* hits are judged against the part's own recent level (a soft hi-hat pattern in a quiet intro still hits), never against the drop */
+    el._ref = Math.max(raw, (el._ref || 0) * Math.pow(.5, dt / 1.5), .04); const v = raw / el._ref, prev = el._hv == null ? v : el._hv; el._hv = v;
+    if (el._ph == null) el._ph = .5;
+    const onset = v - prev > .18 && v > .3 && raw > .03 && (!el._hit || now - el._hit > beatSec * 250);
+    if (onset){ el._hit = now; el._ph = Math.ceil(el._ph - .01); el._hitPh = el._ph; }
+    const since = el._hit ? (now - el._hit) / 1000 : 9;
+    if (since < beatSec * .5) el._ph = el._hitPh + since / beatSec;          /* hit → ready at full speed */
+    else if (el._hit) el._ph = Math.min(el._hitPh + .95, el._ph + dt / beatSec * .25);  /* then ease toward the next hit pose, never past it */
+    return el._ph; },
+  frame(mix, pos, beatSec, now){ if (!this.on || !mix) return; const t = mix.evoT(); if (t < 0) return; const b = this.band, hud = $('#soloHud'), en = mix.energy(), look = .06;
     hud.style.setProperty('--energy', (en < 0 ? 0 : en).toFixed(2));
     let best = {v:.15, el:null};
-    /* the raw level drives the dance (it bounces on every hit); a slow-decaying peak decides who is "in", who is quiet and who gets the spotlight */
+    /* the level a little ahead drives the moves (so the pose lands on the hit); a slow-decaying peak decides who is "in", who is quiet and who gets the spotlight */
     const peak = (el, v) => el._pk = Math.max(v, (el._pk || 0) * .93);
-    $$('#soloGuests .member').forEach(el => { const k = +el.dataset.g, v = mix.guestLevel(k), pk = peak(el, v);
+    $$('#soloGuests .member').forEach(el => { const k = +el.dataset.g, v = bandAt(b.guests[k].env, b.rate, t + look), pk = peak(el, v);
       if (el.hidden){ if (pk < .3) return; el.hidden = false; el.classList.add('join'); this.say(T('{0} נכנסים! 🎉', pick(b.guests[k], 'name'))); }
-      el.classList.toggle('quiet', pk < .12); danceVars(el, v, pos, beatSec, 0, pk >= .12); if (pk > best.v) best = {v:pk, el}; });
-    $$('#soloBand .member').forEach(el => { const v = mix.level(+el.dataset.i), pk = peak(el, v); el.classList.toggle('quiet', pk < .1); if (pk > best.v) best = {v:pk, el}; });
+      el.classList.toggle('quiet', pk < .12); danceVars(el, v, pos, beatSec, 0, pk >= .12, this.hitPhase(el, v, beatSec, now)); if (pk > best.v) best = {v:pk, el}; });
+    $$('#soloBand .member').forEach(el => { const i = +el.dataset.i, role = this.solo.song.stems[i].role, arr = b.core[role], v = arr ? bandAt(arr, b.rate, t + look) : mix.level(i), pk = peak(el, v);
+      el.classList.toggle('quiet', pk < .06); danceVars(el, v, pos, beatSec, 0, true, arr ? this.hitPhase(el, v, beatSec, now) : null); if (pk > best.v) best = {v:pk, el}; });
     const bar = Math.floor(t / (beatSec * this.solo.song.bpb));
     if (bar !== this.lastBar){ this.lastBar = bar; if (best.el && best.el !== this.spot){ if (this.spot) this.spot.classList.remove('spot'); best.el.classList.add('spot'); this.spot = best.el; } }
     if (this.nextDrop < b.drops.length && t >= b.drops[this.nextDrop]){ this.nextDrop++; hud.classList.remove('drop'); void hud.offsetWidth; hud.classList.add('drop'); confetti(); vibrate([20, 40, 20]); this.say(T('דרופ! 🔥')); } },
@@ -2066,9 +2080,10 @@ const Solo = {
     if (g && this.mix && s){
       if (this.mix.playing && ['demo', 'ask', 'won'].includes(g.phase)) g.elapsed += dt;
       const pos = this.mix.pos();
-      $$('#soloBand .member').forEach(el => { const i = +el.dataset.i, live = el.classList.contains('dancer') || (i === g.cur && g.curAudible !== false && this.mix.gain[i] > 0); danceVars(el, this.mix.level(i), pos, s.beatSec, this.mix.shiftSec(i), this.mix.playing && live); });
+      const showing = Show.on && this.mix.evoT() >= 0;  /* while the real production plays, the show moves every player on their own hits */
+      if (!showing) $$('#soloBand .member').forEach(el => { const i = +el.dataset.i, live = el.classList.contains('dancer') || (i === g.cur && g.curAudible !== false && this.mix.gain[i] > 0); danceVars(el, this.mix.level(i), pos, s.beatSec, this.mix.shiftSec(i), this.mix.playing && live); });
       const ai = s.stems.findIndex(x => x.anchor); $('#soloGlow').style.setProperty('--beat', (ai >= 0 ? this.mix.level(ai) * .85 : 0).toFixed(2));
-      Show.frame(this.mix, pos, s.beatSec);
+      Show.frame(this.mix, pos, s.beatSec, now);
       if (g.phase === 'intro'){ const n = Math.floor(mod(pos, s.bpb * s.beatSec) / s.beatSec) + 1, tg = $('#demoTag'); if (tg.textContent !== String(n)){ tg.textContent = n; tg.classList.remove('pop'); void tg.offsetWidth; tg.classList.add('pop'); } }
       if (this.o.mode === 'choose' && g.aud >= 0 && g.cur >= 0){ const c = $('#sOpts').children[g.aud]; if (c) c.style.setProperty('--v', this.mix.level(g.cur).toFixed(2)); }
       if (this.o.mode === 'tap' && g.phase === 'ask'){

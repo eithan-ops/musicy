@@ -315,5 +315,6 @@
   "role": "melody",
   "name": "סינת׳",
   "name_en": "Synth"
- }
+ },
+ "loop_at": 1.076
 }

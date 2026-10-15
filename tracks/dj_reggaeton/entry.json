@@ -316,5 +316,6 @@
   "role": "counter",
   "name": "חצוצרות",
   "name_en": "Brass"
- }
+ },
+ "loop_at": 40.069
 }

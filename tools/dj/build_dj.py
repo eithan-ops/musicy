@@ -178,14 +178,14 @@ def main():
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 's16le', '-ar', '48000', '-ac', '2', '-i', '-', '-ar', '44100', '-c:a', 'aac', '-b:a', '128k', f'{odir}/evolve.m4a'], input=raw, check=True)
 
     # --- band.json: 20 Hz loudness of every part over the evolve section (core by role, the rest as guests)
-    RATE = 20; T = loops * L48
+    RATE = 40; T = loops * L48
     envs = {}
     for k, v in full.items():
         m = v[:, st48:st48 + T].mean(axis=0); e = env_rate(m, 48000, RATE)
         ref = np.percentile(e, 97) if e.max() > 1e-4 else 1
         # a part that already plays in the loop should look alive from the first bar, even if the drop is much louder later
         loopref = np.percentile(e[:int(L / SR * RATE)], 90)
-        if loopref > ref * .12: ref = min(ref, loopref / .6)
+        if loopref > ref * .03: ref = min(ref, loopref / .6)
         envs[k] = np.clip(e / (ref + 1e-9), 0, 1)
     mixm = tail.mean(axis=0); energy = env_rate(mixm, 48000, RATE); energy = np.clip(energy / (np.percentile(energy, 97) + 1e-9), 0, 1)
     # drops: a bar where the smoothed energy jumps by 35% over the bar before, after at least 4 bars since the last one
@@ -213,7 +213,7 @@ def main():
     order = {'drums': -1, 'bass': 0, 'chords': 1, 'arp': 2, 'perc': 3, 'counter': 4, 'melody': 5}
     entry_stems.sort(key=lambda s: order[s['role']])
     entry = {'id': tid, 'title': title_he, 'title_en': title_en, 'artist': 'Musicy DJ', 'artist_en': 'Musicy DJ', 'bpm': round(bpm, 2), 'bpb': bpb, 'bars': bars,
-             'stems': entry_stems, 'active': True, 'source': 'suno', 'set': 'dj', 'evolve': {'file': 'evolve.m4a', 'bars': loops * bars, 'band': 'band.json'}}
+             'stems': entry_stems, 'active': True, 'source': 'suno', 'set': 'dj', 'evolve': {'file': 'evolve.m4a', 'bars': loops * bars, 'band': 'band.json'}, 'loop_at': round(st / SR, 3)}
     json.dump(entry, open(f'{odir}/entry.json', 'w'), ensure_ascii=False, indent=1)
     print(json.dumps({k: (v if k != 'stems' else [(s['role'], s['name_en'], round(max(s['feel'][1:]), 2) if 'feel' in s else None) for s in v]) for k, v in entry.items()}, ensure_ascii=False))
 
