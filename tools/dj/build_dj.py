@@ -164,7 +164,7 @@ def main():
     for s in entry_stems:
         if s['role'] in feel: s['feel'] = [round(v * 1.1, 2) for v in feel[s['role']]]
         # a part whose timing cannot be heard (a sustained sub bass) joins the drums as the groove the player builds on
-        if s['role'] == 'bass' and 'feel' in s and max(s['feel'][1:]) < 1.5: s['auto'] = True; print('bass is auto (feel %.2f)' % max(s['feel'][1:]), file=sys.stderr)
+        if s['role'] in ('bass', 'perc') and 'feel' in s and max(s['feel'][1:]) < 1.5: s['auto'] = True; print(s['role'] + ' is auto (feel %.2f)' % max(s['feel'][1:]), file=sys.stderr)
 
     # --- evolve: the whole production from the loop start, whole loops, trailing silence trimmed
     full = {f.split(' ', 1)[1][:-4] if ' ' in f else f[:-4]: load_stereo(os.path.join(sdir, f)) for f in files}

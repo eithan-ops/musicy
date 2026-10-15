@@ -1288,7 +1288,7 @@ const ICON = {
 const JELLY = 'M50 8 C76 8 92 30 92 58 C92 81 75 94 50 94 C25 94 8 81 8 58 C8 30 24 8 50 8Z';
 /* ===== the band: one musician character per instrument (two poses: ready / hit) ===== */
 const CHAR_RULES = [[/תופ|drum/i, 'drums'], [/בנג׳ו|banjo/i, 'banjo'], [/כינור|violin|fiddle|מיתר|string/i, 'violin'], [/צ׳לו|cello/i, 'cello'], [/אקורדיון|accordion/i, 'accordion'],
-  [/סקס|sax/i, 'sax'], [/חליל|flute|woodwind/i, 'flute'], [/חצוצר|trumpet|נשיפה|brass|horn/i, 'trumpet'], [/מרימב|marimba|xylo/i, 'marimba'], [/הקשה|perc|bongo|shaker|conga|דרבוק|darbuka/i, 'perc'], [/עוד|oud/i, 'guitar'],
+  [/סקס|sax/i, 'sax'], [/חליל|flute|woodwind/i, 'flute'], [/חצוצר|trumpet|נשיפה|brass|horn/i, 'trumpet'], [/מרימב|marimba|xylo|פעמונ|bell|סטיל|steel/i, 'marimba'], [/פילטר|filter|talkbox|טוקבוקס/i, 'synth'], [/הקשה|perc|bongo|shaker|conga|דרבוק|darbuka/i, 'perc'], [/עוד|oud/i, 'guitar'],
   [/בס|bass/i, 'bass'], [/פסנתר|קלידים|אורגן|piano|keys|organ|keyboard|אקורדים|chord/i, 'keys'], [/גיטר|guitar/i, 'guitar'], [/סינת|synth|מלודיה|hook/i, 'synth']];
 const CHAR_ROLE = {drums:'drums', bass:'bass', chords:'keys', arp:'synth', perc:'perc', counter:'violin', melody:'synth'};
 function charKey(x){ if (x && x._k && MUS[x._k]) return x._k; const n = (x && (x.name || '')) + ' ' + ((x && x.name_en) || ''); for (const [re, k] of CHAR_RULES) if (re.test(n)) return k; return CHAR_ROLE[x && x.role] || 'synth'; }
