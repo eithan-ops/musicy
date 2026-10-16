@@ -472,6 +472,10 @@ body.tv .miniband{zoom:1.9}
 body.tv #s-room .title-bar{font-size:40px}
 
 </style>
+<!-- Vercel Web Analytics (page views + custom events; enable once in the Vercel dashboard → Analytics).
+     If the dashboard shows a project-specific "unique path" for the script, put it here instead of /_vercel/insights. -->
+<script>window.va = window.va || function(){ (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -750,7 +754,7 @@ const Library = { ready:null,
       (j.melodies || []).filter(m => all || m.active !== false).forEach(m => { if (MELODIES.some(x => x.id === m.id)) return;
         MELODIES.push(Object.assign({}, m, {title:pick(m, 'title'), artist:pick(m, 'artist'), orig:true})); });
       (j.tracks || []).filter(t => all || t.active !== false).forEach(t => { if (AUDIO.some(x => x.id === t.id)) return;
-        AUDIO.push(Object.assign({}, t, {audio:true, set:t.set || 'hits', base:'/tracks/' + t.id + '/', title:pick(t, 'title'), artist:pick(t, 'artist'),
+        AUDIO.push(Object.assign({}, t, {audio:true, set:t.set || 'hits', base:'/tracks/' + t.id + '/', q:t.v ? '?v=' + t.v : '', title:pick(t, 'title'), artist:pick(t, 'artist'),
           clear:(t.stems || []).filter(x => x.role !== 'drums' && (!x.feel || Math.max(...x.feel.slice(1)) >= 1.5)).length, diff:songDiff(t),
           lead:(t.stems || []).filter(x => x.role !== 'drums').sort((a, b) => (b.role === 'melody') - (a.role === 'melody') || (b.feel ? Math.max(...b.feel) : 0) - (a.feel ? Math.max(...a.feel) : 0))[0]})); });
     } catch(e){} })();
@@ -993,7 +997,7 @@ async function renderSong(def, style, roles, onStep){
 async function loadAudioSong(def, onStep){
   const oc = new OfflineAudioContext(1, 1, SR), len = Math.round(def.bars * def.bpb * 60 / def.bpm * SR), stems = []; let n = 0;
   await Promise.all(def.stems.map(async s => {
-    const r = await fetch(def.base + s.file); if (!r.ok) throw new Error('stem ' + s.file);
+    const r = await fetch(def.base + s.file + (def.q || '')); if (!r.ok) throw new Error('stem ' + s.file);
     const dec = await oc.decodeAudioData(await r.arrayBuffer()), b = new AudioBuffer({length:len, numberOfChannels:1, sampleRate:SR});
     b.copyToChannel(dec.getChannelData(0).subarray(0, len), 0);
     /* an 'auto' part (a sub bass whose timing cannot be heard) is part of the groove the player builds on, like the drums */
@@ -1001,7 +1005,7 @@ async function loadAudioSong(def, onStep){
     if (onStep) onStep(++n, def.stems.length); }));
   stems.sort((a, b) => ROLE_META[a.role].order - ROLE_META[b.role].order);
   const song = makeSong({key:'a:' + def.id, id:def.id, style:'hits', title:def.title, artist:def.artist, bpm:def.bpm, bpb:def.bpb, bars:def.bars, len, stems});
-  if (def.evolve){ song.evolveUrl = def.base + def.evolve.file; if (def.evolve.band) song.bandUrl = def.base + def.evolve.band; }
+  if (def.evolve){ song.evolveUrl = def.base + def.evolve.file + (def.q || ''); if (def.evolve.band) song.bandUrl = def.base + def.evolve.band + (def.q || ''); }
   return song;
 }
 /* band.json: 20 Hz loudness of every part across the full production (core parts by role, extra parts as guests),
@@ -1102,6 +1106,8 @@ function rhythmScores(env, U, unitSec){
 async function analyzeSong(song){
   for (const st of song.stems){
     st.env = envelope(st.buffer); await sleep(0);
+    /* a pad or sustained synth has no attacks to place: a 16th off only smears it ("just noise"). Mark it so its wrong answers are whole beats. */
+    { let on = 0; for (let t = 0; t < st.env.length; t++) if (st.env[t] > .5) on++; st.sustain = on / Math.max(1, st.env.length); st.pad = st.sustain > .6; }
     st.scores = shiftScores(st.buffer, song.U); st.valid = new Set();
     if (song.style === 'hits'){
       /* real productions: a shift "sounds the same" only if both the sound and the rhythm line up */
@@ -1146,8 +1152,11 @@ function pickWrong(song, st, ctx, taken, prefs, onGrid, level){
 /* real productions: off-grid shifts (a 16th or 3/16 off) are the ones every ear hears as "wrong" */
 const HITS_GROUPS = {easy:{count:3, groups:[[3,-3,5,-5],[1,-1,7,-7,3,-3]], grid:false}, normal:{count:3, groups:[[3,-3,1,-1],[2,-2,6,-6,5,-5]], grid:false},
   hard:{count:4, groups:[[2,-2],[1,-1,3,-3],[4,-4,6,-6]], grid:false}};
+/* sustained parts (pads, long synth chords): the wrong answers are whole beats or bars away, so what the ear hears is the wrong chord against the band */
+const PAD_GROUPS = {easy:{count:3, groups:[[8,-8,'bar','-bar'],[4,-4,6,-6]], grid:true}, normal:{count:3, groups:[[4,-4,8,-8],[6,-6,2,-2,'bar','-bar']], grid:true},
+  hard:{count:4, groups:[[2,-2],[4,-4],[6,-6,8,-8,'bar','-bar']], grid:true}};
 function makeOptions(song, st, level, ctx, rnd){
-  const cfg = (song.style === 'hits' ? HITS_GROUPS : OPTION_GROUPS)[level], b4 = song.bpb * 4, chosen = [0];
+  const cfg = (st.pad && song.style === 'hits' ? PAD_GROUPS : song.style === 'hits' ? HITS_GROUPS : OPTION_GROUPS)[level], b4 = song.bpb * 4, chosen = [0];
   const resolve = x => x === 'bar' ? b4 : x === '-bar' ? -b4 : x === '2bar' ? 2 * b4 : x === '-2bar' ? -2 * b4 : x;
   for (const g of cfg.groups){ if (chosen.length >= cfg.count) break; chosen.push(pickWrong(song, st, ctx, chosen, shuffleR(g.map(resolve), rnd), cfg.grid, level)); }
   while (chosen.length < cfg.count) chosen.push(pickWrong(song, st, ctx, chosen, [], false, level));
@@ -1383,6 +1392,8 @@ function show(id, push){
   $$('[data-screen]').forEach(el => el.hidden = el.id !== id);
   current = id; document.body.dataset.scr = id; window.scrollTo(0, 0);
   if (push !== false){ try { history.pushState({s:id}, ''); } catch(e){} }
+  /* one app, many screens: tell Vercel Analytics each screen is a "page" (home / solo / room / results funnel) */
+  try { if (id !== show.last){ show.last = id; window.va && window.va('pageview', {route:'/' + id.replace(/^s-/, ''), path:location.pathname}); } } catch(e){}
 }
 window.addEventListener('popstate', e => {
   if (current === 's-room'){ Room.leave(true); return; }
@@ -1460,6 +1471,9 @@ const SID = randId(8);
 function track(ev, props){
   try { fetch(SB_URL + '/rest/v1/musicy_events', {method:'POST', keepalive:true, headers:{apikey:SB_KEY, Authorization:'Bearer ' + SB_KEY, 'Content-Type':'application/json', Prefer:'return=minimal'},
     body:JSON.stringify({ev:String(ev).slice(0, 40), uid:ME.id.slice(0, 20), sid:SID, path:location.pathname.slice(0, 60), props:props || {}})}).catch(() => {}); } catch(e){}
+  /* the same event to Vercel Web Analytics (custom events need the Pro plan; on Hobby they are simply dropped). Flat scalars only. */
+  try { const data = {}; Object.entries(props || {}).forEach(([k, v]) => { if (v == null || ['string', 'number', 'boolean'].includes(typeof v)) data[k] = typeof v === 'string' ? v.slice(0, 120) : v; });
+    window.va && window.va('event', {name:String(ev).slice(0, 40), data}); } catch(e){}
 }
 async function createChallenge(row){
   for (let i = 0; i < 4; i++){
@@ -1852,7 +1866,8 @@ const Solo = {
     if (g.phase === 'connect') return g.cx && g.cx.idxs.includes(i) ? 1 : 0;
     if (g.solo && g.phase === 'ask' && !st.anchor && i !== g.cur) return 0;
     const hits = this.song.style === 'hits' && g.phase === 'ask';  /* in a full production, lift the instrument being judged so the difference is easy to hear */
-    if (g.placed[i]) return g.boost[i] * (hits ? .55 : 1); if (i === g.cur && g.curAudible && !g.mute) return hits ? 1.5 : 1; return 0; },
+    /* the drums are the clock every answer is judged against: never duck them while the player listens (the other placed parts step back) */
+    if (g.placed[i]) return g.boost[i] * (hits && !st.anchor ? .55 : 1); if (i === g.cur && g.curAudible && !g.mute) return hits ? 1.5 : 1; return 0; },
   applyMix(){ if (!this.mix) return; this.song.stems.forEach((st, i) => this.mix.setGain(i, this.targetGain(i))); },
   begin(){ const g = this.g; if (!g || g.phase !== 'idle') return; Audio.ensure(); Audio.ac.resume();
     this.mix.play(true); g.phase = 'play'; loadEvolve(this.song); if (!g.rounds.length){ this.finish(); return; }
@@ -1990,7 +2005,7 @@ const Solo = {
       this.later(() => { rb.hidden = false; this.results(stars, grid, extra); }, wait); }, 7500);
   },
   prefetchNext(){ try { const o = this.o; if (!o || !o.def || !o.def.audio || o.custom) return; const cat = catalog(o.style), done = store.get('done', {}); const nx = cat.find(d => !done[d.id + ':' + o.style] && d !== o.def) || cat[(cat.indexOf(o.def) + 1) % cat.length];
-    if (nx && nx.audio) nx.stems.forEach(st => fetch(nx.base + st.file, {priority:'low'}).catch(() => {})); } catch(e){} },
+    if (nx && nx.audio) nx.stems.forEach(st => fetch(nx.base + st.file + (nx.q || ''), {priority:'low'}).catch(() => {})); } catch(e){} },
   results(stars, grid, extra){
     const g = this.g, o = this.o, s = this.song, fin = store.get('finished', 0) + 1; store.set('finished', fin); this.prefetchNext();
     /* one clear next step: share (the clip carries the challenge link), then play on; friends come after the second song */
@@ -2629,7 +2644,7 @@ const Host = {
         else if (s.phase === 'turn' && r.turn && r.turn.role === rl){ if (r.turn.aud >= 0 && !r.turn.mute){ g = 1; k = P.opts[rl][r.turn.aud]; } }
         else if (P.choices[rl] != null){ g = (s.phase === 'turn' && r.turn && r.turn.solo) ? 0 : 1; k = P.choices[rl]; }
       }
-      if (song.style === 'hits' && s.phase === 'turn' && r.turn) g *= r.turn.role === rl ? 1.5 : .55;  /* full productions: the instrument being judged stands out */
+      if (song.style === 'hits' && s.phase === 'turn' && r.turn && !st.anchor) g *= r.turn.role === rl ? 1.5 : .55;  /* full productions: the instrument being judged stands out; the drums stay as the clock */
       if (P.mix.shift[i] !== k) P.mix.setShift(i, k); P.mix.setGain(i, g);
     });
   },
