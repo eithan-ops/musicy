@@ -44,3 +44,13 @@ async function trimTracks(c){
   try { const keys = await c.keys(); const dirs = []; keys.forEach(k => { const d = new URL(k.url).pathname.split('/')[2]; if (!dirs.includes(d)) dirs.push(d); });
     while (dirs.length > MAX_TRACK_DIRS){ const old = dirs.shift(); for (const k of keys) if (new URL(k.url).pathname.split('/')[2] === old) await c.delete(k); } } catch(e){}
 }
+
+/* daily-song push: show it, and open the app on tap */
+self.addEventListener('push', e => {
+  let d = {}; try { d = e.data ? e.data.json() : {}; } catch(err){}
+  e.waitUntil(self.registration.showNotification(d.title || 'Musicy', {body:d.body || '', icon:'/icons/icon-192.png', badge:'/icons/icon-192.png', data:{url:d.url || '/'}, tag:'musicy-daily', renotify:false}));
+});
+self.addEventListener('notificationclick', e => {
+  e.notification.close(); const url = (e.notification.data && e.notification.data.url) || '/';
+  e.waitUntil(clients.matchAll({type:'window', includeUncontrolled:true}).then(ws => { const w = ws.find(x => 'focus' in x); if (w){ w.navigate(url); return w.focus(); } return clients.openWindow(url); }));
+});
