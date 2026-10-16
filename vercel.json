@@ -12,6 +12,14 @@
     {
       "source": "/ear",
       "destination": "/"
+    },
+    {
+      "source": "/t/:id",
+      "destination": "/"
+    },
+    {
+      "source": "/class",
+      "destination": "/"
     }
   ],
   "headers": [

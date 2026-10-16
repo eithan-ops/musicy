@@ -22,7 +22,8 @@ const fmt = ms => { const s = Math.round(ms / 1000); return Math.floor(s / 60) +
 const CHARS = ['sax', 'guitar', 'drums', 'synth', 'violin'];
 
 export default async function handler(req){
-  const url = new URL(req.url), c = url.searchParams.get('c'), room = url.searchParams.get('room'), lang = url.searchParams.get('lang') === 'en' ? 'en' : 'he';
+  const url = new URL(req.url), c = url.searchParams.get('c'), room = url.searchParams.get('room'), t = url.searchParams.get('t'), lang = url.searchParams.get('lang') === 'en' ? 'en' : 'he';
+  let chars = CHARS;
   let kicker = '', title = lang === 'en' ? 'The band falls apart. You put it back.' : 'הלהקה מתפרקת. אתם מחזירים אותה.', stat = '', pill = lang === 'en' ? 'Music party game · No sign-up' : 'משחק מוזיקה · בלי הרשמה';
   if (c){
     try {
@@ -35,6 +36,15 @@ export default async function handler(req){
         stat = '★'.repeat(x.stars || 0) + '☆'.repeat(3 - (x.stars || 0));
         pill = lang === 'en' ? 'Can you beat them?' : 'אתם תצליחו מהר יותר?'; }
     } catch(e){}
+  } else if (t && /^[a-z0-9_-]{2,40}$/.test(t)){
+    /* a song's own page: its title, artist and its own band */
+    try { const j = await (await fetch(ORIGIN + '/tracks/index.json')).json(); const song = (j.tracks || []).find(x => x.id === t);
+      if (song){ kicker = lang === 'en' ? (song.artist_en || song.artist || '') : (song.artist || song.artist_en || ''); title = lang === 'en' ? (song.title_en || song.title) : song.title;
+        pill = lang === 'en' ? 'Can you put it back?' : 'תצליחו להחזיר אותו?'; stat = '';
+        const ROLE_CH = { drums: 'drums', bass: 'bass', chords: 'keys', arp: 'guitar', melody: 'synth', perc: 'perc', counter: 'trumpet' };
+        const byName = n => { n = String(n || ''); return /sax|סקס/i.test(n) ? 'sax' : /violin|string|כינור|מיתר/i.test(n) ? 'violin' : /cello|צ׳לו/i.test(n) ? 'cello' : /flute|חליל/i.test(n) ? 'flute' : /trumpet|brass|horn|חצוצר|נשיפה/i.test(n) ? 'trumpet' : /marimba|bell|steel|מרימב|פעמונ|סטיל/i.test(n) ? 'marimba' : /banjo|בנג׳ו/i.test(n) ? 'banjo' : /accordion|אקורדיון/i.test(n) ? 'accordion' : /perc|darbuka|shaker|הקשה|דרבוק/i.test(n) ? 'perc' : /guitar|oud|גיטרה|עוד/i.test(n) ? 'guitar' : /piano|keys|פסנתר|קליד/i.test(n) ? 'keys' : null; };
+        const list = (song.stems || []).map(x => byName((x.name_en || '') + ' ' + (x.name || '')) || ROLE_CH[x.role] || 'synth');
+        if (list.length) chars = list.slice(0, 5); } } catch(e){}
   } else if (room){
     kicker = lang === 'en' ? 'A room is waiting for you' : 'חדר מחכה לכם';
     title = lang === 'en' ? `Join room ${room}` : `הצטרפו לחדר ${room}`;
@@ -47,7 +57,7 @@ export default async function handler(req){
       { type: 'div', props: { style: { position: 'absolute', left: 56, top: 36, fontFamily: 'Secular One', fontSize: 54, direction: 'ltr' }, children: 'Musicy' } },
       { type: 'div', props: { style: { position: 'absolute', right: 56, top: 48, background: '#FFD23F', color: '#14112B', border: '4px solid #14112B', borderRadius: 999, padding: '8px 26px', fontSize: 26, boxShadow: '5px 5px 0 #14112B' }, children: bidi(pill) } },
       { type: 'div', props: { style: { position: 'absolute', left: 0, right: 0, top: 150, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: 14, direction: 'ltr' },
-        children: CHARS.map((k, i) => ({ type: 'img', props: { src: `${ORIGIN}/og/ch-${k}.png`, style: { height: i === 2 ? 270 : 230 } } })) } },
+        children: chars.map((k, i) => ({ type: 'img', props: { src: `${ORIGIN}/og/ch-${k}.png`, style: { height: i === Math.floor(chars.length / 2) ? 270 : 230 } } })) } },
       kicker ? { type: 'div', props: { style: { position: 'absolute', left: 0, right: 0, top: 418, display: 'flex', justifyContent: 'center', fontSize: 28, color: '#FFD23F' }, children: bidi(kicker) } } : null,
       { type: 'div', props: { style: { position: 'absolute', left: 40, right: 40, top: kicker ? 452 : 440, display: 'flex', justifyContent: 'center', fontFamily: 'Secular One', fontSize: title.length > 34 ? 46 : 58, lineHeight: 1.05, textShadow: '4px 4px 0 #14112B', textAlign: 'center' }, children: bidi(title) } },
       { type: 'div', props: { style: { position: 'absolute', left: 0, right: 0, top: 545, display: 'flex', justifyContent: 'center', gap: 18, fontSize: 30, color: '#E6E4FF' }, children: [
