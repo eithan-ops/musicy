@@ -431,22 +431,10 @@ body[data-scr="s-solo"]{background:#120E2E}
 #s-solo .tip-ear{color:rgba(255,255,255,.62)}
 #s-solo #sConnectTag{color:var(--gold)}
 #s-solo .drop-hint{color:var(--gold)}
-/* answer cards: a record in the instrument's colour; it spins while it plays */
-#s-solo .sopt{min-height:0;border:none;background:transparent;box-shadow:none;padding:4px 2px 2px;gap:4px;transform:none}
-#s-solo .sopt .L{position:absolute;left:50%;top:40px;transform:translate(-50%,-50%);font-size:30px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35);z-index:2;line-height:1}
-#s-solo .sopt .eq{display:none}
-#s-solo .sopt .disc{position:relative;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--c,#22C1F0) 0 17%,#14112B 18% 24%,#2a2550 25% 27%,#14112B 28% 36%,#2a2550 37% 39%,#14112B 40% 48%,#2a2550 49% 51%,#14112B 52% 62%,#2a2550 63% 65%,#14112B 66% 100%);border:3px solid rgba(255,255,255,.18);box-shadow:0 6px 14px rgba(0,0,0,.4);transition:transform .15s}
-#s-solo .sopt .disc::after{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 20deg,transparent 0 40%,rgba(255,255,255,.12) 45% 50%,transparent 55% 100%)}
-#s-solo .sopt .hint{font-size:12.5px;font-weight:700;color:rgba(255,255,255,.6)}
-#s-solo .sopt[aria-pressed="true"]{background:transparent;transform:none;box-shadow:none}
-#s-solo .sopt[aria-pressed="true"] .disc{animation:spin 1.6s linear infinite;border-color:var(--c,#22C1F0);box-shadow:0 0 0 4px rgba(255,255,255,.12),0 0 26px var(--c,#22C1F0);transform:scale(calc(1.06 + var(--v,0) * .08))}
-#s-solo .sopt[aria-pressed="true"] .hint{color:#fff}
-#s-solo .sopt.muted .disc{animation-play-state:paused;opacity:.6}
-#s-solo .sopt.wrong{background:transparent;opacity:.35}
-#s-solo .sopt.wrong .disc{filter:grayscale(1)}
-#s-solo .sopt.right .disc{animation:spin 1.6s linear infinite;border-color:#fff;box-shadow:0 0 0 5px var(--c,#2BD67B),0 0 36px var(--c,#2BD67B)}
-@keyframes spin{to{transform:rotate(360deg) scale(calc(1.06 + var(--v,0) * .08))}}
-@media (prefers-reduced-motion:reduce){#s-solo .sopt .disc{animation:none!important}}
+/* the answer cards keep their original look (letter, bars, hint) on the dark strip; the card shadow turns light so it still reads */
+#s-solo .sopt{min-height:104px;box-shadow:4px 4px 0 rgba(255,255,255,.22)}
+#s-solo .sopt[aria-pressed="true"]{box-shadow:0 0 0 var(--ink)}
+#s-solo .sopt.wrong{box-shadow:none}
 /* the musician being judged steps into the light */
 .bandrow.big .member .dz{transition:transform .25s}
 .bandrow.big .member.curm .dz{transform:translateY(4px) scale(1.14)}
@@ -2170,7 +2158,7 @@ const Solo = {
   renderOpts(){ const g = this.g, box = $('#sOpts'), n = g.opts.length; box.style.setProperty('--n', n); box.classList.toggle('four', n === 4);
     box.innerHTML = g.opts.map((o, j) => { const on = g.aud === j, muted = on && g.mute;
       return `<button class="sopt${o.wrong ? ' wrong' : ''}${muted ? ' muted' : ''}" data-j="${j}" aria-pressed="${on}" ${o.wrong ? 'disabled' : ''} aria-label="${T('גרסה {0}{1}', o.label, muted ? T(', הלהקה בלי הכלי') : '')}">
-      <span class="disc" aria-hidden="true"></span><span class="L">${o.label}</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="hint">${o.wrong ? T('לא בזמן') : muted ? T('בלי הכלי') : on ? T('מתנגן') : g.heard.has(j) ? T('שמעתם ✓') : T('האזינו')}</span></button>`; }).join('');
+      <span class="L">${o.label}</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="hint">${o.wrong ? T('לא בזמן') : muted ? T('בלי הכלי') : on ? T('מתנגן') : g.heard.has(j) ? T('שמעתם ✓') : T('האזינו')}</span></button>`; }).join('');
     box.querySelectorAll('.sopt').forEach(b => b.onclick = () => this.audition(+b.dataset.j));
     const d = $('#sDrums'); d.setAttribute('aria-pressed', String(g.solo)); d.classList.toggle('on', g.solo);
     $('#sTip').textContent = g.aud < 0 || store.get('finished', 0) >= 2 ? '' : g.mute ? T('בלי הכלי. נגיעה נוספת מחזירה.') : T('נגיעה נוספת: הלהקה בלי הכלי.');
