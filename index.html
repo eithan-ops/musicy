@@ -2034,7 +2034,7 @@ $('#hero').onclick = e => { if (!e.target.closest('button')) $('#quickBtn').clic
 /* first visit: a 2-round taste. After that, the same button walks through the songs you haven't finished yet */
 function nextSong(){ let style = store.get('setup.style', defaultStyle()); if (!styleList().includes(style)) style = defaultStyle(); const cat = catalog(style), done = store.get('done', {}); const def = cat.find(d => !done[d.id + ':' + style]) || cat[Math.floor(Math.random() * cat.length)]; return {style, def, n:cat.indexOf(def) + 1}; }
 function renderQuick(){ const sub = $('#quickSub'); if (!sub) return; if (!store.get('quickDone', false)){ sub.textContent = T('🔊 נגיעה אחת והלהקה מנגנת · בלי הרשמה'); return; } const x = nextSong(); sub.textContent = T('השיר הבא שלכם: #{0} · {1}', x.n, STYLES[x.style].name); }
-$('#quickBtn').onclick = async () => { await Library.load();
+$('#quickBtn').onclick = async () => { const _t0 = performance.now(); track('quick_click', {first: !store.get('quickDone', false)}); await Library.load(); const _ms = Math.round(performance.now() - _t0); if (_ms > 1500) track('quick_slow_load', {ms: _ms});
   if (!store.get('quickDone', false) && AUDIO.length){ const style = defaultStyle(), cat = catalog(style), def = cat[Math.floor(Math.random() * cat.length)];
     track('quick_start', {song:def.id}); Solo.start({def, style, level:'easy', mode:'choose', quick:true}); return; }
   if (!store.get('quickDone', false)){ const cat = catalog('electro'), pick = ['ode', 'tetris', 'jingle', 'twinkle'].map(id => cat.find(d => d.id === id)).filter(Boolean);
